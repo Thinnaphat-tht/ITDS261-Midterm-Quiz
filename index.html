@@ -1,0 +1,1601 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ITDS261 Midterm Quiz</title>
+<script>
+try { var __t = JSON.parse(localStorage.getItem('itds261q:v1:theme')); if (__t === 'light' || __t === 'dark') document.documentElement.setAttribute('data-theme', __t); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --font: 'Sarabun', 'Leelawadee UI', 'Noto Sans Thai', Tahoma, sans-serif;
+  --bg: #F6F1E9;
+  --surface: #FFFDF8;
+  --ink: #1F1B16;
+  --muted: #6B6258;
+  --line: #DDD3C4;
+  --line2: #9A8E7E;
+  --accent: #B5471F;
+  --on-accent: #FFFFFF;
+  --tint: #F3E3D8;
+  --ok: #1E6B3A;
+  --okbg: #E3F0E5;
+  --bad: #A3262A;
+  --badbg: #F8E2E0;
+  --r: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1A1713; --surface: #231F1A; --ink: #EFE8DC; --muted: #A89E90;
+    --line: #3A342C; --line2: #7A7062; --accent: #E8895C; --on-accent: #1A1713;
+    --tint: #3A2A21; --ok: #7CC495; --okbg: #1F3326; --bad: #F09A9A; --badbg: #3A2222;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1A1713; --surface: #231F1A; --ink: #EFE8DC; --muted: #A89E90;
+  --line: #3A342C; --line2: #7A7062; --accent: #E8895C; --on-accent: #1A1713;
+  --tint: #3A2A21; --ok: #7CC495; --okbg: #1F3326; --bad: #F09A9A; --badbg: #3A2222;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font); font-size: 18px; line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+button, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- header ---------- */
+.top { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 56px; }
+.brand { background: none; border: 0; padding: 6px 0; font-weight: 700; font-size: 17px; letter-spacing: 0; text-align: left; }
+.brand span { color: var(--muted); font-weight: 500; }
+.theme { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border: 1.5px solid var(--line2); border-radius: var(--r); background: var(--surface); font-size: 15px; font-weight: 500; }
+.theme:hover { border-color: var(--ink); }
+.theme svg { width: 18px; height: 18px; flex: none; }
+
+/* ---------- ปุ่ม ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 0 20px; border-radius: var(--r); border: 1.5px solid var(--line2); background: var(--surface); font-weight: 600; font-size: 17px; }
+.btn:hover { border-color: var(--ink); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.ghost { background: transparent; }
+.btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+.btn[aria-disabled="true"]:hover { border-color: var(--line2); filter: none; }
+.btn.small { min-height: 38px; padding: 0 14px; font-size: 15px; }
+.btn svg { width: 18px; height: 18px; }
+
+/* ---------- หน้าแรก ---------- */
+.home { padding-top: 36px; padding-bottom: 72px; }
+.home h1 { font-size: 30px; line-height: 1.3; margin: 0 0 10px; font-weight: 700; }
+.home .lead { margin: 0 0 6px; color: var(--muted); font-size: 17px; }
+.facts { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 16px; color: var(--muted); }
+.facts strong { color: var(--ink); font-weight: 600; }
+.modebox { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+.modebox h2, .sets h2 { margin: 0 0 12px; font-size: 20px; font-weight: 700; }
+.seg { display: inline-flex; border: 1.5px solid var(--line2); border-radius: var(--r); overflow: hidden; background: var(--surface); }
+.seg button { border: 0; background: none; padding: 0 22px; min-height: 46px; font-weight: 600; font-size: 17px; }
+.seg button + button { border-left: 1.5px solid var(--line2); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.modedesc { margin: 12px 0 0; color: var(--muted); font-size: 16px; max-width: 60ch; }
+.sets { margin-top: 36px; }
+.setlist { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.setrow { display: grid; grid-template-columns: 56px 1fr; column-gap: 18px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.setno { font-size: 44px; font-weight: 700; line-height: 1; color: var(--accent); }
+.setrow h3 { margin: 0; font-size: 21px; line-height: 1.4; font-weight: 700; }
+.setrow h3 .lv { font-weight: 500; color: var(--muted); font-size: 16px; margin-left: 8px; }
+.setrow p { margin: 6px 0 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
+.setmeta { margin-top: 8px; font-size: 15px; color: var(--muted); }
+.setact { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.note { margin-top: 36px; padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); font-size: 15px; color: var(--muted); line-height: 1.7; }
+.note strong { color: var(--ink); }
+
+/* ---------- ส่วนหัวของข้อสอบ ---------- */
+.qbar { position: sticky; top: 57px; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
+.qbar .wrap { padding-top: 10px; padding-bottom: 10px; }
+.qbar .row { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; color: var(--muted); }
+.qbar .row b { color: var(--ink); font-weight: 600; }
+.prog { height: 6px; background: var(--line); border-radius: 3px; margin-top: 8px; overflow: hidden; }
+.prog i { display: block; height: 100%; background: var(--accent); }
+.quiz { padding-top: 22px; padding-bottom: 120px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.chip { display: inline-block; padding: 1px 10px; border: 1px solid var(--line2); border-radius: 6px; font-size: 14px; color: var(--muted); line-height: 1.7; background: var(--surface); }
+.chip.strong { color: var(--ink); font-weight: 600; }
+.qno { font-size: 15px; color: var(--muted); font-weight: 600; margin: 0 0 4px; }
+.qtext { font-size: 21px; line-height: 1.6; font-weight: 600; margin: 0 0 6px; }
+.qhint { margin: 0 0 18px; font-size: 15px; color: var(--muted); }
+.ctx { margin: 0 0 18px; padding: 14px 16px; border: 1px solid var(--line2); border-radius: var(--r); background: var(--surface); font-size: 16px; line-height: 1.7; }
+.ctx h3 { margin: 0 0 4px; font-size: 15px; font-weight: 700; color: var(--accent); }
+.ctx p { margin: 0; }
+
+/* ---------- ตัวเลือก ---------- */
+.opts { display: grid; gap: 10px; }
+.opt { display: flex; gap: 14px; align-items: flex-start; width: 100%; text-align: left; padding: 13px 16px; border: 1.5px solid var(--line2); border-radius: var(--r); background: var(--surface); min-height: 54px; line-height: 1.6; }
+.opt:hover { border-color: var(--ink); }
+.opt .mark { flex: none; width: 30px; height: 30px; border: 1.5px solid var(--line2); border-radius: 6px; display: grid; place-items: center; font-weight: 700; font-size: 15px; margin-top: 1px; }
+.opt .body { flex: 1; min-width: 0; }
+.opt .tag { display: block; margin-top: 4px; font-size: 14px; font-weight: 700; }
+.opt.sel { border-color: var(--accent); background: var(--tint); }
+.opt.sel .mark { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.opt.right { border-color: var(--ok); background: var(--okbg); }
+.opt.right .mark { background: var(--ok); border-color: var(--ok); color: var(--bg); }
+.opt.right .tag { color: var(--ok); }
+.opt.wrong { border-color: var(--bad); background: var(--badbg); }
+.opt.wrong .mark { background: var(--bad); border-color: var(--bad); color: var(--bg); }
+.opt.wrong .tag { color: var(--bad); }
+.opt.lock { cursor: default; }
+.opt.lock:hover { border-color: var(--line2); }
+.opt.right.lock:hover { border-color: var(--ok); }
+.opt.wrong.lock:hover { border-color: var(--bad); }
+.opt .mark svg { width: 16px; height: 16px; }
+
+/* ---------- เรียงลำดับ ---------- */
+.ordbox h4, .poolh { margin: 0 0 8px; font-size: 15px; font-weight: 700; color: var(--muted); }
+.slots { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 8px; }
+.slot { display: flex; gap: 12px; align-items: center; min-height: 52px; padding: 8px 14px; border: 1.5px dashed var(--line2); border-radius: var(--r); color: var(--muted); font-size: 16px; }
+.slot .n { flex: none; width: 28px; height: 28px; border-radius: 6px; border: 1.5px solid var(--line2); display: grid; place-items: center; font-weight: 700; font-size: 14px; }
+.slot.filled { border-style: solid; background: var(--surface); color: var(--ink); }
+.slot.filled button { all: unset; cursor: pointer; flex: 1; min-width: 0; line-height: 1.55; }
+.slot.filled button:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.slot.filled:hover { border-color: var(--ink); }
+.slot.right { border-color: var(--ok); background: var(--okbg); }
+.slot.wrong { border-color: var(--bad); background: var(--badbg); }
+.slot .st { flex: none; font-size: 14px; font-weight: 700; }
+.slot.right .st { color: var(--ok); }
+.slot.wrong .st { color: var(--bad); }
+.pool { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
+.pill { padding: 9px 14px; border: 1.5px solid var(--line2); border-radius: var(--r); background: var(--surface); font-size: 16px; line-height: 1.55; text-align: left; }
+.pill:hover { border-color: var(--ink); }
+.answer-key { margin-top: 6px; padding: 12px 16px; border: 1px solid var(--line2); border-radius: var(--r); background: var(--surface); font-size: 16px; }
+.answer-key h4 { margin: 0 0 6px; font-size: 15px; color: var(--ok); }
+.answer-key ol { margin: 0; padding-left: 22px; }
+
+/* ---------- จับคู่ ---------- */
+.mrows { display: grid; gap: 12px; }
+.mrow { display: grid; grid-template-columns: 1fr; gap: 8px; padding: 12px 14px; border: 1.5px solid var(--line2); border-radius: var(--r); background: var(--surface); }
+.mrow.right { border-color: var(--ok); background: var(--okbg); }
+.mrow.wrong { border-color: var(--bad); background: var(--badbg); }
+.mrow .ml { font-weight: 600; line-height: 1.6; }
+.mrow select { width: 100%; min-height: 46px; padding: 6px 10px; border: 1.5px solid var(--line2); border-radius: 6px; background: var(--bg); font-size: 16px; }
+.mrow .fixed { font-size: 15px; font-weight: 600; }
+.mrow.right .fixed { color: var(--ok); }
+.mrow.wrong .fixed { color: var(--bad); }
+
+/* ---------- แผนภาพ ---------- */
+.fig { margin: 4px 0 18px; padding: 12px; border: 1px solid var(--line2); border-radius: var(--r); background: var(--surface); overflow-x: auto; }
+.fig svg { display: block; margin: 0 auto; height: auto; }
+.fig .scrollhint { display: none; margin: 8px 0 0; font-size: 13px; color: var(--muted); text-align: center; }
+@media (max-width: 620px) { .fig .scrollhint { display: block; } }
+.fig text { fill: var(--ink); font-family: var(--font); font-size: 14px; }
+.fig .ln { stroke: var(--ink); stroke-width: 1.6; fill: none; }
+.fig .dash { stroke-dasharray: 6 4; }
+.fig .sh { stroke: var(--ink); stroke-width: 1.6; fill: var(--surface); }
+.fig .bd { stroke: var(--muted); stroke-width: 1.6; fill: none; }
+.fig .mk { fill: var(--ink); }
+.fig .mko { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.fig .lbl { paint-order: stroke; stroke: var(--surface); stroke-width: 6px; stroke-linejoin: round; font-size: 13px; }
+.fig .hit { fill: none; stroke: transparent; stroke-width: 18; pointer-events: stroke; }
+.fig .hr { fill: transparent; }
+.fig .hot { cursor: pointer; outline: none; }
+.fig .hl { fill: none; stroke: transparent; stroke-width: 2.5; pointer-events: none; }
+.fig .hot:hover .hl { stroke: var(--accent); stroke-dasharray: 5 4; }
+.fig .hot:focus-visible .hl { stroke: var(--accent); stroke-dasharray: 5 4; }
+.fig .hot.sel .hl { stroke: var(--accent); stroke-dasharray: none; fill: var(--tint); fill-opacity: .9; }
+.fig .hot.right .hl { stroke: var(--ok); stroke-dasharray: none; fill: var(--okbg); fill-opacity: 1; }
+.fig .hot.wrong .hl { stroke: var(--bad); stroke-dasharray: none; fill: var(--badbg); fill-opacity: 1; }
+.fig.locked .hot { cursor: default; }
+.fig.locked .hot:hover .hl { stroke: transparent; }
+.fig.locked .hot.sel .hl, .fig.locked .hot.right .hl, .fig.locked .hot.wrong .hl { stroke-dasharray: none; }
+.fig.locked .hot.right:hover .hl { stroke: var(--ok); }
+.fig.locked .hot.wrong:hover .hl { stroke: var(--bad); }
+
+/* ---------- เฉลย ---------- */
+.fb { margin-top: 22px; padding: 16px 18px; border: 1.5px solid var(--line2); border-radius: var(--r); background: var(--surface); }
+.fb.ok { border-color: var(--ok); }
+.fb.no { border-color: var(--bad); }
+.fb h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; font-size: 18px; font-weight: 700; }
+.fb.ok h3 { color: var(--ok); }
+.fb.no h3 { color: var(--bad); }
+.fb.skip h3 { color: var(--muted); }
+.fb h3 svg { width: 20px; height: 20px; flex: none; }
+.fb p { margin: 6px 0 0; font-size: 17px; line-height: 1.75; }
+.fb .src { font-size: 14px; color: var(--muted); margin-top: 10px; }
+.fb strong { font-weight: 700; }
+
+/* ---------- แถบปุ่มล่าง + ไปที่ข้อ ---------- */
+.actions { position: fixed; left: 0; right: 0; bottom: 0; z-index: 15; background: var(--bg); border-top: 1px solid var(--line); }
+.actions .wrap { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding-top: 12px; padding-bottom: 12px; }
+.actions .right { display: flex; gap: 10px; }
+.jump { margin-top: 28px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+.jump summary { cursor: pointer; padding: 12px 16px; font-weight: 600; font-size: 16px; }
+.jump .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(46px, 1fr)); gap: 8px; padding: 4px 16px 16px; }
+.jn { position: relative; min-height: 44px; border: 1.5px solid var(--line2); border-radius: 6px; background: var(--bg); font-weight: 600; font-size: 15px; }
+.jn.ans { background: var(--tint); border-color: var(--accent); }
+.jn.ok { background: var(--okbg); border-color: var(--ok); color: var(--ok); }
+.jn.no { background: var(--badbg); border-color: var(--bad); color: var(--bad); }
+.jn.cur { outline: 3px solid var(--ink); outline-offset: 1px; }
+.jn svg { position: absolute; right: 3px; top: 3px; width: 11px; height: 11px; }
+.legend { padding: 0 16px 14px; font-size: 13px; color: var(--muted); }
+.confirm { margin-top: 18px; padding: 16px 18px; border: 1.5px solid var(--accent); border-radius: var(--r); background: var(--tint); }
+.confirm p { margin: 0 0 12px; }
+.confirm .row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* ---------- ผลคะแนน ---------- */
+.result { padding-top: 36px; padding-bottom: 72px; }
+.result h1 { margin: 0; font-size: 20px; font-weight: 700; color: var(--muted); }
+.score { display: flex; align-items: baseline; gap: 12px; margin: 6px 0 4px; }
+.score .big { font-size: 72px; font-weight: 700; line-height: 1.1; }
+.score .of { font-size: 28px; color: var(--muted); font-weight: 500; }
+.pct { margin: 0 0 24px; font-size: 18px; color: var(--muted); }
+.result h2 { margin: 28px 0 10px; font-size: 19px; font-weight: 700; }
+.bd-row { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+.bd-row .name { line-height: 1.5; }
+.bd-row .num { font-weight: 700; font-variant-numeric: tabular-nums; }
+.bd-row .bar { grid-column: 1 / -1; height: 6px; background: var(--line); border-radius: 3px; margin-top: 6px; overflow: hidden; }
+.bd-row .bar i { display: block; height: 100%; background: var(--accent); }
+.wrongs { display: flex; flex-wrap: wrap; gap: 8px; }
+.rbtns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+
+@media (max-width: 520px) {
+  body { font-size: 17px; }
+  .home h1 { font-size: 26px; }
+  .setrow { grid-template-columns: 1fr; row-gap: 6px; }
+  .setno { font-size: 34px; }
+  .qtext { font-size: 19px; }
+  .score .big { font-size: 60px; }
+  .theme .lab { display: none; }
+  .theme { padding: 0 11px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <button class="brand" id="homeBtn" aria-label="กลับหน้าแรก">ITDS261 <span>ข้อสอบกลางภาค</span></button>
+    <button class="theme" id="themeBtn" type="button"></button>
+  </div>
+</header>
+<main id="app"></main>
+<noscript><div class="wrap" style="padding:32px 16px">หน้านี้ต้องเปิด JavaScript เพื่อทำข้อสอบ</div></noscript>
+<script>
+/* ---------- ตัวช่วยสร้างข้อสอบ ---------- */
+window.SETS = [];
+const mk = {
+  mcq: (src, q, ok, bad, why, o) => Object.assign({ t: 'mcq', src, q, opts: [ok].concat(bad), why }, o),
+  tf: (src, q, a, why, o) => Object.assign({ t: 'tf', src, q, a, why }, o),
+  order: (src, q, items, why, o) => Object.assign({ t: 'order', src, q, items, why }, o),
+  match: (src, q, pairs, why, o) => Object.assign({ t: 'match', src, q, pairs, why }, o),
+  spot: (src, q, fig, ans, why, o) => Object.assign({ t: 'spot', src, q, fig, ans, why }, o),
+};
+
+/* ---------- ตัวสร้างแผนภาพ SVG ---------- */
+const F = (function () {
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const DEFS =
+    '<defs>' +
+    '<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="mk" d="M0 0L10 5L0 10z"/></marker>' +
+    '<marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path class="mko" d="M1 1L9 5L1 9"/></marker>' +
+    '</defs>';
+
+  function wrap(w, h, inner, alt, interactive) {
+    return {
+      alt: alt,
+      interactive: !!interactive,
+      svg:
+        '<svg viewBox="0 0 ' + w + ' ' + h + '" style="width:100%;max-width:' + w + 'px;min-width:' + Math.min(w, 560) +
+        'px" role="' + (interactive ? 'group' : 'img') + '" aria-label="' + esc(alt) + '">' + DEFS + inner + '</svg>',
+    };
+  }
+  const hot = (id, label, inner) =>
+    id
+      ? '<g class="hot" data-id="' + id + '" role="button" tabindex="0" aria-label="' + esc(label) + '">' + inner + '</g>'
+      : '<g>' + inner + '</g>';
+  const txt = (x, y, s, o) => {
+    o = o || {};
+    return '<text x="' + x + '" y="' + y + '" text-anchor="' + (o.a || 'middle') + '"' +
+      (o.c ? ' class="' + o.c + '"' : '') + (o.w ? ' font-weight="' + o.w + '"' : '') +
+      (o.s ? ' font-size="' + o.s + '"' : '') + '>' + esc(s) + '</text>';
+  };
+  const lines = (cx, cy, arr, o) => {
+    const lh = 18, y0 = cy - ((arr.length - 1) * lh) / 2 + 5;
+    return arr.map((s, i) => txt(cx, y0 + i * lh, s, o)).join('');
+  };
+
+  /* ---- use case ---- */
+  const actor = (x, y, label, id) =>
+    hot(id, label,
+      '<rect class="hr" x="' + (x - 38) + '" y="' + (y - 14) + '" width="76" height="106"/>' +
+      '<circle class="sh" cx="' + x + '" cy="' + y + '" r="10"/>' +
+      '<path class="ln" d="M' + x + ' ' + (y + 10) + 'V' + (y + 42) + 'M' + (x - 18) + ' ' + (y + 22) + 'H' + (x + 18) +
+      'M' + x + ' ' + (y + 42) + 'L' + (x - 14) + ' ' + (y + 64) + 'M' + x + ' ' + (y + 42) + 'L' + (x + 14) + ' ' + (y + 64) + '"/>' +
+      txt(x, y + 84, label));
+  const uc = (cx, cy, label, id, rx) =>
+    hot(id, label, '<ellipse class="sh" cx="' + cx + '" cy="' + cy + '" rx="' + (rx || 84) + '" ry="26"/>' + txt(cx, cy + 5, label));
+  const box = (x, y, w, h, title, id) =>
+    hot(id, title, '<rect class="bd" x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="4"/>' + txt(x + w / 2, y + 22, title, { w: 600 }));
+  /* เส้น/ลูกศร: d = path, o = {dash, ar:'open'|'fill', label, lx, ly, la, id, name} */
+  const ln = (d, o) => {
+    o = o || {};
+    const mark = o.ar ? ' marker-end="url(#' + (o.ar === 'open' ? 'ao' : 'ah') + ')"' : '';
+    const label = o.label ? txt(o.lx, o.ly, o.label, { c: 'lbl', a: o.la || 'middle' }) : '';
+    return hot(o.id, o.name || o.label || 'เส้น',
+      '<path class="hit" d="' + d + '"/><path class="ln' + (o.dash ? ' dash' : '') + '" d="' + d + '"' + mark + '/>' + label);
+  };
+
+  function library(v) {
+    const inside = v === 'd1';
+    let s = box(150, 14, inside ? 480 : 350, 372, 'Library Management System', 'sys');
+    s += actor(70, 150, 'Member', 'a-member') + actor(585, 150, 'Librarian', 'a-lib');
+    s += ln('M88 150 L200 101', { id: 'as-search', name: 'เส้นเชื่อม Member กับ Search book' });
+    s += ln('M88 166 L172 160', { id: 'as-borrow', name: 'เส้นเชื่อม Member กับ Borrow book' });
+    s += ln('M567 150 L471 117', { id: 'as-return', name: 'เส้นเชื่อม Librarian กับ Return book' });
+    s += ln('M567 164 L478 161', { id: 'as-add', name: 'เส้นเชื่อม Librarian กับ Add book' });
+    s += uc(250, 80, 'Search book', 'uc-search', 84);
+    s += uc(250, 160, v === 'd3' ? 'Book borrowing' : 'Borrow book', 'uc-borrow', 80);
+    s += uc(420, 100, 'Return book', 'uc-return', 66);
+    s += uc(420, 170, 'Add book', 'uc-add', 62);
+    s += uc(400, 250, 'Renew loan', 'uc-renew', 64);
+    s += uc(250, 330, 'Verify membership', 'uc-verify', 92);
+    s += ln('M250 186 L250 304', { dash: 1, ar: 'open', label: '«include»', lx: 250, ly: 250, id: 'r-verify', name: 'ความสัมพันธ์ระหว่าง Borrow book กับ Verify membership' });
+    s += ln('M364 229 L288 183', { dash: 1, ar: 'open', label: v === 'd2' ? '«include»' : '«extend»', lx: 326, ly: 210, id: 'r-renew', name: 'ความสัมพันธ์ระหว่าง Renew loan กับ Borrow book' });
+    return wrap(660, 400, s, 'Use case diagram ของระบบ Library Management System มี actor Member และ Librarian', true);
+  }
+
+  function zooInclude() {
+    let s = box(150, 14, 440, 200, 'Zoo Ticketing System');
+    s += actor(60, 60, 'Customer');
+    s += ln('M82 82 L176 108');
+    s += uc(260, 112, 'Book a ticket', null, 84);
+    s += uc(490, 112, 'Make payment', null, 72);
+    s += ln('M344 112 L416 112', { dash: 1, ar: 'open', label: '«include»', lx: 380, ly: 106 });
+    return wrap(620, 230, s, 'Use case diagram ของระบบ Zoo Ticketing System: Customer เชื่อมกับ Book a ticket และ Book a ticket มีเส้นประ include ไปยัง Make payment', false);
+  }
+
+  /* ---- DFD ---- */
+  const ent = (x, y, w, h, arr, id) =>
+    hot(id, arr.join(' '), '<rect class="sh" x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '"/>' + lines(x + w / 2, y + h / 2, arr));
+  const proc = (cx, cy, r, num, arr, id) =>
+    hot(id, 'process ' + num + ' ' + arr.join(' '),
+      '<circle class="sh" cx="' + cx + '" cy="' + cy + '" r="' + r + '"/>' +
+      lines(cx, cy, [String(num)].concat(arr), r < 50 ? { s: 13 } : {}));
+
+  function context(v) {
+    const on = v === 'direct' || v === 'unnamed' || v === 'extra';
+    const H = id => (on ? id : null);
+    let s = '';
+    s += ent(20, 190, 120, 70, ['Customer'], H('e-cust'));
+    s += ent(320, 14, 120, 56, ['Restaurant'], H('e-rest'));
+    s += ent(620, 190, 120, 70, ['Payment', 'Gateway'], H('e-gate'));
+    s += v === 'q' ? proc(380, 225, 80, 0, ['?'], null) : proc(380, 225, 80, 0, ['FoodNow', 'Ordering', 'System'], H('p0'));
+    const fl = (d, label, lx, ly, la, id) => ln(d, { ar: 'fill', label: label, lx: lx, ly: ly, la: la, id: H(id), name: label ? 'data flow ' + label : 'data flow ไม่มีชื่อ' });
+    s += fl('M140 210 L300 210', 'order details', 220, 200, 'middle', 'f-c-out');
+    s += fl('M301 240 L141 240', 'order confirmation', 221, 258, 'middle', 'f-c-in');
+    s += fl('M459 210 L619 210', 'payment request', 539, 200, 'middle', 'f-g-out');
+    s += fl('M619 240 L459 240', 'payment result', 539, 258, 'middle', 'f-g-in');
+    s += fl('M360 147 L360 71', 'order request', 352, 112, 'end', 'f-r-out');
+    s += fl('M400 71 L400 147', 'order status', 408, 112, 'start', 'f-r-in');
+    if (v === 'extra') {
+      s += proc(380, 412, 40, 1, ['Track', 'delivery'], 'extra-proc');
+      s += fl('M360 303 L360 374', 'delivery request', 352, 342, 'end', 'f-d-out');
+      s += fl('M400 374 L400 303', 'delivery status', 408, 342, 'start', 'f-d-in');
+    } else {
+      s += ent(320, 380, 120, 56, ['Rider'], H('e-rider'));
+      s += fl('M360 303 L360 379', 'delivery request', 352, 345, 'end', 'f-d-out');
+      s += fl('M400 379 L400 303', v === 'unnamed' ? '' : 'delivery status', 408, 345, 'start', 'f-d-in');
+    }
+    if (v === 'direct') {
+      s += ln('M80 190 C80 40 200 42 318 42', { ar: 'fill', label: 'special request', lx: 180, ly: 32, id: 'bad-flow', name: 'data flow special request จาก Customer ไป Restaurant' });
+    }
+    const alt = 'Context DFD ของระบบสั่งอาหาร FoodNow มี process 0 ตรงกลาง ล้อมด้วย Customer, Restaurant, Payment Gateway และ Rider';
+    return wrap(760, v === 'extra' ? 456 : 450, s, alt, on);
+  }
+
+  function spiralGrid() {
+    let s = '';
+    const cell = (x, y, n) => '<rect class="bd" x="' + x + '" y="' + y + '" width="230" height="130" rx="4"/>' + txt(x + 115, y + 82, String(n), { s: 56, w: 700 });
+    s += cell(20, 10, 2) + cell(270, 10, 3) + cell(20, 160, 1) + cell(270, 160, 4);
+    return wrap(520, 300, s, 'แผนภาพ Spiral model แบ่งเป็น 4 quadrant หมายเลข 2 ซ้ายบน 3 ขวาบน 4 ขวาล่าง 1 ซ้ายล่าง', false);
+  }
+
+  function dfdSymbols() {
+    let s = '';
+    const cap = (x, c) => txt(x, 168, c, { w: 700, s: 16 });
+    s += hot('sym-ent', 'รูป A', '<rect class="hr" x="14" y="20" width="112" height="170"/><rect class="sh" x="30" y="40" width="80" height="70"/>' + cap(70, 'A'));
+    s += hot('sym-yproc', 'รูป B', '<rect class="hr" x="150" y="20" width="100" height="170"/><circle class="sh" cx="200" cy="75" r="40"/>' + cap(200, 'B'));
+    s += hot('sym-gproc', 'รูป C', '<rect class="hr" x="280" y="20" width="130" height="170"/><rect class="sh" x="290" y="40" width="110" height="70" rx="16"/>' + cap(345, 'C'));
+    s += hot('sym-ystore', 'รูป D', '<rect class="hr" x="440" y="20" width="130" height="170"/><path class="ln" d="M450 48H560M450 102H560"/>' + cap(505, 'D'));
+    s += hot('sym-gstore', 'รูป E', '<rect class="hr" x="596" y="20" width="118" height="170"/><rect class="sh" x="610" y="45" width="100" height="60"/><path class="ln" d="M634 45V105"/>' + cap(660, 'E'));
+    return wrap(730, 200, s, 'สัญลักษณ์ DFD 5 รูป ติดป้าย A ถึง E ได้แก่ สี่เหลี่ยมจัตุรัส วงกลม สี่เหลี่ยมมุมมน เส้นขนานสองเส้น และสี่เหลี่ยมผืนผ้ามีขีดแนวตั้งด้านซ้าย', true);
+  }
+
+  return { library, zooInclude, context, spiralGrid, dfdSymbols };
+})();
+
+</script>
+<script>
+SETS.push({
+  id: 1,
+  tag: 'จำให้แม่น',
+  level: 'ง่าย',
+  desc: 'นิยามและศัพท์พื้นฐานจากทุกบท อ่านสรุปรอบเดียวก็ตอบได้ ใช้เช็กว่าจำคำสำคัญได้ครบหรือยัง',
+  qs: [
+    /* ---------- L1 (8 ข้อ) ---------- */
+    mk.mcq('L1', 'ตามนิยามของ Pressman (2015) software ประกอบด้วย 3 ส่วนใด',
+      'Instructions, Data structures และ Documents',
+      ['Source code, Database และ Server', 'Requirements, Design และ Test cases', 'Hardware, Operating system และ User'],
+      'Software = **Instructions** (ชุดคำสั่งที่ให้ features, function และ performance) + **Data structures** (ให้โปรแกรมจัดการข้อมูลได้) + **Documents** (อธิบายการทำงานและวิธีใช้) ส่วน Hardware, OS และ User เป็นชั้นอื่นของระบบคอมพิวเตอร์ โดย software อยู่ที่ชั้น Application Software'),
+
+    mk.tf('L1', 'Software ไม่สึกหรอเหมือน hardware แต่ก็ยังล้าสมัย (obsolete) ได้', true,
+      'ถูก “Does not wear out” และ “Can be obsolete” เป็น 2 ใน 6 ลักษณะของ software ไม่มีการเสื่อมทางกายภาพ แต่ความต้องการและเทคโนโลยีเปลี่ยน ทำให้ใช้ไม่ได้ผลเหมือนเดิม'),
+
+    mk.mcq('L1', 'ข้อใด **ไม่ใช่** ลักษณะของ software ตามสไลด์',
+      'Manufactured: ผลิตซ้ำเป็นจำนวนมากแบบสายการผลิตในโรงงาน',
+      ['Intangible: จับต้องไม่ได้', 'Labour intensive: ใช้แรงงานคนมาก', 'Difficult to make changes: แก้ไขเปลี่ยนแปลงยาก'],
+      'สไลด์บอกว่า software ต้อง “developed / engineered, not manufactured” ท่อง 6 ลักษณะว่า **พัฒนา-จับไม่ได้-ใช้คนเยอะ-แก้ยาก-ไม่สึก-ล้าสมัยได้**'),
+
+    mk.mcq('L1', 'ตามนิยามของ Lethbridge, Software Engineering คือกระบวนการแบบใด',
+      'แก้ปัญหาให้ลูกค้าด้วยการพัฒนาและต่อยอดระบบ software ขนาดใหญ่ที่มีคุณภาพอย่างเป็นระบบ ภายใต้ข้อจำกัดด้านงบ เวลา และอื่น ๆ',
+      ['เขียนโค้ดให้เสร็จเร็วที่สุดเท่าที่ทำได้ เพื่อส่งมอบให้ลูกค้าก่อนคู่แข่งโดยไม่ต้องมีขั้นตอนมาก', 'ออกแบบ hardware และ software ให้ทำงานร่วมกันได้อย่างราบรื่น โดยไม่คำนึงถึงงบประมาณและเวลา', 'ทดสอบโปรแกรมทุกส่วนอย่างละเอียดจนไม่มีข้อผิดพลาดเลย ก่อนส่งมอบให้ลูกค้าใช้งานจริงทุกครั้ง'],
+      'คำสำคัญที่ต้องมีในคำตอบ: **systematic** · **development and evolution** · **large, high-quality** · **cost, time, constraints**'),
+
+    mk.tf('L1', '4 ปัจจัยหลักของ software project คือ Scope, Time, Cost และ Risk', false,
+      'ผิด ตัวที่ 4 คือ **Quality** ไม่ใช่ Risk ปัจจัยหลักทั้ง 4 คือ Scope (ขอบเขต), Time (เวลา), Cost (ต้นทุน) และ Quality (คุณภาพ) ส่วน Risk เป็นขั้นสุดท้ายของ Planning และเป็น Knowledge area หนึ่งของ PMBOK'),
+
+    mk.mcq('L1', 'POMA ซึ่งเป็น 4 ขั้นตอนบริหารโปรเจกต์ ย่อมาจากข้อใด',
+      'Planning → Organizing → Monitoring → Adjusting',
+      ['Planning → Operating → Managing → Analyzing', 'Preparing → Organizing → Measuring → Auditing', 'Planning → Output → Measuring → Approving'],
+      'POMA = **P**lanning → **O**rganizing → **M**onitoring → **A**djusting ผลลัพธ์ของแต่ละขั้น: Planning ได้ Project Plan · Organizing ได้คน โครงสร้าง และกลไกติดตามผล · Monitoring รู้สถานะ · Adjusting แก้ resources/schedule/content'),
+
+    mk.order('L1', 'เรียงระดับของ WBS (Work Breakdown Structure) จากใหญ่ไปเล็ก',
+      ['System name', 'Module', 'Function', 'Task'],
+      'WBS แตกงานเป็นชั้น ๆ 4 ระดับ: **System name → Module → Function → Task** ตัวอย่างจากหน้าสรุป: ระบบจองตั๋วสวนสัตว์ → การขายตั๋ว → จองตั๋ว → ออกแบบหน้าจอจอง'),
+
+    mk.mcq('L1', 'ขั้น Adjusting ใน POMA ปรับได้ใน 3 ด้านใด',
+      'Resources, Schedule และ Project content',
+      ['Scope, Cost และ Quality', 'People, Process และ Tools', 'Requirements, Design และ Code'],
+      'โปรเจกต์แทบไม่เคยราบรื่น เมื่อมีสัญญาณปัญหาต้องกล้าแก้ไข โดยปรับได้ 3 ด้านคือ **Resources** (ทรัพยากร) · **Schedule** (ตารางเวลา) · **Project content** (เนื้องาน/ขอบเขต) จะปรับด้านเดียวหรือหลายด้านร่วมกันก็ได้'),
+
+    /* ---------- L2 (7 ข้อ) ---------- */
+    mk.mcq('L2', 'กิจกรรม “Maintenance and evolution” คือข้อใด',
+      'แก้ปัญหา เพิ่มฟีเจอร์ และปรับ software ให้เข้ากับยุคสมัยหลังส่งมอบ',
+      ['ตรวจหาข้อผิดพลาดของโปรแกรม และตรวจว่าตรงกับ requirement หรือไม่', 'ส่งมอบ software ให้ผู้ใช้นำไปใช้งานจริงในสภาพแวดล้อมของผู้ใช้', 'วางโครงสร้างระบบและการทำงานร่วมกันของส่วนต่าง ๆ ของ software'],
+      'ตัวเลือกอื่นคือ Testing and QA, Deployment and release และ System and software design ตามลำดับ'),
+
+    mk.order('L2', 'เรียง 6 กิจกรรมหลักในการพัฒนา software ให้ถูกลำดับ',
+      ['Requirements analysis', 'System and software design', 'Implementation (coding)', 'Testing and quality assurance', 'Deployment and release', 'Maintenance and evolution'],
+      '6 กิจกรรมหลัก: วิเคราะห์ requirements → ออกแบบระบบ → เขียนโค้ด → ทดสอบและประกันคุณภาพ → ส่งมอบ → ดูแลและต่อยอด'),
+
+    mk.mcq('L2', 'สไลด์ระบุปัญหาของ Code and Fix model ไว้ 2 ข้อ คือข้อใด',
+      'บางคนข้าม unit testing หรือ debugging และบางคนเริ่มทำโดยไม่เข้าใจ problem statement (requirement) ให้ชัด',
+      ['แต่ละ phase ซ้อนทับกันจนควบคุมไม่ได้ และมีเอกสารมากเกินไปจนทำงานช้ากว่าที่ควรจะเป็น', 'ต้องรอให้ครบทุก requirement ก่อนถึงจะ release ได้ และแก้ไขสิ่งที่ทำไปแล้วไม่ได้เลย', 'ไม่มีการเขียนโค้ดจริง มีแต่การวางแผนและการวิเคราะห์ความเสี่ยงซ้ำไปมาในทุกรอบ'],
+      'Code and Fix = เขียนโค้ดแล้วแก้ไปเรื่อย ๆ ตามปัญหาที่เจอ (Code → Compile → Unit Test → Release วน Debug) จุดอ่อนคือ **ข้าม test/debug** และ **ไม่เข้าใจ requirement**'),
+
+    mk.tf('L2', 'ใน Waterfall Model แต่ละ phase ซ้อนทับกันได้เพื่อให้เสร็จเร็วขึ้น', false,
+      'ผิด Waterfall เป็น Linear and sequential และ **phases do not overlap** (ไม่ซ้อนทับกัน) deliverable ของ phase หนึ่งเป็น input ของ phase ถัดไป และเน้น documentation กับ planning'),
+
+    mk.mcq('L2', 'จุดเด่นของ Spiral model ที่ข้อสอบมักถามคืออะไร',
+      'ทำซ้ำเป็นรอบ ๆ โดยมี risk analysis เป็นหัวใจ',
+      ['ทำทีละ phase เป็นเส้นตรง โดยไม่ซ้อนทับกัน', 'เขียนโค้ดแล้วแก้ไปเรื่อย ๆ ไม่ต้องมีแผน', 'ปล่อย Release 1 ถึง n โดยไม่ต้องทดสอบรวม'],
+      'Spiral วนเป็นเกลียวจากวงในออกวงนอก ผ่าน 4 quadrant ทุกรอบ จุดเด่นคือ **iterative** และ **risk analysis** (มี prototype และเส้น Review ก่อนเข้ารอบถัดไป)'),
+
+    mk.mcq('L2', 'ข้อใดเป็นคู่ “ให้ค่ามากกว่า over ให้ค่าน้อยกว่า” ที่ถูกต้องตาม Agile Manifesto',
+      'Working software over comprehensive documentation',
+      ['Processes and tools over individuals and interactions', 'Contract negotiation over customer collaboration', 'Following a plan over responding to change'],
+      'Manifesto 4 ข้อให้ค่าฝั่งซ้ายมากกว่า: **Individuals and interactions · Working software · Customer collaboration · Responding to change** ตัวเลือกอื่นสลับข้างกันหมด'),
+
+    mk.order('L2', 'เรียงลำดับการไหลของงานใน Scrum ตามสไลด์',
+      ['Vision', 'Product Backlog', 'Sprint Backlog', 'Sprint (2-4 สัปดาห์ + Daily Scrum ทุก 24 ชม.)', 'Potentially Shippable Product Increment'],
+      'Vision → Product Backlog → Sprint Backlog → Sprint (มี Daily Scrum Meeting ทุก 24 ชม.) → Potentially Shippable Product Increment แล้ววนกลับไปรอบถัดไป'),
+
+    /* ---------- L3 (6 ข้อ) ---------- */
+    mk.mcq('L3', 'Non-functional requirements คืออะไร',
+      'ข้อจำกัดของบริการหรือฟังก์ชันที่ระบบให้ เช่น response time, compatibility, การใช้ memory',
+      ['บริการที่ระบบควรมี และสิ่งที่ระบบควรทำเมื่อได้รับ input แต่ละแบบจากผู้ใช้', 'ภาพกว้าง ๆ ของสิ่งที่ผู้ใช้อยากได้จากระบบ โดยยังไม่ลงรายละเอียดการทำงาน', 'เอกสารที่อธิบายการทำงานและวิธีใช้โปรแกรมสำหรับผู้ใช้และผู้ดูแลระบบ'],
+      '**Functional = ระบบ “ทำอะไร”** (services) · **Non-functional = ระบบ “ทำได้ดีแค่ไหน/ภายใต้ข้อจำกัดอะไร”** (constraints) และมักใช้กับระบบทั้งหมดมากกว่ารายฟีเจอร์'),
+
+    mk.tf('L3', '“ลูกค้าสามารถจองตั๋วออนไลน์ได้” เป็น functional requirement', true,
+      'ถูก เป็นบริการที่ระบบต้องมี (สิ่งที่ระบบ “ทำ”) ส่วน “หน้าจองต้องโหลดภายใน 2 วินาที” เป็น non-functional (ตัวอย่างทั้งสองมาจากหน้าสรุป)'),
+
+    mk.mcq('L3', 'กระบวนการ Requirements Engineering (RE) มี 4 กระบวนการ คือข้อใด',
+      'Elicitation, Specification, Validation และ Change',
+      ['Planning, Design, Coding และ Testing', 'Analysis, Modeling, Deployment และ Maintenance', 'Elicitation, Design, Implementation และ Release'],
+      'RE เป็นกระบวนการ **iterative** (วนซ้ำ) 4 กระบวนการคือ elicitation (รวบรวม) · specification (เขียนระบุ) · validation (ตรวจสอบ) · change (จัดการการเปลี่ยนแปลง) ผลลัพธ์คือ **System requirements document**'),
+
+    mk.mcq('L3', 'เทคนิค elicitation ใดใช้ “สังเกตการทำงานจริงของผู้ใช้”',
+      'Ethnography (observation)',
+      ['Questionnaires', 'Interview', 'Joint requirements planning (JRP)'],
+      'Ethnography คือการสังเกตการทำงานจริง ส่วน Interview สัมภาษณ์โดยตรง · Questionnaires เก็บความเห็นจากคนจำนวนมาก · JRP คือประชุมเชิงปฏิบัติการร่วมกัน'),
+
+    mk.mcq('L3', 'ข้อใดเป็นหนึ่งใน 6 มิติของการ elicit requirements',
+      'Business Workflow',
+      ['Source Code Structure', 'Marketing Budget', 'Test Coverage'],
+      '6 มิติ: **Individual Functionality · Business Workflow · Data and Data formats · User Interfaces · Existing & Systems Interfaces · Other Constraints** (เช่น performance, reliability)'),
+
+    mk.match('L3', 'จับคู่เทคนิค elicitation กับวิธีทำ',
+      [
+        ['Interview', 'สัมภาษณ์ stakeholders โดยตรง'],
+        ['Questionnaires', 'เก็บความเห็นจากคนจำนวนมากด้วยแบบสอบถาม'],
+        ['Joint requirements planning (JRP)', 'ประชุมเชิงปฏิบัติการร่วมกันระหว่างผู้ใช้และทีมพัฒนา'],
+        ['Research and site visits', 'หาข้อมูลและไปดูงานที่องค์กรที่คล้ายกัน'],
+      ],
+      'เทคนิคทั้ง 6 ของสไลด์: Interview · Ethnography · Sampling of existing documentation, forms, and databases · Research and site visits · Questionnaires · Joint requirements planning (JRP)'),
+
+    /* ---------- L4 (5 ข้อ) ---------- */
+    mk.mcq('L4', 'Use case ใน use case diagram วาดและตั้งชื่ออย่างไร',
+      'วาดเป็นวงรี ชื่อขึ้นต้นด้วยคำกริยา เช่น Book a ticket',
+      ['วาดเป็นรูปคนไม้ ชื่อเป็นบทบาท เช่น Customer', 'วาดเป็นสี่เหลี่ยมผืนผ้า ชื่อเป็นคำนาม เช่น Ticket', 'วาดเป็นวงกลม ชื่อเป็นชื่อระบบ'],
+      'Use case = **วงรี (ellipse)** ขึ้นต้นด้วย **verb** · Actor = คนไม้ ตั้งชื่อเป็นบทบาท · System boundary = กล่องสี่เหลี่ยม ตั้งชื่อเป็นชื่อระบบ'),
+
+    mk.tf('L4', 'Actor ต้องวาดอยู่ข้างในกล่อง system boundary', false,
+      'ผิด **Use case อยู่ข้างในกล่อง** system boundary ส่วน **Actor อยู่ข้างนอกกล่อง** เพราะ actor คือผู้ใช้หรือระบบภายนอกที่มาโต้ตอบกับระบบ'),
+
+    mk.mcq('L4', 'Inheritance ใน use case diagram ใช้ระหว่างอะไร และมีไว้เพื่ออะไร',
+      'ระหว่าง actor กับ actor เพื่อย้ายพฤติกรรมร่วมไปไว้ที่ abstract actor ไม่ให้ซ้ำซ้อน',
+      ['ระหว่าง use case กับ use case เพื่อแยกพฤติกรรมร่วมให้ use case ใหญ่ง่ายขึ้น', 'ระหว่าง actor กับ use case เพื่อแสดงการโต้ตอบ', 'ระหว่าง use case กับ use case เพื่อเพิ่มพฤติกรรมที่เป็นทางเลือก'],
+      'ตัวเลือกที่เหลือคือ Includes, Association และ Extends ตามลำดับ จำให้แม่น: **Association** = actor↔use case · **Inheritance** = actor↔actor · **Includes/Extends** = use case↔use case'),
+
+    mk.mcq('L4', 'ข้อใด **ไม่ใช่** หนึ่งใน 8 องค์ประกอบของ use case narrative',
+      'Test Case',
+      ['Precondition', 'Trigger', 'Postcondition'],
+      '8 องค์ประกอบ: Use Case Name · Primary Actor · Goal in Context · Precondition · Trigger · Scenario · Exception · Postcondition'),
+
+    mk.match('L4', 'จับคู่องค์ประกอบของ use case narrative กับความหมาย',
+      [
+        ['Precondition', 'เงื่อนไขที่ต้องเป็นจริงก่อน use case เริ่ม'],
+        ['Trigger', 'เหตุการณ์ที่จุดชนวนให้ use case เริ่มทำงาน'],
+        ['Exception', 'สิ่งที่เกิดขึ้นเมื่อมีข้อผิดพลาดหรือ input ไม่ถูกต้อง'],
+        ['Postcondition', 'สถานะของระบบหลัง use case จบ'],
+      ],
+      'Scenario ซึ่งเป็นลำดับปกติของการโต้ตอบ actor ↔ ระบบ บางทีเรียกว่า **main flow / basic flow**'),
+
+    /* ---------- L7 (4 ข้อ) ---------- */
+    mk.mcq('L7', 'Data flow ใน DFD คืออะไร',
+      'ข้อมูลที่กำลังเคลื่อนที่ (data in motion) เข้าหรือออกจาก process',
+      ['ที่เก็บข้อมูลถาวรของระบบ เช่น ไฟล์หรือฐานข้อมูลที่ process อ่านและเขียน', 'ผู้ส่งหรือผู้รับข้อมูลที่อยู่นอกระบบ เช่น ลูกค้าหรือระบบภายนอก', 'การประมวลผลที่แปลงข้อมูลขาเข้าให้เป็นข้อมูลขาออกภายในระบบ'],
+      'ตัวเลือกที่เหลือคือ data store, external entity และ process ตามลำดับ A data flow is **data in motion** รวมถึงการสร้าง ลบ หรืออัปเดตข้อมูลใน data store ด้วย'),
+
+    mk.mcq('L7', 'Context diagram แสดงกระบวนการทั้งหมดเป็น process กี่ตัว และเรียกว่าอะไร',
+      '1 ตัว เรียกว่า process 0 (zero)',
+      ['1 ตัว เรียกว่า process 1', 'เท่ากับจำนวน use case ของระบบ', 'เท่ากับจำนวน external entity'],
+      'Context diagram เป็น DFD ระดับบนสุด มี **process เดียว หมายเลข 0** ตั้งชื่อเป็นชื่อระบบ และล้อมด้วย external entities ทั้งหมด'),
+
+    mk.tf('L7', 'สัญลักษณ์ process แบบ Yourdon/DeMarco คือวงกลม ส่วนแบบ Gane/Sarson คือสี่เหลี่ยมมุมมน', true,
+      'ถูก จุดต่างที่ต้องจำคือ **process** (วงกลม vs สี่เหลี่ยมมุมมน) และ **data store** (เส้นขนาน 2 เส้น vs สี่เหลี่ยมผืนผ้ามีขีดแนวตั้งด้านซ้าย) External entity เป็นสี่เหลี่ยมจัตุรัสเหมือนกัน'),
+
+    mk.mcq('L7', 'ตามกฎของ DFD data flow ทุกเส้นต้องเริ่มและ/หรือจบที่อะไร',
+      'Process',
+      ['External entity', 'Data store', 'Data flow เส้นอื่น'],
+      'ถ้า entity ต่อกับ entity หรือ data store ตรง ๆ ต้องใส่ process คั่นเสมอ เช่น process ที่ทำหน้าที่ update (or use) a data store'),
+  ],
+});
+
+</script>
+<script>
+SETS.push({
+  id: 2,
+  tag: 'แยกให้ออก',
+  level: 'กลาง',
+  desc: 'ของที่หน้าตาคล้ายกัน เช่น Include กับ Extend, Incremental แบบ A กับ B, Functional กับ Non-functional, สัญลักษณ์ DFD สองแบบ',
+  qs: [
+    /* ---------- L1 (5 ข้อ) ---------- */
+    mk.order('L1', 'เรียง 7 ขั้นตอนของ Planning ใน POMA ให้ถูกลำดับ (ผลลัพธ์คือ Project Plan)',
+      ['เข้าใจ requirements', 'กำหนดเป้าหมายที่วัดผลได้', 'ประเมินปริมาณงาน (work effort)', 'ประเมินตารางเวลา (schedule)', 'ประเมินทรัพยากรที่ต้องใช้', 'กำหนดการจัดสรรทรัพยากร', 'ระบุและวิเคราะห์ความเสี่ยง'],
+      'ลำดับ 7 ขั้น: เข้าใจ requirements → เป้าหมายที่วัดผลได้ → work effort → schedule → ทรัพยากรที่ต้องใช้ → การจัดสรรทรัพยากร → ความเสี่ยง ทรัพยากรและความเสี่ยงต้องคิดครอบคลุม **people, process, tools, and facilities**'),
+
+    mk.mcq('L1', 'โปรเจกต์ล่าช้ากว่าแผน ผู้จัดการจึงเพิ่มคนในทีมและตัดฟีเจอร์ที่ไม่จำเป็นออก ข้อใดอธิบายได้ถูกต้อง',
+      'อยู่ขั้น Adjusting โดยปรับ Resources (เพิ่มคน) และ Project content (ตัดฟีเจอร์)',
+      ['อยู่ขั้น Planning เพราะกำลังวางแผนใหม่ทั้งหมดและกำหนดเป้าหมายที่วัดผลได้อีกครั้ง', 'อยู่ขั้น Monitoring เพราะกำลังเก็บข้อมูลสถานะและวิเคราะห์ผลของโปรเจกต์', 'อยู่ขั้น Organizing เพราะกำลังออกแบบโครงสร้างองค์กรและเริ่มกลไกติดตามผล'],
+      'Adjusting ปรับได้ 3 ด้าน: Resources · Schedule · Project content ในโจทย์ “เพิ่มคน” คือ resources และ “ตัดฟีเจอร์” คือ project content (โจทย์ข้อนี้ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L1', 'ข้อใด **ไม่ใช่** องค์ประกอบของขั้น Monitoring',
+      'จ้างบุคลากรและอบรมทักษะให้ทีม',
+      ['เก็บข้อมูลสถานะของโปรเจกต์', 'วิเคราะห์และประเมินข้อมูลที่เก็บมา', 'นำเสนอและสื่อสารสถานะโปรเจกต์'],
+      'Monitoring มี 3 องค์ประกอบ: **เก็บข้อมูลสถานะ · วิเคราะห์และประเมิน · นำเสนอและสื่อสาร** ส่วน “จ้างบุคลากรและอบรม” เป็นงานของขั้น **Organizing**'),
+
+    mk.match('L1', 'จับคู่ขั้นตอนของ POMA กับสิ่งที่ทำหรือสิ่งที่ได้',
+      [
+        ['Planning', 'ได้ Project Plan'],
+        ['Organizing', 'ออกแบบโครงสร้างองค์กร จ้างและอบรมคน แล้วเริ่มกลไกติดตามผล'],
+        ['Monitoring', 'เก็บข้อมูลสถานะ วิเคราะห์ประเมิน และสื่อสารสถานะ'],
+        ['Adjusting', 'แก้ไข resources, schedule หรือ project content'],
+      ],
+      'สิ่งที่ข้อสอบน่าจะถามคือ “POMA ย่อมาจากอะไร แต่ละขั้นทำอะไร” ให้จำผลลัพธ์ของแต่ละขั้นให้ได้'),
+
+    mk.match('L1', 'ระบบห้องสมุดถูกแตกงานด้วย WBS จงจับคู่รายการกับระดับของ WBS (ตัวอย่างนี้ผู้จัดทำตั้งเอง)',
+      [
+        ['Library System', 'System name'],
+        ['ยืม-คืนหนังสือ', 'Module'],
+        ['คำนวณค่าปรับเมื่อคืนเกินกำหนด', 'Function'],
+        ['เขียนโค้ดนับจำนวนวันที่คืนช้า', 'Task'],
+      ],
+      'WBS 4 ระดับ จากใหญ่ไปเล็ก: **System name → Module → Function → Task**'),
+
+    /* ---------- L2 (7 ข้อ) ---------- */
+    mk.mcq('L2', 'ลักษณะใดทำให้ Waterfall ต่างจากโมเดลอื่น',
+      'แต่ละ phase ไม่ซ้อนทับกัน และ deliverable ของ phase หนึ่งเป็น input ของ phase ถัดไป',
+      ['ชิ้นงานที่เสร็จแล้วถูกรวมเข้า integration bucket อย่างต่อเนื่อง เพื่อทำ system test รวม', 'วนเป็นรอบ ๆ โดยมี risk analysis และ prototype ในทุกรอบของการพัฒนา', 'ทำงานเป็น sprint 2-4 สัปดาห์ พร้อมประชุม daily scrum ทุก 24 ชั่วโมง'],
+      'Waterfall = traditional, **linear and sequential**, phases do not overlap, เน้น documentation และ planning ตัวเลือกที่เหลือคือ Incremental แบบ A, Spiral และ Scrum ตามลำดับ'),
+
+    mk.mcq('L2', 'ทีมพัฒนาแต่ละ requirement แยกกันด้วยลำดับเดียวกัน (requirement → design → code → unit test) แล้วรวมชิ้นงานเข้า common bucket เพื่อทำ integrated system test คือโมเดลใด',
+      'Incremental แบบ A (Integration Bucket)',
+      ['Incremental แบบ B (Multiple Release)', 'Waterfall', 'Spiral'],
+      'แบบ A เก็บชิ้นงานลง **bucket** แล้วทดสอบรวมที่ **System Test** ส่วนแบบ B ปล่อยเป็น **Release 1, 2, ... n**'),
+
+    mk.mcq('L2', 'บริษัทแบ่ง requirement เป็นชุดเล็ก ๆ แล้วพัฒนา package และปล่อยออกไปเป็น Release 1, 2, ..., n คือโมเดลใด',
+      'Incremental แบบ B (Multiple Release)',
+      ['Incremental แบบ A (Integration Bucket)', 'Code and Fix', 'Waterfall'],
+      'แบบ B = แต่ละชุด requirement เล็ก ๆ ถูก **พัฒนา, package, แล้ว release** ออกไปเป็นรอบ ๆ (multiple release)'),
+
+    mk.mcq('L2', 'ในแผนภาพ Spiral model นี้ quadrant หมายเลข 3 (ขวาบน) ทำกิจกรรมใด',
+      'Evaluate Alternatives, Identify, Resolve Risks (risk analysis, prototype)',
+      ['Determine Objectives, Alternatives, Constraints (req. plan, dev plan)', 'Develop, Verify Next-level Product (design, code, unit test, sys. test)', 'Plan Next Phase (test plan, Review)'],
+      '2 (ซ้ายบน) Determine Objectives, Alternatives, Constraints · **3 (ขวาบน) Evaluate Alternatives, Identify, Resolve Risks** · 4 (ขวาล่าง) Develop, Verify Next-level Product · 1 (ซ้ายล่าง) Plan Next Phase',
+      { fig: F.spiralGrid() }),
+
+    mk.mcq('L2', 'ทีมเริ่มเขียนโค้ดทันทีโดยยังไม่เข้าใจ problem statement ชัดเจน แล้วค่อยแก้ไปตามปัญหาที่เจอ ตรงกับโมเดลใดมากที่สุด',
+      'Code and Fix',
+      ['Waterfall', 'Spiral', 'Scrum'],
+      'จุดอ่อนของ Code and Fix คือข้าม unit testing/debugging และเริ่มโดยไม่เข้าใจ problem statement (ซึ่งก็คือ requirement)'),
+
+    mk.mcq('L2', 'ข้อใดตอบเรื่อง Agile Manifesto ได้ถูกต้องที่สุด',
+      'ฝั่งขวา (เช่น เอกสาร) ยังมีคุณค่า แต่ให้น้ำหนักฝั่งซ้าย (เช่น working software) มากกว่า',
+      ['Agile ไม่ต้องมีเอกสารเลย เพราะให้ค่ากับ working software เพียงอย่างเดียว', 'Agile ให้ค่ากับการทำตามแผนมากกว่าการตอบสนองต่อการเปลี่ยนแปลงของลูกค้า', 'Agile ให้ค่ากับการต่อรองสัญญามากกว่าความร่วมมือกับลูกค้าและทีมงาน'],
+      'หน้าสรุปเตือนว่า ตามต้นฉบับ Manifesto ฝั่งขวายังมีคุณค่า ตอบในข้อสอบอย่าเขียนว่า “ไม่ต้องมีเอกสาร”'),
+
+    mk.mcq('L2', 'ข้อใด **ไม่ใช่** key characteristic ของ Scrum',
+      'เน้นเอกสารครบถ้วนละเอียดในทุก phase',
+      ['Cross-functional teams', 'Incremental delivery', 'Responding to change'],
+      '6 ข้อของ Scrum: iterative development · incremental delivery · customer collaboration · responding to change · cross-functional teams · **minimal documentation** (เอกสารน้อยที่สุด)'),
+
+    /* ---------- L3 (6 ข้อ) ---------- */
+    mk.mcq('L3', 'ข้อใดเป็น non-functional requirement',
+      'ระบบต้องตอบสนองการค้นหาภายใน 3 วินาที',
+      ['ผู้ใช้ค้นหาหนังสือด้วยชื่อเรื่องได้', 'เจ้าหน้าที่บันทึกการคืนหนังสือได้', 'ระบบส่งอีเมลยืนยันเมื่อจองสำเร็จ'],
+      'Non-functional คือข้อจำกัดของบริการ เช่น response time, compatibility, การใช้ memory ส่วนอีก 3 ข้อคือ “บริการที่ระบบทำ” จึงเป็น functional'),
+
+    mk.mcq('L3', 'ข้อใดเป็นลักษณะของ System requirements',
+      'อธิบายหน้าที่ บริการ และข้อจำกัดอย่างละเอียด และกำหนดชัดว่าต้อง implement อะไรบ้าง',
+      ['บอกกว้าง ๆ ว่าผู้ใช้อยากได้อะไรโดยไม่ลงรายละเอียดเชิงเทคนิค', 'เป็นเอกสารสอนวิธีใช้ระบบให้ผู้ใช้ทั่วไปอ่านก่อนเริ่มใช้งานจริง', 'ครอบคลุมเฉพาะ non-functional requirements เช่น response time และ memory'],
+      'User requirements บอกว่าระบบควรให้บริการอะไรกับผู้ใช้ (ภาพกว้างถึงละเอียด) ส่วน **System requirements** ละเอียดกว่าและกำหนดชัดว่าต้อง implement อะไร ทั้ง functional และ non-functional อยู่ใน system requirements'),
+
+    mk.mcq('L3', 'กระบวนการ RE มีลักษณะแบบใด และผลลัพธ์ที่ได้คืออะไร',
+      'วนซ้ำ (iterative) และได้ System requirements document',
+      ['เส้นตรงทำครั้งเดียว และได้ Project Plan', 'วนซ้ำ และได้ Source code', 'เส้นตรงทำครั้งเดียว และได้ Test report'],
+      'RE เป็นกระบวนการวนซ้ำ (ดูรูป spiral view: Start → Feasibility study → Prototyping → Reviews) ผลลัพธ์คือ System requirements document'),
+
+    mk.match('L3', 'จับคู่สถานการณ์กับเทคนิค elicitation ที่เหมาะสม (โจทย์ตั้งเอง)',
+      [
+        ['นั่งสังเกตพนักงานรับออเดอร์ที่หน้าร้านตลอดวัน', 'Ethnography (observation)'],
+        ['ขอดูแบบฟอร์มกระดาษและตารางในฐานข้อมูลของระบบเดิม', 'Sampling of existing documentation, forms, and databases'],
+        ['เชิญผู้ใช้และทีมพัฒนามาประชุมเชิงปฏิบัติการร่วมกัน', 'Joint requirements planning (JRP)'],
+        ['เดินทางไปดูระบบของมหาวิทยาลัยอื่นที่คล้ายกัน', 'Research and site visits'],
+      ],
+      'แต่ละเทคนิคมีจุดแข็งและเหมาะกับสถานการณ์ต่างกัน ดูคำสำคัญ: observe → Ethnography · เอกสาร/ฟอร์ม/ฐานข้อมูลเดิม → Sampling · ประชุมเชิงปฏิบัติการ → JRP · ไปดูงาน → Research and site visits'),
+
+    mk.mcq('L3', 'ต้องการเก็บความเห็นของผู้ใช้ 2,000 คนภายในเวลาสั้น ๆ เทคนิคใดเหมาะที่สุด',
+      'Questionnaires',
+      ['Interview', 'Ethnography (observation)', 'Research and site visits'],
+      'Questionnaires (แบบสอบถาม) เก็บความเห็นจากคนจำนวนมาก ส่วน Interview ลึกกว่าแต่ต้องคุยกับ stakeholders ทีละคน (โจทย์ตั้งเอง)'),
+
+    mk.mcq('L3', 'ระบบใหม่ต้องดึงรายชื่อนักศึกษาจากระบบทะเบียนเดิมมาใช้ เรื่องนี้เป็นมิติใดของ requirements',
+      'Existing & Systems Interfaces',
+      ['User Interfaces', 'Business Workflow', 'Individual Functionality'],
+      'มิติ **Existing & Systems Interfaces** คือระบบเดิมและการเชื่อมต่อ ส่วน User Interfaces คือหน้าจอผู้ใช้ (โจทย์ตั้งเอง)'),
+
+    /* ---------- L4 (6 ข้อ) ---------- */
+    mk.mcq('L4', 'เส้นประ «include» ระหว่าง Book a ticket กับ Make payment ในรูปหมายความว่าอย่างไร',
+      'Make payment เป็นพฤติกรรมที่ต้องเกิดทุกครั้งที่ Book a ticket (แยกออกมาเพื่อให้ use case ใหญ่ง่ายขึ้น)',
+      ['Make payment เป็นทางเลือก ผู้ใช้จะทำหรือไม่ทำก็ได้ตามความต้องการ (optional)', 'Customer สืบทอดพฤติกรรมทั้งหมดของ Make payment ไปใช้โดยอัตโนมัติ', 'Book a ticket กับ Make payment เป็นคนละระบบ จึงไม่เกี่ยวข้องกัน'],
+      '**Include = ต้องทำเสมอ** (จำเป็น) ใช้เมื่อมีขั้นตอนร่วมที่หลาย use case ใช้ซ้ำ หรืออยากแยกให้ use case ใหญ่ง่ายขึ้น ส่วน Extend = ทำหรือไม่ทำก็ได้ (optional)',
+      { fig: F.zooInclude() }),
+
+    mk.match('L4', 'จับคู่โมเดลของ requirements กับสิ่งที่แสดง',
+      [
+        ['Scenario-based models', 'requirements จากมุมมองของผู้ใช้ (actors)'],
+        ['Class models', 'object-oriented classes, attributes, operations และความสัมพันธ์'],
+        ['Flow models (DFD อยู่ที่นี่)', 'การเคลื่อนที่ของข้อมูลและการแปลงข้อมูลระหว่าง processes'],
+        ['Behavioral models', 'software ตอบสนองต่อ events อย่างไร'],
+        ['Data models', 'โดเมนข้อมูลของปัญหา เช่น ER diagram'],
+      ],
+      'วิธีสร้างโมเดล requirements 5 แบบ Use case เป็นเทคนิคของ Scenario-based และ DFD เป็นของ Flow models'),
+
+    mk.mcq('L4', 'ระบบจองตั๋วมี “Apply promo code” ซึ่งทำเฉพาะเมื่อลูกค้ามีโค้ดเท่านั้น ควรเชื่อมกับ Book a ticket ด้วยความสัมพันธ์ใด',
+      'Extend เพราะเป็นพฤติกรรมเสริมแบบ optional',
+      ['Include เพราะต้องทำทุกครั้ง', 'Inheritance เพราะเป็น use case ลูก', 'Association เพราะเป็น actor'],
+      'Apply promo code **extend** Book a ticket (พฤติกรรมเสริมเฉพาะบางเงื่อนไข) ส่วน Book a ticket **include** Make payment (ต้องทำเสมอ) ตัวอย่างนี้มาจากหน้าสรุป'),
+
+    mk.mcq('L4', 'Member และ Guest ต่างก็ทำ “View catalog” เหมือนกัน เพื่อไม่ให้วาดซ้ำควรทำอย่างไร',
+      'สร้าง abstract actor (เช่น User) ที่ทำ View catalog แล้วให้ Member และ Guest สืบทอดจากมัน',
+      ['ใช้ extend จาก View catalog ไปหาทั้ง Member และ Guest เพื่อเพิ่มพฤติกรรมทางเลือก', 'วาด use case View catalog ซ้ำสองอันในกล่อง แยกให้ Member และ Guest คนละอัน', 'ย้าย Guest ไปไว้ในกล่อง system boundary เพื่อให้ใช้ use case ร่วมกันได้'],
+      'Inheritance ระหว่าง actors ย้าย **พฤติกรรมร่วม** ไปไว้ที่ abstract actor ตัวกลาง เพื่อ **ไม่ให้ซ้ำซ้อน** (โจทย์ตั้งเอง)'),
+
+    mk.mcq('L4', 'ข้อใดถูกต้องเกี่ยวกับช่อง Use Case Name ใน narrative',
+      'ต้องตรงกับชื่อ use case ในแผนภาพ use case diagram',
+      ['ตั้งใหม่ให้ต่างจากในแผนภาพเพื่อความชัดเจน', 'ใส่ชื่อ actor หลักแทน', 'ใส่เหตุการณ์ที่จุดชนวนให้ use case เริ่ม'],
+      'Use Case Name = ชื่อที่ชัดเจน และ **ต้องตรงกับชื่อใน use case diagram** ส่วนเหตุการณ์ที่จุดชนวนคือ Trigger'),
+
+    mk.mcq('L4', 'use case “Pay fine” ข้อใดคือ Trigger',
+      'ผู้ใช้กดปุ่ม “ชำระค่าปรับ”',
+      ['ผู้ใช้ล็อกอินแล้ว', 'ระบบบันทึกว่าค่าปรับถูกชำระแล้ว', 'ระบบแจ้งว่าบัตรไม่ผ่านและให้ลองใหม่'],
+      'Trigger = เหตุการณ์ที่จุดชนวนให้เริ่ม · “ล็อกอินแล้ว” คือ Precondition · “บันทึกว่าชำระแล้ว” คือ Postcondition · “บัตรไม่ผ่าน” คือ Exception (โจทย์ตั้งเอง)'),
+
+    /* ---------- L7 (6 ข้อ) ---------- */
+    mk.spot('L7', 'ในรูปมีสัญลักษณ์ DFD 5 แบบ (A-E) จงคลิกสัญลักษณ์ที่เป็น **Data store แบบ Gane/Sarson**',
+      F.dfdSymbols(), 'sym-gstore',
+      'Gane/Sarson: data store = สี่เหลี่ยมผืนผ้ามีขีดแนวตั้งด้านซ้าย (รูป E) และ process = สี่เหลี่ยมมุมมน (รูป C) ส่วน Yourdon/DeMarco: process = วงกลม (รูป B), data store = เส้นขนาน 2 เส้น (รูป D) รูป A คือ external entity ใช้เหมือนกันทั้งสองแบบ'),
+
+    mk.mcq('L7', 'ต้องการให้ Customer เพิ่มข้อมูลลงฐานข้อมูลลูกค้า (data store) ใน DFD ต้องวาดอย่างไร',
+      'ใส่ process คั่นระหว่าง Customer กับ data store เช่น process ที่ทำหน้าที่ update a data store',
+      ['ลาก data flow จาก Customer ตรงไปยัง data store โดยไม่ต้องมี process คั่นกลาง', 'ลาก data flow จาก data store กลับไปหา Customer โดยตรงเพื่อแสดงข้อมูลที่เก็บไว้', 'วาด data store ไว้ในกล่อง external entity เพื่อให้ถือว่าเป็นส่วนเดียวกัน'],
+      'Data flow ทุกเส้นต้องเริ่มหรือจบที่ process ดังนั้น External entity → Data store ต้องมี process คั่น (update or use a data store) ส่วน Data store → External entity ต้องมี process (present data from a data store)'),
+
+    mk.tf('L7', 'ข้อมูลที่ควรเดินทางไปด้วยกัน (เช่น รายการโทรและใบแจ้งหนี้) ให้วาดเป็น data flow เส้นเดียว ไม่ว่าจะมีเอกสารจริงกี่ฉบับ', true,
+      'ถูก นี่คือ **Data Flow Packet Concept** ในรูปสไลด์ แยกเป็น 2 เส้นคือแบบผิด รวมเป็นเส้นเดียว “Itemized calls and invoice” คือแบบถูก'),
+
+    mk.mcq('L7', 'ข้อใดกล่าวผิดเกี่ยวกับ Context diagram',
+      'แสดงรายละเอียดภายในระบบด้วย process 1, 2, 3 หลายตัว',
+      ['เป็น DFD ระดับบนสุด', 'แสดง external entities ทั้งหมดที่รับหรือส่งข้อมูลกับระบบ', 'แสดงกระบวนการทั้งหมดเป็น process เดียว'],
+      'การแตกเป็น process 1, 2, 3 เป็นหน้าที่ของ **Level 1 diagram** ไม่ใช่ Context diagram ซึ่งมีแค่ process 0 ตัวเดียว'),
+
+    mk.mcq('L7', 'process 2 ใน Level 1 ถูกขยายเป็น Level 2 ควรตั้งเลข process ย่อยอย่างไร และต้องสอดคล้องกับอะไร',
+      '2.1, 2.2, 2.3 ... และ data flow เข้า-ออก process 2 ต้องปรากฏครบในแผนภาพลูก',
+      ['1.1, 1.2, 1.3 ... และไม่ต้องสอดคล้องกับ process แม่', '2.1, 2.2, 2.3 ... แต่ data flow ในแผนภาพลูกต้องต่างจากของ process แม่', 'A, B, C ... และให้เริ่มตั้งเลขใหม่จาก 0'],
+      '**Numbering**: ย่อยของ process 1 เป็น 1.1, 1.2, 1.3 ส่วนของ process 2 เป็น 2.1, 2.2 ... · **Hierarchical Consistency**: data flow ที่เข้า-ออก process แม่ ต้องปรากฏครบในแผนภาพระดับล่าง'),
+
+    mk.mcq('L7', 'ใน logical modeling ควรตั้งชื่อ data flow อย่างไร',
+      'อธิบายข้อมูลที่ไหล เช่น “order details”',
+      ['อธิบายวิธี implement เช่น “กดปุ่ม submit”', 'ไม่ต้องตั้งชื่อถ้าลูกศรชัดเจนอยู่แล้ว', 'ตั้งเป็นกริยาคำสั่ง เช่น “send order”'],
+      'กฎ: data flow **ห้ามไม่มีชื่อ** และให้ตั้งชื่ออธิบาย **ข้อมูล** ไม่อธิบายวิธี implement (เช็กลิสต์หน้าสรุป: ตั้งชื่อเป็นข้อมูล ไม่ใช่การกระทำ)'),
+  ],
+});
+
+</script>
+<script>
+(function () {
+  const LIB = {
+    title: 'โจทย์: ระบบห้องสมุดมหาวิทยาลัย (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)',
+    body: 'ระบบ Library Management System: สมาชิก (Member) ค้นหาหนังสือและยืมหนังสือได้ ทุกครั้งที่ยืมระบบต้องตรวจสอบสถานะสมาชิกก่อน สมาชิกจะต่ออายุการยืมหรือไม่ก็ได้ เจ้าหน้าที่ห้องสมุด (Librarian) บันทึกการคืนหนังสือและเพิ่มหนังสือใหม่เข้าระบบ นักศึกษา (Student) และอาจารย์ (Teacher) เป็นสมาชิกทั้งคู่ และทำได้ทุกอย่างที่สมาชิกทำ',
+  };
+  const FOOD = {
+    title: 'โจทย์: ระบบสั่งอาหารออนไลน์ FoodNow (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)',
+    body: 'ลูกค้า (Customer) ส่งรายการสั่งอาหารเข้าระบบ และรับใบยืนยันออเดอร์ ระบบส่งคำขอออเดอร์ให้ร้านอาหาร (Restaurant) และรับสถานะออเดอร์กลับ ระบบส่งคำขอชำระเงินให้ Payment Gateway และรับผลการชำระเงิน ระบบส่งคำขอจัดส่งให้ไรเดอร์ (Rider) และรับสถานะการจัดส่ง',
+  };
+  const P1 = { part: 'Part 1 · ทฤษฎี' };
+  const P2 = { part: 'Part 2 · วาด/เขียนโมเดล' };
+  const p1 = o => Object.assign({}, P1, o);
+  const p2 = (ctx, o) => Object.assign({}, P2, { ctx: ctx }, o);
+
+  SETS.push({
+    id: 3,
+    tag: 'ระดับสอบจริง',
+    level: 'ยาก',
+    desc: 'จัดตามข้อสอบจริง ทฤษฎี 10 ข้อ (Part 1) แล้วตามด้วยโจทย์สถานการณ์ 20 ข้อ (Part 2) ที่ต้องดูแผนภาพ หาจุดผิด และตรวจกฎ DFD',
+    qs: [
+      /* ================= Part 1 (10 ข้อ) ================= */
+      mk.mcq('L1', 'ข้อใด **ไม่ใช่** เป้าหมายของ Software Project Management ตามสไลด์',
+        'ลดจำนวนสมาชิกทีมให้น้อยที่สุดเพื่อประหยัดต้นทุน',
+        ['Satisfy customers’ needs', 'Targets & milestones are met', 'Tools & resources are made available and effectively utilized'],
+        'เป้าหมาย 5 ข้อ: **ตอบโจทย์ลูกค้า · ได้คุณสมบัติโปรเจกต์ตามกำหนด · ถึงเป้าหมายและ milestone · ทีมทำงานมีประสิทธิภาพ · มีเครื่องมือ/ทรัพยากรพร้อมและใช้คุ้มค่า** ไม่มีข้อที่ให้ลดคนให้น้อยที่สุด',
+        p1()),
+
+      mk.mcq('L1', 'ข้อใดไม่ใช่ Knowledge area ใน Project Management Framework (PMBOK, 2019) ตามสไลด์',
+        'Testing management',
+        ['Procurement management', 'Stakeholder management', 'Risk management'],
+        '10 Knowledge areas: Scope · Schedule · Cost · Quality · **Project integration** (ตรงกลาง) · Resource · Communications · Risk · Procurement · Stakeholder',
+        p1()),
+
+      mk.mcq('L2', 'โปรเจกต์ที่มีความเสี่ยงสูง ต้องทำ prototype และวิเคราะห์ความเสี่ยงทุกรอบก่อนพัฒนาต่อ เหมาะกับโมเดลใด',
+        'Spiral',
+        ['Waterfall', 'Code and Fix', 'Incremental แบบ A (Integration Bucket)'],
+        'Spiral มี quadrant “Evaluate Alternatives, Identify, Resolve Risks” (risk analysis, prototype) ในทุกรอบ จึงเหมาะกับงานเสี่ยงสูง (โจทย์ตั้งเอง)',
+        p1()),
+
+      mk.mcq('L2', 'ลูกค้าเปลี่ยน requirement บ่อย ต้องการส่งมอบทีละส่วนทุก 2-4 สัปดาห์ ทีมมีทักษะครบในทีมเดียวและเขียนเอกสารน้อยที่สุด เหมาะกับโมเดลใด',
+        'Scrum (Agile)',
+        ['Waterfall', 'Spiral', 'Code and Fix'],
+        'ตรงกับลักษณะของ Scrum: iterative, incremental delivery, customer collaboration, responding to change, cross-functional teams, minimal documentation และ Sprint 2-4 สัปดาห์',
+        p1()),
+
+      mk.mcq('L2', 'ข้อใดคือเป้าหมายของ process model ตามสไลด์',
+        'ช่วยทีมวางแผน ลงมือทำ และบริหารโปรเจกต์ ให้งานสม่ำเสมอ มีคุณภาพ และสื่อสารระหว่าง stakeholders ได้',
+        ['ทำให้ไม่ต้องใช้เอกสารและไม่ต้องวางแผน เพราะทีมสื่อสารกันเองได้โดยตรงตลอดเวลา', 'ทำให้ทุกโปรเจกต์ใช้เวลาเท่ากัน ไม่ว่าขนาดงานหรือขอบเขตจะต่างกันเพียงใด', 'กำหนดภาษาโปรแกรมและเครื่องมือที่ทุกทีมต้องใช้เหมือนกันทุกโปรเจกต์'],
+        'เป้าหมาย 3 ข้อ: (1) ช่วยวางแผน ลงมือ และบริหารโปรเจกต์ (2) งานสม่ำเสมอและมีคุณภาพ (3) ช่วยสื่อสารและประสานงานระหว่าง stakeholders สไลด์เน้น 3 คำ: coordination, tasks, people',
+        p1()),
+
+      mk.order('L2', 'เรียงกิจกรรมใน 1 รอบของ Spiral model ตามหมายเลข quadrant 2 → 3 → 4 → 1',
+        ['Determine Objectives, Alternatives, Constraints', 'Evaluate Alternatives, Identify, Resolve Risks', 'Develop, Verify Next-level Product', 'Plan Next Phase'],
+        'วนจาก quadrant 2 (ซ้ายบน) → 3 (ขวาบน) → 4 (ขวาล่าง) → 1 (ซ้ายล่าง) แล้วเข้ารอบถัดไปจากวงในออกวงนอก มีเส้น “Review” เป็นจุดทบทวนก่อนเข้ารอบถัดไป',
+        p1()),
+
+      mk.match('L3', 'จัดประเภท requirement ต่อไปนี้ว่าเป็น Functional หรือ Non-functional (โจทย์ตั้งเอง)',
+        [
+          ['ผู้ใช้ค้นหาหนังสือจากชื่อเรื่องได้', 'Functional'],
+          ['หน้าค้นหาต้องแสดงผลภายใน 3 วินาที', 'Non-functional'],
+          ['เจ้าหน้าที่บันทึกการคืนหนังสือได้', 'Functional'],
+          ['ระบบต้องใช้งานได้บนเบราว์เซอร์รุ่นเก่า (compatibility)', 'Non-functional'],
+        ],
+        'Functional = บริการ/สิ่งที่ระบบทำ รายฟีเจอร์ · Non-functional = ข้อจำกัดของบริการ เช่น response time, compatibility, การใช้ memory มักใช้กับระบบทั้งหมด',
+        p1()),
+
+      mk.mcq('L3', 'ทีมต้องการรู้ว่าพนักงานรับออเดอร์ทีละขั้นตอนอย่างไรในการทำงานจริง ต้องเก็บ requirement ในมิติใด',
+        'Business Workflow',
+        ['Data and Data formats', 'Other Constraints', 'Individual Functionality'],
+        '**Business Workflow** = ขั้นตอนทางธุรกิจ ส่วน Individual Functionality คือฟังก์ชันรายตัว และ Data and Data formats คือข้อมูลและรูปแบบข้อมูล (โจทย์ตั้งเอง)',
+        p1()),
+
+      mk.mcq('L2', 'นักศึกษาเขียนว่า “Agile ไม่ต้องมีเอกสาร” ข้อใดอธิบายได้ถูกต้องว่าทำไมคำตอบนี้ไม่เหมาะสม',
+        'Manifesto ให้ค่า working software มากกว่าเอกสารครบถ้วน แต่ฝั่งเอกสารยังมีคุณค่า',
+        ['Manifesto สั่งให้เขียนเอกสารครบถ้วนก่อนเขียนโค้ดเสมอ เพื่อลดความเสี่ยงของโปรเจกต์', 'Manifesto ไม่เคยพูดถึงเอกสารเลย จึงไม่มีข้อกำหนดใดเกี่ยวกับเอกสารใน Agile', 'Manifesto ให้ค่าเอกสารครบถ้วนมากกว่า working software ในทุกกรณีของโปรเจกต์'],
+        'ตามต้นฉบับ Manifesto ฝั่งขวายังมีคุณค่า แค่ให้น้ำหนักฝั่งซ้ายมากกว่า (Scrum คือ minimal documentation ไม่ใช่ no documentation)',
+        p1()),
+
+      mk.mcq('L1', 'ข้อใดไม่ใช่ปัจจัยที่ทำให้ software project ไปรอดตามสไลด์',
+        'กำหนดขอบเขตให้กว้างที่สุดเพื่อรองรับทุกความต้องการ',
+        ['Clear objectives and goals (เป้าหมายชัดเจน)', 'Stakeholder involvement (ผู้มีส่วนได้ส่วนเสียมีส่วนร่วม)', 'Realistic planning (วางแผนตามความเป็นจริง)'],
+        '6 อย่างของโปรเจกต์ที่ไปรอด: clear objectives · clear requirements · stakeholder involvement · executive management support · realistic planning · good management',
+        p1()),
+
+      /* ================= Part 2 · ระบบห้องสมุด (10 ข้อ) ================= */
+      mk.mcq('L4', 'ข้อใด **ไม่ควร** เป็น actor ของระบบห้องสมุดในโจทย์',
+        'ฐานข้อมูลหนังสือ (Book database)',
+        ['Librarian', 'Student', 'Teacher'],
+        'Actor คือผู้ใช้หรือระบบภายนอกที่โต้ตอบกับระบบและอยู่นอกกล่อง system boundary ฐานข้อมูลหนังสือในโจทย์เป็นส่วนหนึ่งของระบบเอง (ถ้าจะแสดงใน DFD ต้องเป็น data store ไม่ใช่ external entity)',
+        p2(LIB)),
+
+      mk.mcq('L4', 'ข้อใดตั้งชื่อ use case “ยืมหนังสือ” ได้ถูกตามหลักของวิชานี้',
+        'Borrow book',
+        ['Book borrowing', 'Borrower', 'Library database'],
+        'ชื่อ use case ต้อง **ขึ้นต้นด้วยคำกริยา (verb)** เช่น Borrow book, Book a ticket, View product',
+        p2(LIB)),
+
+      mk.spot('L4', 'ในแผนภาพนี้มีองค์ประกอบหนึ่งวางผิดตำแหน่ง คลิกที่องค์ประกอบนั้น',
+        F.library('d1'), 'a-lib',
+        'Librarian เป็น actor ต้องอยู่ **นอกกล่อง** system boundary ในรูปนี้ถูกวาดไว้ข้างในกล่อง (ส่วน use case ทั้งหมดต้องอยู่ข้างใน)',
+        p2(LIB)),
+
+      mk.spot('L4', 'ความสัมพันธ์หนึ่งในแผนภาพนี้ใช้ชนิดผิด คลิกที่ความสัมพันธ์นั้น',
+        F.library('d2'), 'r-renew',
+        'การต่ออายุการยืม (Renew loan) “จะทำหรือไม่ก็ได้” จึงต้องเป็น «extend» ไม่ใช่ «include» ส่วน Verify membership ทำทุกครั้งที่ยืม จึงเป็น «include» ถูกต้องแล้ว (ในรูปวาดทิศลูกศรตามหลัก UML ทั่วไป ถ้าอาจารย์สอนต่างจากนี้ให้ยึดตามอาจารย์)',
+        p2(LIB)),
+
+      mk.spot('L4', 'use case หนึ่งในแผนภาพนี้ตั้งชื่อไม่ตรงตามหลัก คลิกที่ use case นั้น',
+        F.library('d3'), 'uc-borrow',
+        '“Book borrowing” ขึ้นต้นด้วยคำนาม ต้องแก้เป็นกริยา เช่น “Borrow book” ชื่อ use case ทุกอันต้องขึ้นต้นด้วย verb',
+        p2(LIB)),
+
+      mk.mcq('L4', 'Student และ Teacher ทำได้ทุกอย่างที่ Member ทำ ควรแสดงในแผนภาพอย่างไร',
+        'ให้ Student และ Teacher สืบทอด (inheritance) จาก Member ซึ่งเป็น abstract actor',
+        ['ใช้ «include» จาก Student และ Teacher ไปยัง Member', 'ใช้ «extend» จาก Member ไปยัง Student และ Teacher', 'วาด Student และ Teacher ไว้ในกล่อง system boundary'],
+        '**Inheritance** ใช้ระหว่าง actor กับ actor ย้ายพฤติกรรมร่วมไปไว้ที่ abstract actor เพื่อไม่ให้ซ้ำซ้อน ส่วน include/extend ใช้ระหว่าง use case กับ use case เท่านั้น',
+        p2(LIB)),
+
+      mk.mcq('L4', 'ทุกครั้งที่ยืมหนังสือต้อง “Verify membership” ก่อน ควรเชื่อม Borrow book กับ Verify membership ด้วยอะไร',
+        'Include เพราะเป็นขั้นตอนที่ต้องทำทุกครั้ง',
+        ['Extend เพราะเป็นพฤติกรรมเสริม', 'Inheritance เพราะเป็น use case แม่-ลูก', 'Association เพราะ Verify membership เป็น actor'],
+        'Include = พฤติกรรมร่วมที่ **ต้องทำเสมอ** แยกออกมาเพื่อให้ use case ใหญ่ง่ายขึ้น เปรียบเทียบกับ Book a ticket include Make payment',
+        p2(LIB)),
+
+      mk.mcq('L4', 'ข้อใดเขียน “Goal in Context” ของ use case Borrow book ได้เหมาะสมที่สุด',
+        'สมาชิกยืมหนังสือจากห้องสมุดเพื่อนำไปใช้นอกห้องสมุด',
+        ['ระบบบันทึกข้อมูลลงตาราง loans ในฐานข้อมูล', 'สมาชิกกดปุ่ม “ยืมหนังสือ”', 'สมาชิกล็อกอินแล้วและสถานะยังใช้งานได้'],
+        'Goal in Context = **วัตถุประสงค์** ของ use case ส่วนข้อ 2 คือ Trigger, ข้อ 3 คือ Precondition และข้อ 1 เป็นรายละเอียดการ implement ไม่ใช่เป้าหมายของผู้ใช้',
+        p2(LIB)),
+
+      mk.match('L4', 'จัดข้อความต่อไปนี้เข้าช่องของ narrative ของ Borrow book (มีตัวเลือกเกินมา 1 ช่อง)',
+        [
+          ['สมาชิกล็อกอินแล้วและสถานะสมาชิกยังใช้งานได้', 'Precondition'],
+          ['สมาชิกกดปุ่ม “ยืมหนังสือ”', 'Trigger'],
+          ['1. สมาชิกเลือกหนังสือ 2. ระบบตรวจสิทธิ์ 3. สมาชิกยืนยันการยืม', 'Scenario (main flow)'],
+          ['หนังสือถูกยืมไปแล้ว ระบบแจ้งและให้เลือกเล่มอื่น', 'Exception'],
+        ],
+        'ช่องที่ไม่ได้ใช้คือ **Postcondition** (สถานะของระบบหลังจบ เช่น มีรายการยืมในระบบและหนังสือมีสถานะ “ถูกยืม”) Scenario = ลำดับปกติ ส่วน Exception = เมื่อมีสิ่งผิดพลาด',
+        p2(LIB, { extra: ['Postcondition'] })),
+
+      mk.mcq('L4', 'การเขียน narrative ของ Borrow book ช่อง Use Case Name และ Primary Actor ควรเป็นอะไร',
+        'Use Case Name = Borrow book (ตรงกับชื่อใน diagram) และ Primary Actor = Member',
+        ['Use Case Name = Borrow book และ Primary Actor = ฐานข้อมูลหนังสือ', 'Use Case Name = Book borrowing process และ Primary Actor = Member', 'Use Case Name = “ยืมหนังสือ” (ต่างจากใน diagram) และ Primary Actor = Member'],
+        'ชื่อใน narrative **ต้องตรงกับ use case diagram** และ Primary Actor คือผู้ใช้หรือระบบที่โต้ตอบกับ use case นี้ (ในโจทย์คือสมาชิก)',
+        p2(LIB)),
+
+      /* ================= Part 2 · FoodNow (10 ข้อ) ================= */
+      mk.spot('L7', 'ใน Context DFD นี้มี data flow หนึ่งเส้นที่ผิดกฎ คลิกที่เส้นนั้น',
+        F.context('direct'), 'bad-flow',
+        'เส้น “special request” เชื่อม **external entity กับ external entity** โดยตรง ผิดกฎ เพราะ data flow ทุกเส้นต้องเริ่มและ/หรือจบที่ process ต้องส่งผ่าน process 0 เท่านั้น',
+        p2(FOOD)),
+
+      mk.spot('L7', 'data flow หนึ่งเส้นผิดกฎ (ดูทุกเส้นให้ละเอียด) คลิกที่เส้นนั้น',
+        F.context('unnamed'), 'f-d-in',
+        'เส้นจาก Rider เข้า process 0 **ไม่มีชื่อ** ผิดกฎข้อ “data flow ห้ามไม่มีชื่อ” ซึ่งควรตั้งเป็น “delivery status”',
+        p2(FOOD)),
+
+      mk.spot('L7', 'Context diagram นี้มีองค์ประกอบหนึ่งที่ไม่ควรมี คลิกที่องค์ประกอบนั้น',
+        F.context('extra'), 'extra-proc',
+        'Context diagram แสดงกระบวนการทั้งหมดเป็น **process เดียว หมายเลข 0** การแตกเป็น process 1, 2, 3 ต้องทำใน Level 1 ส่วน Rider ต้องเป็น external entity',
+        p2(FOOD)),
+
+      mk.mcq('L7', 'ชื่อใดเหมาะที่สุดสำหรับ process 0 (วงกลมกลางภาพ)',
+        'FoodNow Ordering System',
+        ['Process orders', 'Customer', 'Order database'],
+        'process 0 ใน Context diagram ตั้งเป็น **ชื่อระบบ** ส่วน Customer เป็น external entity และ Order database เป็น data store',
+        p2(FOOD, { fig: F.context('q') })),
+
+      mk.mcq('L7', 'Customer ส่งข้อมูลรายการอาหารที่เลือกเข้าระบบ ชื่อ data flow ใดเหมาะสมที่สุดใน logical model',
+        'order details',
+        ['กดปุ่มสั่งซื้อ (click Order button)', 'ส่งข้อมูลผ่าน HTTP POST', 'process order'],
+        'ใน logical modeling ให้ตั้งชื่อ data flow **อธิบายข้อมูล ไม่อธิบายวิธี implement** (การกดปุ่มและ HTTP POST คือวิธีทำ ส่วน process order คือการกระทำ)',
+        p2(FOOD)),
+
+      mk.mcq('L7', 'ระบบส่ง “รายการอาหาร ที่อยู่จัดส่ง และหมายเหตุ” ให้ร้านอาหารพร้อมกันในใบสั่งเดียว ควรวาดเป็นกี่เส้น',
+        'เส้นเดียว ตั้งชื่อ เช่น order request',
+        ['3 เส้น เส้นละหนึ่งรายการ', '2 เส้น แยกอาหารกับที่อยู่', 'ไม่ต้องวาด เพราะเป็นข้อมูลภายในระบบ'],
+        '**Data Flow Packet Concept**: ข้อมูลที่ควรเดินทางไปด้วยกันให้วาดเป็น data flow เส้นเดียว ไม่ว่าจะมีเอกสารจริงกี่ฉบับ',
+        p2(FOOD)),
+
+      mk.mcq('L7', 'process 3 ใน Level 1 ถูกขยายเป็น 3 process ย่อยใน Level 2 ควรตั้งเลขอย่างไร',
+        '3.1, 3.2, 3.3',
+        ['1.3, 2.3, 3.3', '3, 3, 3', '0.1, 0.2, 0.3'],
+        'Process ย่อยของ process 1 คือ 1.1, 1.2, 1.3 · ของ process 2 คือ 2.1, 2.2 ... ดังนั้นของ process 3 คือ 3.1, 3.2, 3.3 และ data flow เข้า-ออก process 3 ต้องปรากฏครบใน Level 2 (hierarchical consistency)',
+        p2(FOOD)),
+
+      mk.mcq('L7', 'ข้อใดละเมิดกฎ DFD',
+        'process “Calculate total” มีลูกศรเข้าอย่างเดียว ไม่มีลูกศรออก',
+        ['process “Verify ticket” รับ ticket code และส่ง verification result', 'process 0 ส่ง order request ให้ Restaurant และรับ order status กลับ', 'process อ่านข้อมูลจาก data store แล้วส่งผลให้ external entity'],
+        'กฎ: **process ต้องมีอย่างน้อย 1 input และ 1 output** ส่วนอีก 3 ข้อมี input และ output ครบ จึงไม่ผิด',
+        p2(FOOD)),
+
+      mk.mcq('L7', 'ข้อใดละเมิดกฎ “data flow ห้ามแตกเป็น 2 เส้นขึ้นไปที่ต่างกัน”',
+        'เส้นเดียวออกจาก process 0 แล้วแยกสองทางไปยัง Restaurant และ Rider โดยใช้ชื่อเดียวกัน',
+        ['process 0 ส่ง order request ให้ Restaurant และส่ง delivery request ให้ Rider เป็นสองเส้นแยกกัน พร้อมชื่อของตัวเอง', 'Customer ส่ง order details เข้า process 0 เส้นเดียว', 'process 0 ส่ง order confirmation กลับ Customer'],
+        'เส้นที่ออกจาก process เส้นเดียวแล้วแยกไปหลายทางไม่ได้ ต้องวาดเป็นเส้นแยกแต่ละเส้นพร้อมชื่อของตัวเอง',
+        p2(FOOD)),
+
+      mk.order('L4', 'เรียงขั้นตอนทำข้อสอบ Part 2 ตามที่หน้าสรุปแนะนำ (ข้อเสนอแนะของผู้จัดทำหน้าสรุป ไม่ใช่เกณฑ์จากอาจารย์)',
+        [
+          'อ่านโจทย์ ขีดเส้นใต้คน/ระบบภายนอก และสิ่งที่แต่ละฝ่ายทำ',
+          'หา Actors และ External entities',
+          'ตั้ง Use cases โดยขึ้นต้นด้วยกริยา',
+          'วาด Use case diagram (boundary, association, include/extend, inheritance)',
+          'เขียน Use case narrative ให้ครบ 8 หัวข้อ',
+          'วาด Context DFD (process 0, entities, data flow มีชื่อทุกเส้น)',
+          'ตรวจกฎ DFD 3 ข้อ และชื่อ use case ให้ตรงกันทุกที่',
+        ],
+        'ขั้นสุดท้ายสำคัญ: ตรวจว่าชื่อ use case ตรงกันทุกที่ และ DFD ไม่ผิดกฎ (ไม่มีเส้นไร้ชื่อ ไม่มี entity ต่อกันตรง ๆ ทุก process มี input และ output) ส่วน Part 2 คิดเป็น 25 จาก 40 คะแนน จึงควรฝึกวาดให้มากกว่าท่องทฤษฎี',
+        p2(null)),
+    ],
+  });
+})();
+
+</script>
+<script>
+/* ชุด 4 · Interface Design (Lecture 8) — เนื้อหาตามสไลด์ L8 ข้อที่เป็นสถานการณ์ใหม่ระบุไว้ในเฉลยว่าผู้จัดทำตั้งเอง */
+SETS.push({
+  id: 4,
+  tag: 'Interface Design',
+  level: 'กลาง',
+  desc: 'เนื้อหา Lecture 8 ที่ออกสอบ Part 1: ชนิดของ UI, กฎพื้นฐาน, กระบวนการออกแบบ 4 phase, Golden Rules ของ Mandel และ prototype แบบ low/high fidelity',
+  qs: [
+    /* ---------- UI และชนิดของ UI (9 ข้อ) ---------- */
+    mk.mcq('L8', 'สไลด์บอกว่า User Interface (UI) มี 2 ประเด็นหลักคืออะไร',
+      'Flow of interactions และ Look and feel',
+      ['Speed และ Security', 'Hardware และ Software', 'Input และ Output'],
+      'UI คือส่วนที่ผู้ใช้เห็นชัดที่สุด (most apparent to the user) และมี 2 ประเด็นหลัก: **Flow of interactions** (ลำดับการโต้ตอบ) กับ **Look and feel** (หน้าตาและความรู้สึก)'),
+
+    mk.tf('L8', 'Command-Line Interface (CLI) ใช้คำสั่งที่เป็นตัวอักษรในการโต้ตอบ และมักใช้โดย developers และ system administrators เพื่อควบคุมการทำงานอย่างแม่นยำ', true,
+      'ถูก ตามสไลด์: CLI relies on text-based commands, often used by developers and system administrators for precise control over operations'),
+
+    mk.match('L8', 'จับคู่ชนิดของ User Interface กับลักษณะที่สไลด์อธิบาย',
+      [
+        ['Command-Line Interface (CLI)', 'โต้ตอบด้วยคำสั่งที่เป็นตัวอักษร'],
+        ['Text Menu Interface', 'แสดงเมนูเป็นข้อความ เลือกด้วยตัวเลข ตัวอักษร หรือปุ่มลูกศร'],
+        ['Graphical User Interface (GUI)', 'ใช้องค์ประกอบกราฟิก เช่น icons และ windows'],
+        ['Voice User Interface (VUI)', 'โต้ตอบด้วยคำสั่งเสียงและเสียงตอบกลับ เช่น Siri, Alexa'],
+      ],
+      'Text menu ก็เป็น text-based เหมือน CLI แต่ผู้ใช้ **เลือกจากเมนู** ไม่ต้องพิมพ์คำสั่งเอง ส่วน VUI ที่สไลด์ยกตัวอย่างคือ Siri และ Alexa'),
+
+    mk.mcq('L8', 'ตู้สั่งอาหารในห้างที่ลูกค้าใช้นิ้วแตะเลือกเมนูบนหน้าจอ ใช้ UI ชนิดใดเป็นหลัก (สถานการณ์ผู้จัดทำตั้งเอง)',
+      'Touchscreen User Interface',
+      ['Command-Line Interface', 'Text Menu Interface', 'Virtual Reality (VR) User Interface'],
+      'Touchscreen UI โต้ตอบด้วย touch gestures พบมากใน smartphones, tablets และ **interactive kiosks** ตามสไลด์'),
+
+    mk.mcq('L8', 'แอปนำทางที่ใช้กล้องมือถือและแสดงลูกศรบอกทางซ้อนทับบนภาพถนนจริง ใช้ UI ชนิดใด (สถานการณ์ผู้จัดทำตั้งเอง)',
+      'Augmented Reality (AR) User Interface',
+      ['Virtual Reality (VR) User Interface', 'Voice User Interface (VUI)', 'Text Menu Interface'],
+      '**AR** ผสานองค์ประกอบเสมือนเข้ากับสภาพแวดล้อมจริง (สไลด์ยกตัวอย่างแอปนำทาง เกม และการศึกษา) ส่วน **VR** สร้างสภาพแวดล้อมเสมือนแบบดื่มด่ำทั้งหมด เช่น เกม simulation และการฝึกอบรม'),
+
+    mk.mcq('L8', 'ข้อใดแยก AR กับ VR ได้ถูกต้อง',
+      'AR ผสานองค์ประกอบเสมือนเข้ากับสภาพแวดล้อมจริง ส่วน VR สร้างสภาพแวดล้อมเสมือนแบบดื่มด่ำ (immersive)',
+      ['AR สร้างโลกเสมือนทั้งใบ ส่วน VR ผสานของเสมือนเข้ากับโลกจริง', 'AR ใช้เสียงเป็นหลัก ส่วน VR ใช้คำสั่งตัวอักษรเป็นหลัก', 'AR กับ VR เหมือนกันทุกอย่าง ต่างกันแค่ชื่อเรียก'],
+      'จำง่าย: AR = ของเสมือน **เพิ่มเข้า** โลกจริง · VR = **สร้างโลกเสมือนทั้งใบ**'),
+
+    mk.mcq('L8', 'ผู้ช่วยในบ้านที่รับคำสั่งพูดว่า “เปิดไฟ” แล้วตอบกลับด้วยเสียง ใช้ UI ชนิดใด (สถานการณ์ผู้จัดทำตั้งเอง)',
+      'Voice User Interface (VUI)',
+      ['Graphical User Interface (GUI)', 'Command-Line Interface (CLI)', 'Touchscreen User Interface'],
+      'VUI โต้ตอบด้วยคำสั่งเสียงและการตอบกลับด้วยเสียง สไลด์ยกตัวอย่างผู้ช่วยเสมือนอย่าง Siri และ Alexa'),
+
+    mk.mcq('L8', 'ข้อใด **ไม่ใช่** กฎพื้นฐาน (Basic rules) ที่ทำให้ software เป็นที่นิยมตามสไลด์',
+      'ต้นทุนการพัฒนาต่ำที่สุด',
+      ['Attractive (ดึงดูด)', 'Responsive in short time (ตอบสนองในเวลาสั้น)', 'Consistent on all interface screens (สอดคล้องกันทุกหน้าจอ)'],
+      'Basic rules 5 ข้อ: **Attractive · Simple to use · Responsive in short time · Clear to understand · Consistent on all interface screens** ไม่มีเรื่องต้นทุนในรายการนี้'),
+
+    mk.tf('L8', 'ตามสไลด์ software จะเป็นที่นิยมมากขึ้นเมื่อ user interface ของมันเรียบง่ายและเข้าใจชัดเจน', true,
+      'ถูก “Simple to use” และ “Clear to understand” เป็น 2 ใน 5 กฎพื้นฐาน ร่วมกับ Attractive, Responsive in short time และ Consistent'),
+
+    /* ---------- กระบวนการออกแบบ UI (8 ข้อ) ---------- */
+    mk.order('L8', 'เรียง 4 phase ของ User Interface Design Process ให้ถูกลำดับ',
+      ['User, task, environmental analysis and modeling', 'Interface design', 'Interface construction and implementation', 'Interface validation'],
+      'ลำดับ: **วิเคราะห์ผู้ใช้/งาน/สภาพแวดล้อม → ออกแบบ interface → สร้างและ implement → ตรวจสอบ (validation)** สไลด์วาดเป็น spiral คือวนกลับมาปรับได้'),
+
+    mk.tf('L8', 'กระบวนการออกแบบ UI ตามสไลด์เป็น spiral คือวนซ้ำและปรับปรุงได้หลายรอบ ไม่ใช่เส้นตรงที่ทำครั้งเดียวจบ', true,
+      'ถูก รูปในสไลด์เป็น spiral ผ่านทั้ง 4 phase และ Phase 3 ก็ระบุว่าเป็น **iterative design process**'),
+
+    mk.mcq('L8', 'ทีมออกแบบถามว่า “ผู้ใช้จะยืนหรือนั่งขณะใช้งาน และสถานที่มีเสียงดังหรือแสงจ้าหรือไม่” คำถามนี้อยู่ใน phase ใด',
+      'Phase 1: User, task, environmental analysis and modeling',
+      ['Phase 2: Interface design', 'Phase 3: Interface construction and implementation', 'Phase 4: Interface validation'],
+      'คำถามเรื่อง **ตำแหน่งติดตั้ง ท่าทางผู้ใช้ ข้อจำกัดด้านพื้นที่ แสง เสียง และ human factors** เป็นตัวอย่างในสไลด์ของ Phase 1 (environmental analysis)'),
+
+    mk.mcq('L8', 'Phase 1 ของ UI Design Process ต้องทำความเข้าใจเรื่องใดเกี่ยวกับผู้ใช้',
+      'Profile ของผู้ใช้ ทักษะ ความรู้ และประเภทของผู้ใช้ รวมถึงงานที่ต้องทำและสภาพแวดล้อมทางกายภาพ',
+      ['ราคาและยี่ห้อของอุปกรณ์ที่ผู้ใช้ซื้อมา', 'จำนวนบรรทัดโค้ดที่ต้องเขียน', 'ผลการทดสอบ interface ครั้งสุดท้าย'],
+      'Phase 1 ตั้งอยู่บน profile ของผู้ใช้: เข้าใจ skill, knowledge, type of user, tasks ที่ต้องทำ และ physical work environment'),
+
+    mk.mcq('L8', 'ข้อใด **ไม่ใช่** design issue ที่สไลด์ระบุไว้ใน Phase 2 (Interface design)',
+      'Hardware cost (ต้นทุนฮาร์ดแวร์)',
+      ['Response time', 'Command and action structure', 'Error handling'],
+      'Phase 2 มี set of interface objects, set of interface actions และ design issues 3 เรื่อง: **Response time · Command and action structure · Error handling** (ท่องว่า R-C-E)'),
+
+    mk.mcq('L8', 'ข้อใดเป็นสิ่งที่ทำใน Phase 3 (Interface construction and implementation)',
+      'เริ่มลงมือสร้างโดยทำ prototype แล้วปรับปรุงแบบ iterative',
+      ['วิเคราะห์ profile ของผู้ใช้', 'กำหนดว่าต้องมี response time เท่าไร', 'ประเมินว่าผู้ใช้ยอมรับ interface เป็นเครื่องมือที่มีประโยชน์หรือไม่'],
+      'Phase 3: implementation activity begins เริ่มจาก **prototype** และเป็น iterative design process ส่วนข้อสุดท้ายเป็นงานของ Phase 4'),
+
+    mk.mcq('L8', 'ข้อใดเป็นสิ่งที่ตรวจใน Phase 4 (Interface validation) **ยกเว้น**',
+      'กำหนด set of interface objects ที่จะใช้ในหน้าจอ',
+      ['ทำทุก user task ได้ถูกต้อง', 'รองรับ task variations ทั้งหมด', 'ประเมินว่า interface ใช้ง่าย (easy to use) และเรียนรู้ง่าย (easy to learn)'],
+      'Phase 4 ทดสอบว่า **ทำทุก task ถูก · รองรับ task variations · ตอบ general user requirements** และประเมิน easy to use/easy to learn รวมถึงผู้ใช้ยอมรับว่ามีประโยชน์ ส่วนการกำหนด interface objects เป็นงานของ Phase 2'),
+
+    mk.mcq('L8', 'ทีมให้ผู้ใช้ลองใช้ระบบแล้วดูว่าทำทุกงานได้ถูกต้องและเรียนรู้ได้ง่ายหรือไม่ กำลังอยู่ใน phase ใด (สถานการณ์ผู้จัดทำตั้งเอง)',
+      'Phase 4: Interface validation',
+      ['Phase 1: User, task, environmental analysis', 'Phase 2: Interface design', 'Phase 3: Interface construction'],
+      'การทดสอบว่าทำ task ได้ถูกต้อง และประเมิน easy to use/easy to learn คือ **Interface validation**'),
+
+    /* ---------- Golden Rules (12 ข้อ) ---------- */
+    mk.mcq('L8', 'Golden Rules for Interface Design ของ Theo Mandel มี 3 ข้อคือข้อใด',
+      'Place the user in control · Reduce the user’s memory load · Make the interface consistent',
+      ['Make it attractive · Make it fast · Make it cheap', 'Place the user in control · Increase the user’s memory load · Make the interface unique', 'Hide the interface · Reduce the user’s memory load · Make it colorful'],
+      'ท่องง่าย: **Control (ผู้ใช้คุมได้) · Memory (จำน้อย) · Consistent (สอดคล้อง)**'),
+
+    mk.mcq('L8', 'ผู้ใช้เลือกโหมด spell check ในโปรแกรมเอกสาร หน้าจอแสดงว่าอยู่ในโหมดนี้และมีปุ่มออกจากโหมดได้ง่าย สอดคล้องกับ golden rule ข้อใด',
+      'Place the user in control',
+      ['Reduce the user’s memory load', 'Make the interface consistent', 'ไม่เกี่ยวกับ golden rule ข้อใดเลย'],
+      'ข้อย่อยของ Place the user in control: **define interaction modes ให้ไม่บังคับผู้ใช้ทำสิ่งที่ไม่ต้องการ** ตัวอย่างในสไลด์คือ spell check mode ที่ต้องแสดงโหมดและออกได้ง่าย'),
+
+    mk.mcq('L8', 'ผู้ใช้ลากไฟล์ไปวางที่ไอคอนถังขยะเพื่อลบไฟล์ สอดคล้องกับหลักข้อย่อยใด',
+      'Design for direct interaction with objects ที่ปรากฏบนหน้าจอ (Place the user in control)',
+      ['Provide visual clues ให้จำสิ่งที่เคยทำ (Reduce the user’s memory load)', 'Maintain consistency across the system (Make the interface consistent)', 'Disclose information in layers (Reduce the user’s memory load)'],
+      'สไลด์ใช้ตัวอย่างนี้ตรงตัวกับ **direct interaction** ใต้ข้อ Place the user in control'),
+
+    mk.mcq('L8', 'ข้อใดเป็นหลักย่อยของ “Place the user in control” **ทั้งหมด**',
+      'ให้โต้ตอบได้หลายทาง (keyboard, mouse, touch, เสียง) · ให้ interruptible และ undoable · ให้ผู้ใช้ขั้นสูง customize ได้',
+      ['กำหนด meaningful defaults · ใช้ real-world metaphor · เปิดเผยข้อมูลเป็นชั้น ๆ', 'แสดง window titles · ใช้ color coding สม่ำเสมอ · ไม่เปลี่ยน shortcut ที่คนคุ้นเคย', 'ลดภาระ short-term memory · ใช้ shortcut ที่เดาง่าย · ให้ visual clues'],
+      'flexible interaction, interruptible/undoable และ customize เป็นของ **Place the user in control** ส่วน meaningful defaults, metaphor, layers, shortcuts, visual clues เป็นของ **Reduce memory load** และ context indicators กับการไม่เปลี่ยน interactive model เป็นของ **Make consistent**'),
+
+    mk.mcq('L8', 'โปรแกรมกำหนด Ctrl+P เป็นพิมพ์ และ Ctrl+S เป็นบันทึก ตรงกับหลักย่อยใด',
+      'Define shortcuts that are intuitive (Reduce the user’s memory load)',
+      ['Design for direct interaction with objects (Place the user in control)', 'Hide technical interfaces from casual users (Place the user in control)', 'Allow the user to put the task into context (Make the interface consistent)'],
+      'สไลด์ยกตัวอย่าง **Ctrl+P = print, Ctrl+S = save, Cmd+C = copy** เป็น shortcut ที่เดาง่าย ซึ่งช่วย **ลดภาระความจำ** ของผู้ใช้'),
+
+    mk.mcq('L8', 'แอปใช้ไอคอนรูปบ้านแทนคำสั่ง “กลับหน้าหลัก” (Back to home screen) ตรงกับหลักย่อยใด',
+      'Visual layout ควรอิงกับ real-world metaphor (Reduce the user’s memory load)',
+      ['Establish meaningful defaults (Reduce the user’s memory load)', 'Provide for flexible interaction (Place the user in control)', 'Maintain consistency across the system (Make the interface consistent)'],
+      'สไลด์ใช้ **ไอคอนบ้าน = Back to home screen** เป็นตัวอย่างของ real-world metaphor ใต้ข้อ Reduce the user’s memory load'),
+
+    mk.mcq('L8', 'หน้าแรกของแอปแสดงข้อมูลสรุปก่อน แล้วให้กดดูรายละเอียดเพิ่มทีหลัง ตรงกับหลักย่อยใด',
+      'Disclose information in layers (Reduce the user’s memory load)',
+      ['Design for direct interaction (Place the user in control)', 'Do not change existing interactive models (Make the interface consistent)', 'Hide technical interfaces from casual users (Place the user in control)'],
+      '**Disclose information in layers** = แสดงข้อมูลทั่วไปก่อน แล้วค่อยแสดงรายละเอียดเพิ่ม เพื่อไม่ให้ผู้ใช้รับข้อมูลมากเกินไปพร้อมกัน'),
+
+    mk.mcq('L8', 'ผู้พัฒนากำหนดให้ Ctrl+S ทำหน้าที่ “ส่งออกเป็น PDF” แทนการบันทึกไฟล์ ผิดหลักข้อใด (สถานการณ์ผู้จัดทำตั้งเอง)',
+      'Make the interface consistent เพราะไม่ควรเปลี่ยน interactive model ที่คุ้นเคยอยู่แล้ว',
+      ['Place the user in control เพราะผู้ใช้ไม่สามารถ undo ได้', 'Reduce the user’s memory load เพราะมี shortcut น้อยเกินไป', 'ไม่ผิดหลักข้อใด เพราะผู้พัฒนากำหนด shortcut เองได้'],
+      'สไลด์ระบุว่า “Ctrl+S is well known for saving files – do not use the same shortcut to execute another command” อยู่ใต้ข้อ **Make the interface consistent** (do not make changes to the existing interactive models)'),
+
+    mk.mcq('L8', 'หน้าต่างทุกหน้ามีชื่อหน้าต่างและไอคอนบอกว่ากำลังทำงานอะไรอยู่ และใช้สีแบบเดียวกันตลอดระบบ ตรงกับหลักย่อยใด',
+      'Allow the user to put the current task into a meaningful context (Make the interface consistent)',
+      ['Provide visual clues ให้จำสิ่งที่เคยทำ (Reduce the user’s memory load)', 'Allow advanced users to customize (Place the user in control)', 'Establish meaningful defaults (Reduce the user’s memory load)'],
+      'ตัวบ่งชี้บริบท เช่น **window titles, graphical icons, consistent color coding** ช่วยให้ผู้ใช้รู้ว่ากำลังทำงานอะไรอยู่ อยู่ใต้ข้อ Make the interface consistent'),
+
+    mk.tf('L8', 'การให้ผู้ใช้ขั้นสูง (advanced users) ปรับแต่ง interface ให้เหมาะกับตัวเองได้ เป็นหลักย่อยของ Reduce the user’s memory load', false,
+      'ผิด เป็นหลักย่อยของ **Place the user in control** (allow advanced users to customize their interface to facilitate interaction) ส่วน Reduce memory load มี meaningful defaults, shortcuts, metaphor, layers เป็นต้น'),
+
+    mk.tf('L8', 'ค่าเริ่มต้น (defaults) ของระบบควรสมเหตุสมผลสำหรับผู้ใช้โดยเฉลี่ย', true,
+      'ถูก หลักย่อย **Establish meaningful defaults**: initial set of defaults should make sense for the average user'),
+
+    mk.match('L8', 'จับคู่ตัวอย่างกับ golden rule ของ Mandel',
+      [
+        ['ผู้ใช้ยกเลิก (undo) การกระทำที่ทำพลาดได้', 'Place the user in control'],
+        ['ตั้งค่าเริ่มต้นให้เหมาะกับผู้ใช้ทั่วไป', 'Reduce the user’s memory load'],
+        ['ใช้ชื่อหน้าต่างและสีที่สม่ำเสมอทั้งระบบ', 'Make the interface consistent'],
+      ],
+      'ท่องสั้น ๆ: **Control** = คุมได้/undo ได้ · **Memory** = defaults, shortcuts, metaphor, layers · **Consistent** = บริบทชัด, ไม่เปลี่ยน interactive model เดิม'),
+
+    /* ---------- Prototype (5 ข้อ) ---------- */
+    mk.mcq('L8', 'ข้อใดอธิบาย low fidelity prototype ได้ถูกต้อง',
+      'ง่ายและหยาบ เน้นโครงสร้างพื้นฐานและฟังก์ชัน ไม่เน้นรายละเอียดการออกแบบ เหมาะกับขอ feedback ช่วงต้น',
+      ['ละเอียดสูง มี UI element และ interaction สมจริงใกล้ของจริงที่สุด', 'ต้องเขียนโค้ดเสร็จครบทุกหน้าจอก่อนจึงจะใช้ได้', 'ใช้เฉพาะตอนหลังส่งมอบระบบให้ลูกค้าแล้ว'],
+      '**Low fidelity** = simple and rough, focus on basic structure and functionality, useful for early-stage feedback and brainstorming ส่วนตัวเลือกที่บอกว่าละเอียดสูงและสมจริงคือ high fidelity'),
+
+    mk.mcq('L8', 'ทีมวาดหน้าจอด้วยกระดาษแล้วให้ผู้ใช้ลองชี้ลำดับการกดเพื่อขอความเห็นตั้งแต่ช่วงเริ่มต้น เป็น prototype ชนิดใด (สถานการณ์ผู้จัดทำตั้งเอง)',
+      'Low fidelity (paper prototype)',
+      ['High fidelity (coded prototype)', 'High fidelity (digital code-free prototype)', 'ไม่ใช่ prototype'],
+      'สไลด์ยกตัวอย่าง low fidelity คือ **paper prototypes และ click-through prototypes**'),
+
+    mk.mcq('L8', 'ก่อนเริ่มพัฒนา ทีมต้องการ mockup ที่มี UI element สมจริงและ animation เพื่อทดสอบ usability กับผู้ใช้ให้แม่นยำ ควรใช้ prototype ชนิดใด (สถานการณ์ผู้จัดทำตั้งเอง)',
+      'High fidelity prototype',
+      ['Low fidelity prototype', 'ไม่ต้องทำ prototype', 'Paper prototype เท่านั้น'],
+      '**High fidelity** = highly detailed, realistic UI elements/content/interaction, อาจมี animation และ transition เหมาะกับ accurate user testing และการ validate design, usability, functionality ก่อน development'),
+
+    mk.match('L8', 'จัดประเภท prototype ตามตัวอย่างในสไลด์',
+      [
+        ['Paper prototype', 'Low fidelity'],
+        ['Click-through prototype', 'Low fidelity'],
+        ['Digital, code-free prototype', 'High fidelity'],
+        ['Coded prototype', 'High fidelity'],
+      ],
+      'ตัวอย่างตามสไลด์: low fidelity = paper prototypes, click-through prototypes · high fidelity = digital, code-free prototypes, coded prototypes'),
+
+    mk.tf('L8', 'High fidelity prototype ใช้ได้เฉพาะตอนระดมความคิดช่วงแรก และไม่เหมาะกับการทดสอบกับผู้ใช้', false,
+      'ผิด High fidelity เหมาะกับ **accurate user testing** และ validate design, usability, functionality ก่อนพัฒนา ส่วนการ brainstorm ช่วงต้นเป็นจุดเด่นของ low fidelity'),
+  ],
+});
+</script>
+<script>
+(function () {
+  'use strict';
+  const KEY = 'itds261q:v1';
+  const store = {
+    get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* ใช้ต่อได้แม้ไม่มี storage */ } },
+  };
+
+  const SRC = {
+    L1: 'Lecture 1 · SE Foundation และ Project Management',
+    L2: 'Lecture 2 · Software Process',
+    L3: 'Lecture 3 · Requirements Engineering',
+    L4: 'Lecture 4 · Use Case และ Narrative',
+    L7: 'Lecture 7 · Data Flow Diagram',
+    L8: 'Lecture 8 · User Interface Design',
+  };
+  const TYPE_LABEL = { mcq: 'ปรนัย', tf: 'ถูก / ผิด', order: 'เรียงลำดับ', match: 'จับคู่', spot: 'คลิกจุดผิดในแผนภาพ' };
+  const TYPE_HINT = {
+    mcq: 'เลือกคำตอบที่ถูกที่สุด 1 ข้อ',
+    tf: 'ข้อความนี้ถูกหรือผิด',
+    order: 'แตะรายการตามลำดับที่ถูกต้อง แตะรายการที่เลือกแล้วเพื่อนำออก',
+    match: 'เลือกคำตอบที่ตรงกันของแต่ละแถว',
+    spot: 'คลิกหรือกด Enter บนส่วนของแผนภาพที่ผิด',
+  };
+  const TH = ['ก', 'ข', 'ค', 'ง', 'จ'];
+  const SETS = window.SETS;
+
+  /* ---------- ตัวช่วย ---------- */
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const fmt = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+  const svgi = (d, extra) => '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"' + (extra || '') + '>' + d + '</svg>';
+  const IC = {
+    check: svgi('<path d="M4 10.5l4 4 8-9"/>'),
+    x: svgi('<path d="M5 5l10 10M15 5L5 15"/>'),
+    sun: svgi('<circle cx="10" cy="10" r="3.6"/><path d="M10 2v2.2M10 15.8V18M2 10h2.2M15.8 10H18M4.3 4.3l1.6 1.6M14.1 14.1l1.6 1.6M4.3 15.7l1.6-1.6M14.1 5.9l1.6-1.6"/>'),
+    moon: svgi('<path d="M16.5 12.2A7 7 0 0 1 7.8 3.5a7 7 0 1 0 8.7 8.7z"/>'),
+    left: svgi('<path d="M12 4l-6 6 6 6"/>'),
+    right: svgi('<path d="M8 4l6 6-6 6"/>'),
+  };
+  function rng(seed) {
+    let a = seed >>> 0;
+    return function () {
+      a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function perm(n, seed, qi, avoidIdentity) {
+    const r = rng(seed * 131 + qi * 7919 + 1);
+    const a = Array.from({ length: n }, (_, k) => k);
+    for (let i = n - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); const t = a[i]; a[i] = a[j]; a[j] = t; }
+    if (avoidIdentity && n > 1 && a.every((v, k) => v === k)) a.push(a.shift());
+    return a;
+  }
+  const choicesOf = q => Array.from(new Set(q.pairs.map(p => p[1]).concat(q.extra || [])));
+
+  function isAnswered(q, a) {
+    if (a === undefined || a === null) return false;
+    if (q.t === 'order') return Array.isArray(a) && a.length === q.items.length;
+    if (q.t === 'match') return Array.isArray(a) && a.length === q.pairs.length && a.every(v => v);
+    return true;
+  }
+  function isRight(q, a) {
+    if (!isAnswered(q, a)) return false;
+    switch (q.t) {
+      case 'mcq': return a === 0;
+      case 'tf': return a === q.a;
+      case 'order': return a.every((v, k) => v === k);
+      case 'match': return a.every((v, k) => v === q.pairs[k][1]);
+      case 'spot': return a === q.ans;
+    }
+    return false;
+  }
+
+  /* ---------- state ---------- */
+  const $app = document.getElementById('app');
+  const ui = { view: 'home', mode: store.get(KEY + ':mode') === 'exam' ? 'exam' : 'practice', arm: null, confirm: null, focus: null, jumpOpen: false };
+  let run = null, set = null;
+
+  const setById = id => SETS.find(s => s.id === id);
+  const runKey = (sid, mode, retry) => KEY + ':run:' + sid + ':' + mode + (retry ? ':retry' : '');
+  const newRun = (s, mode, ids, retry) => ({ setId: s.id, mode: mode, retry: !!retry, ids: ids || s.qs.map((_, i) => i), seed: (Math.random() * 2147483647) | 0, idx: 0, ans: {}, chk: {}, done: false });
+  const loadRun = (s, mode) => { const r = store.get(runKey(s.id, mode, false)); return r && Array.isArray(r.ids) && r.ids.length === s.qs.length ? r : null; };
+  const save = () => store.set(runKey(run.setId, run.mode, run.retry), run);
+  function calc(s, r) {
+    let right = 0; const per = {}, wrong = [];
+    r.ids.forEach((qi, p) => {
+      const q = s.qs[qi]; const ok = isRight(q, r.ans[qi]);
+      const b = per[q.src] || (per[q.src] = { r: 0, t: 0 });
+      b.t++; if (ok) { b.r++; right++; } else wrong.push(p);
+    });
+    return { right: right, total: r.ids.length, per: per, wrong: wrong };
+  }
+
+  /* ---------- ธีม ---------- */
+  const root = document.documentElement;
+  const sysDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const curTheme = () => root.getAttribute('data-theme') || (sysDark() ? 'dark' : 'light');
+  function paintTheme() {
+    const toDark = curTheme() === 'light';
+    const b = document.getElementById('themeBtn');
+    b.innerHTML = (toDark ? IC.moon : IC.sun) + '<span class="lab">' + (toDark ? 'ธีมมืด' : 'ธีมสว่าง') + '</span>';
+    b.setAttribute('aria-label', toDark ? 'สลับเป็นธีมมืด' : 'สลับเป็นธีมสว่าง');
+  }
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    const n = curTheme() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', n); store.set(KEY + ':theme', n); paintTheme();
+  });
+  try { window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paintTheme); } catch (e) { /* เบราว์เซอร์เก่า */ }
+  document.getElementById('homeBtn').addEventListener('click', () => { ui.view = 'home'; ui.confirm = null; render(); window.scrollTo(0, 0); });
+
+  /* ---------- หน้าแรก ---------- */
+  function homeHTML() {
+    const last = store.get(KEY + ':last') || {};
+    const rows = SETS.map(s => {
+      const r = loadRun(s, ui.mode);
+      const l = last[s.id + ':' + ui.mode];
+      let btns;
+      const arm = ui.arm === s.id;
+      const resetBtn = (label) => arm
+        ? '<button class="btn small" data-act="restart" data-id="' + s.id + '">ยืนยัน: ล้างคำตอบแล้วเริ่มใหม่</button>'
+        : '<button class="btn small ghost" data-act="arm" data-id="' + s.id + '">' + label + '</button>';
+      if (r && r.done) {
+        const t = calc(s, r);
+        btns = '<button class="btn primary" data-act="start" data-id="' + s.id + '">ดูผล ' + t.right + '/' + t.total + '</button>' + resetBtn('ทำใหม่');
+      } else if (r && (Object.keys(r.ans).length || r.idx > 0)) {
+        btns = '<button class="btn primary" data-act="start" data-id="' + s.id + '">ทำต่อ · ข้อ ' + (r.idx + 1) + '/' + s.qs.length + '</button>' + resetBtn('เริ่มใหม่');
+      } else {
+        btns = '<button class="btn primary" data-act="start" data-id="' + s.id + '">เริ่มทำ</button>';
+      }
+      const meta = s.qs.length + ' ข้อ' + (l ? ' · ครั้งล่าสุดในโหมดนี้ ' + l.right + '/' + l.total : '');
+      return '<li class="setrow"><div class="setno" aria-hidden="true">' + s.id + '</div><div>' +
+        '<h3>ชุด ' + s.id + ' · ' + esc(s.tag) + '<span class="lv">ระดับ' + esc(s.level) + '</span></h3>' +
+        '<p>' + esc(s.desc) + '</p><div class="setmeta">' + meta + '</div><div class="setact">' + btns + '</div></div></li>';
+    }).join('');
+    const modeDesc = ui.mode === 'practice'
+      ? 'ตอบแล้วเห็นเฉลยและเหตุผลทันที เหมาะตอนเรียนรู้ ข้อไหนผิดจะรู้ว่าผิดเพราะอะไรก่อนไปข้อต่อไป'
+      : 'ทำจนจบทั้งชุดโดยไม่เห็นเฉลย กลับไปแก้คำตอบได้ แล้วค่อยส่งเพื่อดูคะแนนและเฉลยทุกข้อ เหมาะซ้อมสอบจริง';
+    return '<div class="home wrap">' +
+      '<h1>ข้อสอบฝึก ITDS261 Software Engineering</h1>' +
+      '<p class="lead">เตรียมสอบกลางภาค ชุด 1–3 รวม 90 ข้อ (ชุดละ 30 ข้อ จากง่ายไปยาก) และชุด 4 เฉพาะ Interface Design</p>' +
+      '<ul class="facts"><li><strong>สอบ ศ. 9 ต.ค. 2569</strong> เวลา 12:30-14:30 · กลางภาคคิด 40%</li>' +
+      '<li><strong>Part 1</strong> ทฤษฎี 15 คะแนน · <strong>Part 2</strong> วาด/เขียนโมเดล 25 คะแนน</li></ul>' +
+      '<section class="modebox" aria-labelledby="modeh"><h2 id="modeh">เลือกโหมดทำ</h2>' +
+      '<div class="seg" role="group" aria-label="โหมดทำข้อสอบ">' +
+      '<button data-act="mode" data-m="practice" aria-pressed="' + (ui.mode === 'practice') + '">โหมดฝึก</button>' +
+      '<button data-act="mode" data-m="exam" aria-pressed="' + (ui.mode === 'exam') + '">โหมดสอบ</button></div>' +
+      '<p class="modedesc">' + modeDesc + '</p></section>' +
+      '<section class="sets" aria-labelledby="seth"><h2 id="seth">เลือกชุดข้อสอบ</h2><ul class="setlist">' + rows + '</ul></section>' +
+      '<div class="note"><strong>ที่มาของเนื้อหา:</strong> ตั้งขึ้นจากหน้าสรุป “ITDS261 Software Engineering Midterm Guideline” ใน Notion (Lecture 1, 2, 3, 4, 7) และสไลด์ Lecture 8 (ชุด 4) ข้อที่ผู้จัดทำตั้งสถานการณ์ใหม่จะระบุไว้ในเฉลยว่าเป็นโจทย์ฝึก ไม่ใช่ข้อสอบจริง ' +
+      'เนื้อหา <strong>Interface Design</strong> (ออกสอบ Part 1) อยู่ในชุด 4 ที่ตั้งจากสไลด์ L8 โดยตรง ถ้าอาจารย์สอนต่างจากหน้าสรุป ให้ยึดตามอาจารย์</div>' +
+      '</div>';
+  }
+
+  /* ---------- หน้าทำข้อสอบ ---------- */
+  function figHTML(q, locked) {
+    if (!q.fig) return '';
+    return '<div class="fig' + (locked ? ' locked' : '') + '">' + q.fig.svg + '<p class="scrollhint">เลื่อนซ้าย-ขวาเพื่อดูแผนภาพทั้งหมด</p></div>';
+  }
+
+  function optsHTML(q, qi, a, fb) {
+    let list;
+    if (q.t === 'mcq') list = perm(q.opts.length, run.seed, qi).map(oi => ({ id: oi, txt: q.opts[oi], right: oi === 0 }));
+    else list = [{ id: true, txt: 'ถูก', right: q.a === true }, { id: false, txt: 'ผิด', right: q.a === false }];
+    return '<div class="opts" role="radiogroup" aria-label="ตัวเลือก">' + list.map((o, k) => {
+      const sel = a === o.id;
+      let cls = 'opt', tag = '', mark = TH[k];
+      if (fb) {
+        cls += ' lock';
+        if (o.right) { cls += ' right'; tag = sel ? 'คุณเลือกข้อนี้ ถูกต้อง' : 'คำตอบที่ถูก'; mark = IC.check; }
+        else if (sel) { cls += ' wrong'; tag = 'คุณเลือกข้อนี้ ยังไม่ถูก'; mark = IC.x; }
+      } else if (sel) cls += ' sel';
+      return '<button class="' + cls + '" role="radio" aria-checked="' + sel + '" data-act="pick" data-v="' + o.id + '"><span class="mark">' + mark + '</span><span class="body">' + fmt(o.txt) + (tag ? '<span class="tag">' + tag + '</span>' : '') + '</span></button>';
+    }).join('') + '</div>';
+  }
+
+  function orderHTML(q, qi, a, fb) {
+    const placed = Array.isArray(a) ? a : [];
+    const n = q.items.length;
+    let slots = '';
+    for (let k = 0; k < n; k++) {
+      if (k < placed.length) {
+        const it = placed[k];
+        let cls = 'slot filled', st = '';
+        if (fb) { const ok = it === k; cls += ok ? ' right' : ' wrong'; st = '<span class="st">' + (ok ? 'ถูก' : 'ผิดที่') + '</span>'; }
+        slots += '<li class="' + cls + '"><span class="n">' + (k + 1) + '</span>' +
+          (fb ? '<span style="flex:1">' + fmt(q.items[it]) + '</span>' : '<button data-act="unplace" data-k="' + k + '" aria-label="นำออก ลำดับที่ ' + (k + 1) + ': ' + esc(q.items[it]) + '">' + fmt(q.items[it]) + '</button>') + st + '</li>';
+      } else slots += '<li class="slot"><span class="n">' + (k + 1) + '</span>' + (fb ? 'ยังไม่ได้เรียง' : 'ลำดับที่ ' + (k + 1)) + '</li>';
+    }
+    let html = '<div class="ordbox"><h4>ลำดับของคุณ</h4><ol class="slots">' + slots + '</ol>';
+    if (!fb) {
+      const pool = perm(n, run.seed, qi, true).filter(it => placed.indexOf(it) < 0);
+      html += '<p class="poolh">รายการที่เหลือ (' + pool.length + ')</p><div class="pool">' +
+        pool.map(it => '<button class="pill" data-act="place" data-it="' + it + '">' + fmt(q.items[it]) + '</button>').join('') + '</div>';
+      if (placed.length) html += '<button class="btn small ghost" data-act="clear">ล้างลำดับทั้งหมด</button>';
+    } else if (!isRight(q, a)) {
+      html += '<div class="answer-key"><h4>ลำดับที่ถูกต้อง</h4><ol>' + q.items.map(t => '<li>' + fmt(t) + '</li>').join('') + '</ol></div>';
+    }
+    return html + '</div>';
+  }
+
+  function matchHTML(q, qi, a, fb) {
+    const choices = choicesOf(q);
+    const order = perm(choices.length, run.seed, qi);
+    const cur = Array.isArray(a) ? a : [];
+    return '<div class="mrows">' + q.pairs.map((p, k) => {
+      const v = cur[k];
+      if (fb) {
+        const ok = v === p[1];
+        return '<div class="mrow ' + (ok ? 'right' : 'wrong') + '"><div class="ml">' + fmt(p[0]) + '</div><div class="fixed">' +
+          (v ? (ok ? 'ถูก: ' : 'คุณเลือก: ') + fmt(v) : 'ไม่ได้เลือก') + '</div>' + (ok ? '' : '<div class="fixed" style="color:var(--ok)">ที่ถูกต้อง: ' + fmt(p[1]) + '</div>') + '</div>';
+      }
+      return '<div class="mrow"><label class="ml" for="m' + k + '">' + fmt(p[0]) + '</label><select id="m' + k + '" data-act="match" data-k="' + k + '"><option value="">เลือกคำตอบ</option>' +
+        order.map(ci => '<option value="' + ci + '"' + (v === choices[ci] ? ' selected' : '') + '>' + esc(choices[ci]) + '</option>').join('') + '</select></div>';
+    }).join('') + '</div>';
+  }
+
+  function fbHTML(q, a) {
+    const answered = isAnswered(q, a), ok = isRight(q, a);
+    const cls = ok ? 'ok' : answered ? 'no' : 'skip';
+    const head = ok ? IC.check + 'ถูกต้อง' : answered ? IC.x + 'ยังไม่ถูก' : 'ไม่ได้ตอบข้อนี้';
+    let extra = '';
+    if (q.t === 'tf') extra = '<p><strong>เฉลย: ข้อความนี้' + (q.a ? 'ถูกต้อง' : 'ผิด') + '</strong></p>';
+    if (q.t === 'mcq' && !ok) extra = '<p><strong>คำตอบที่ถูก:</strong> ' + fmt(q.opts[0]) + '</p>';
+    if (q.t === 'spot') extra = '<p><strong>จุดที่ผิดถูกไฮไลต์สีเขียวในแผนภาพ</strong></p>';
+    return '<section class="fb ' + cls + '" role="status"><h3>' + head + '</h3>' + extra + '<p>' + fmt(q.why) + '</p><p class="src">อ้างอิง: ' + SRC[q.src] + '</p></section>';
+  }
+
+  function quizHTML() {
+    const n = run.ids.length, pos = run.idx, qi = run.ids[pos], q = set.qs[qi];
+    const a = run.ans[qi], done = run.done, fb = done || !!run.chk[qi];
+    const answeredCount = run.ids.filter(i => isAnswered(set.qs[i], run.ans[i])).length;
+    let body;
+    if (q.t === 'mcq' || q.t === 'tf') body = optsHTML(q, qi, a, fb);
+    else if (q.t === 'order') body = orderHTML(q, qi, a, fb);
+    else if (q.t === 'match') body = matchHTML(q, qi, a, fb);
+    else body = '';
+    const chips = '<div class="chips"><span class="chip strong">' + TYPE_LABEL[q.t] + '</span><span class="chip">' + SRC[q.src] + '</span>' + (q.part ? '<span class="chip">' + q.part + '</span>' : '') + '</div>';
+    const ctx = q.ctx ? '<aside class="ctx"><h3>' + esc(q.ctx.title) + '</h3><p>' + esc(q.ctx.body) + '</p></aside>' : '';
+    const modeLab = done ? 'ดูเฉลย' : ui.mode === 'practice' ? 'โหมดฝึก' : 'โหมดสอบ';
+    const retryLab = run.retry ? ' · ทำซ้ำเฉพาะข้อผิด' : '';
+
+    /* แถบปุ่มล่าง */
+    const isLast = pos === n - 1;
+    const needsCheck = ui.mode === 'practice' && !fb && (q.t === 'order' || q.t === 'match' || q.t === 'spot');
+    const canCheck = isAnswered(q, a);
+    let right;
+    if (done) right = isLast ? '<button class="btn primary" data-act="toresult">กลับไปหน้าผลคะแนน</button>' : '<button class="btn primary" data-act="next">ข้อถัดไป' + IC.right + '</button>';
+    else if (needsCheck) right = '<button class="btn ghost" data-act="next">ข้าม</button><button class="btn primary" data-act="check" aria-disabled="' + !canCheck + '">ตรวจคำตอบ</button>';
+    else if (isLast) right = '<button class="btn primary" data-act="finish">' + (ui.mode === 'exam' ? 'ส่งข้อสอบ' : 'ดูผลคะแนน') + '</button>';
+    else right = '<button class="btn primary" data-act="next">ข้อถัดไป' + IC.right + '</button>';
+    const actions = '<div class="actions"><div class="wrap"><button class="btn" data-act="prev" aria-disabled="' + (pos === 0) + '">' + IC.left + 'ก่อนหน้า</button><div class="right">' + right + '</div></div></div>';
+
+    /* ตารางไปที่ข้อ */
+    const grid = run.ids.map((i, p) => {
+      const qq = set.qs[i], aa = run.ans[i], ans = isAnswered(qq, aa), f = done || run.chk[i];
+      let cls = 'jn', st = ans ? 'ตอบแล้ว' : 'ยังไม่ตอบ', ic = '';
+      if (f) { const ok = isRight(qq, aa); cls += ok ? ' ok' : ' no'; st = ok ? 'ถูก' : ans ? 'ผิด' : 'ไม่ได้ตอบ'; ic = ok ? IC.check : IC.x; }
+      else if (ans) cls += ' ans';
+      if (p === pos) cls += ' cur';
+      return '<button class="' + cls + '" data-act="goto" data-p="' + p + '" aria-label="ข้อ ' + (p + 1) + ' ' + st + '"' + (p === pos ? ' aria-current="step"' : '') + '>' + (p + 1) + ic + '</button>';
+    }).join('');
+    const legend = (ui.mode === 'practice' || done) ? 'พื้นอ่อนสีส้ม = ตอบแล้ว · สีเขียวมีเครื่องหมายถูก = ถูก · สีแดงมีกากบาท = ผิดหรือไม่ได้ตอบ' : 'พื้นอ่อนสีส้ม = ตอบแล้ว (โหมดสอบจะเห็นเฉลยหลังส่งเท่านั้น)';
+    const jump = '<details class="jump"' + (ui.jumpOpen ? ' open' : '') + '><summary>ไปที่ข้อ · ตอบแล้ว ' + answeredCount + '/' + n + '</summary><div class="grid">' + grid + '</div><div class="legend">' + legend + '</div></details>';
+
+    /* กล่องยืนยันส่ง */
+    let confirm = '';
+    if (ui.confirm === 'finish') {
+      const un = n - answeredCount;
+      confirm = '<div class="confirm" role="alertdialog" aria-label="ยืนยัน"><p>' + (un ? '<strong>ยังไม่ได้ตอบ ' + un + ' ข้อ</strong> ข้อที่ไม่ได้ตอบจะนับเป็นผิด ' : '') + (ui.mode === 'exam' ? 'เมื่อส่งแล้วจะเห็นคะแนนและเฉลยทุกข้อ ส่งเลยไหม' : 'ดูผลคะแนนเลยไหม') + '</p><div class="row"><button class="btn" data-act="cancelfinish">กลับไปทำต่อ</button><button class="btn primary" data-act="confirmfinish">' + (ui.mode === 'exam' ? 'ส่งข้อสอบ' : 'ดูผลคะแนน') + '</button></div></div>';
+    }
+
+    const pct = Math.round(((pos + 1) / n) * 100);
+    return '<div class="qbar"><div class="wrap"><div class="row"><span>ชุด ' + set.id + ' · ' + modeLab + retryLab + '</span><span><b>ข้อ ' + (pos + 1) + '</b> / ' + n + '</span></div><div class="prog" role="progressbar" aria-valuemin="1" aria-valuemax="' + n + '" aria-valuenow="' + (pos + 1) + '"><i style="width:' + pct + '%"></i></div></div></div>' +
+      '<div class="quiz wrap"><h1 class="sr">ชุด ' + set.id + ' ' + esc(set.tag) + '</h1>' + chips + ctx +
+      '<p class="qno">ข้อ ' + (pos + 1) + '</p><h2 class="qtext" tabindex="-1">' + fmt(q.q) + '</h2><p class="qhint">' + TYPE_HINT[q.t] + '</p>' +
+      figHTML(q, fb) + body + (fb ? fbHTML(q, a) : '') + confirm + jump + '</div>' + actions;
+  }
+
+  /* ---------- หน้าผล ---------- */
+  function resultHTML() {
+    const t = calc(set, run);
+    const pct = Math.round((t.right / t.total) * 100);
+    const rows = Object.keys(SRC).filter(k => t.per[k]).map(k => {
+      const b = t.per[k];
+      return '<div class="bd-row"><span class="name">' + SRC[k] + '</span><span class="num">' + b.r + '/' + b.t + '</span><span class="bar"><i style="width:' + Math.round((b.r / b.t) * 100) + '%"></i></span></div>';
+    }).join('');
+    const wr = t.wrong.length
+      ? '<h2>ข้อที่ยังไม่ถูก (' + t.wrong.length + ' ข้อ)</h2><div class="wrongs">' + t.wrong.map(p => '<button class="btn small" data-act="review" data-p="' + p + '" aria-label="ดูเฉลยข้อ ' + (p + 1) + '">ข้อ ' + (p + 1) + '</button>').join('') + '</div>'
+      : '<h2>ถูกทุกข้อ</h2><p style="margin:0">ลองทำชุดถัดไป หรือสลับไปโหมดสอบเพื่อซ้อมแบบไม่เห็นเฉลย</p>';
+    return '<div class="result wrap"><h1>ผลคะแนน · ชุด ' + set.id + ' ' + esc(set.tag) + ' · ' + (run.mode === 'exam' ? 'โหมดสอบ' : 'โหมดฝึก') + (run.retry ? ' · ทำซ้ำเฉพาะข้อผิด' : '') + '</h1>' +
+      '<div class="score"><span class="big">' + t.right + '</span><span class="of">/ ' + t.total + '</span></div><p class="pct">ถูก ' + pct + '%</p>' +
+      '<h2>แยกตามบทเรียน</h2>' + rows + wr +
+      '<div class="rbtns"><button class="btn primary" data-act="review" data-p="' + (t.wrong.length ? t.wrong[0] : 0) + '">ดูเฉลยทีละข้อ</button>' +
+      (t.wrong.length ? '<button class="btn" data-act="retry">ทำเฉพาะข้อที่ผิดซ้ำ (' + t.wrong.length + ' ข้อ)</button>' : '') +
+      '<button class="btn" data-act="restart" data-id="' + set.id + '">ทำชุดนี้ใหม่</button><button class="btn ghost" data-act="home">กลับหน้าแรก</button></div></div>';
+  }
+
+  /* ---------- render ---------- */
+  function decorateFigs() {
+    $app.querySelectorAll('.fig').forEach(fig => {
+      const q = run && ui.view === 'quiz' ? set.qs[run.ids[run.idx]] : null;
+      fig.querySelectorAll('.hot').forEach(g => {
+        try {
+          const bb = g.getBBox();
+          const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          r.setAttribute('class', 'hl');
+          r.setAttribute('x', bb.x - 7); r.setAttribute('y', bb.y - 7);
+          r.setAttribute('width', bb.width + 14); r.setAttribute('height', bb.height + 14); r.setAttribute('rx', 6);
+          g.insertBefore(r, g.firstChild);
+        } catch (e) { /* ไม่มี layout ให้ข้ามไป */ }
+        if (!q) return;
+        const a = run.ans[run.ids[run.idx]], id = g.getAttribute('data-id'), fb = run.done || run.chk[run.ids[run.idx]];
+        if (fb) { if (id === q.ans) g.classList.add('right'); else if (id === a) g.classList.add('wrong'); }
+        else if (id === a) g.classList.add('sel');
+        g.setAttribute('aria-pressed', String(id === a));
+      });
+    });
+  }
+  function render() {
+    if (ui.view === 'home') $app.innerHTML = homeHTML();
+    else if (ui.view === 'result') $app.innerHTML = resultHTML();
+    else $app.innerHTML = quizHTML();
+    decorateFigs();
+    paintTheme();
+    if (ui.focus) { const f = $app.querySelector(ui.focus); if (f) f.focus({ preventScroll: true }); ui.focus = null; }
+  }
+
+  /* ---------- การกระทำ ---------- */
+  function openRun(s, r, view) { set = s; run = r; ui.view = view; ui.confirm = null; ui.focus = view === 'quiz' ? '.qtext' : null; render(); window.scrollTo(0, 0); }
+  function start(id) {
+    const s = setById(id); let r = loadRun(s, ui.mode);
+    if (!r) { r = newRun(s, ui.mode); store.set(runKey(s.id, ui.mode, false), r); }
+    openRun(s, r, r.done ? 'result' : 'quiz');
+  }
+  function go(p) { run.idx = Math.max(0, Math.min(run.ids.length - 1, p)); ui.confirm = null; save(); ui.focus = '.qtext'; render(); window.scrollTo(0, 0); }
+  function setAns(v) { const qi = run.ids[run.idx]; run.ans[qi] = v; save(); }
+  function finish() {
+    run.done = true; save();
+    if (!run.retry) { const last = store.get(KEY + ':last') || {}; const t = calc(set, run); last[set.id + ':' + run.mode] = { right: t.right, total: t.total, ts: Date.now() }; store.set(KEY + ':last', last); }
+    ui.view = 'result'; ui.confirm = null; render(); window.scrollTo(0, 0);
+  }
+  function tryFinish() {
+    const un = run.ids.filter(i => !isAnswered(set.qs[i], run.ans[i])).length;
+    if (run.mode === 'exam' || un > 0) { ui.confirm = 'finish'; render(); const c = $app.querySelector('.confirm'); if (c) c.scrollIntoView({ block: 'center' }); } else finish();
+  }
+  function check() {
+    const qi = run.ids[run.idx], q = set.qs[qi];
+    if (run.done || run.chk[qi] || !isAnswered(q, run.ans[qi])) return;
+    run.chk[qi] = true; save(); render();
+    const f = $app.querySelector('.fb'); if (f) f.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+  }
+  function pick(v) {
+    if (run.done) return;
+    const qi = run.ids[run.idx], q = set.qs[qi];
+    if (run.chk[qi]) return;
+    setAns(q.t === 'mcq' ? Number(v) : v === 'true');
+    if (run.mode === 'practice') run.chk[qi] = true;
+    save(); ui.focus = '.opt[aria-checked="true"]'; render();
+    if (run.mode === 'practice') { const f = $app.querySelector('.fb'); if (f) f.scrollIntoView({ block: 'nearest', behavior: 'auto' }); }
+  }
+  function locked() { const qi = run.ids[run.idx]; return run.done || !!run.chk[qi]; }
+
+  const act = {
+    home() { ui.view = 'home'; render(); window.scrollTo(0, 0); },
+    mode(el) { ui.mode = el.dataset.m; store.set(KEY + ':mode', ui.mode); ui.arm = null; render(); },
+    arm(el) { ui.arm = Number(el.dataset.id); render(); },
+    start(el) { start(Number(el.dataset.id)); },
+    restart(el) { const s = setById(Number(el.dataset.id)); const mode = run && run.setId === s.id && ui.view === 'result' ? run.mode : ui.mode; ui.arm = null; const r = newRun(s, mode); store.set(runKey(s.id, mode, false), r); if (mode !== ui.mode) { ui.mode = mode; store.set(KEY + ':mode', mode); } openRun(s, r, 'quiz'); },
+    pick(el) { pick(el.dataset.v); },
+    place(el) { if (locked()) return; const qi = run.ids[run.idx]; const cur = (run.ans[qi] || []).slice(); cur.push(Number(el.dataset.it)); setAns(cur); ui.focus = '.pill'; render(); },
+    unplace(el) { if (locked()) return; const qi = run.ids[run.idx]; const cur = (run.ans[qi] || []).slice(); cur.splice(Number(el.dataset.k), 1); setAns(cur); ui.focus = '.pill'; render(); },
+    clear() { if (locked()) return; setAns([]); render(); },
+    check() { check(); },
+    next() { go(run.idx + 1); },
+    prev() { go(run.idx - 1); },
+    goto(el) { go(Number(el.dataset.p)); },
+    finish() { tryFinish(); },
+    cancelfinish() { ui.confirm = null; render(); },
+    confirmfinish() { finish(); },
+    toresult() { ui.view = 'result'; render(); window.scrollTo(0, 0); },
+    review(el) { run.idx = Number(el.dataset.p); ui.view = 'quiz'; ui.focus = '.qtext'; render(); window.scrollTo(0, 0); },
+    retry() { const t = calc(set, run); const ids = t.wrong.map(p => run.ids[p]); const r = newRun(set, run.mode, ids, true); store.set(runKey(set.id, run.mode, true), r); openRun(set, r, 'quiz'); },
+  };
+
+  $app.addEventListener('click', e => {
+    const hot = e.target.closest('.hot');
+    if (hot && run && ui.view === 'quiz') { if (!locked()) { setAns(hot.getAttribute('data-id')); render(); const h = $app.querySelector('.hot.sel'); if (h) h.focus({ preventScroll: true }); } return; }
+    const el = e.target.closest('[data-act]');
+    if (!el || el.tagName === 'SELECT') return;
+    if (el.getAttribute('aria-disabled') === 'true') return;
+    const name = el.dataset.act;
+    if (name !== 'arm' && name !== 'restart') ui.arm = null;
+    if (act[name]) act[name](el);
+  });
+  $app.addEventListener('change', e => {
+    const el = e.target;
+    if (!(el.matches && el.matches('select[data-act="match"]')) || !run || locked()) return;
+    const qi = run.ids[run.idx], q = set.qs[qi], choices = choicesOf(q);
+    const cur = (run.ans[qi] || []).slice(); while (cur.length < q.pairs.length) cur.push(null);
+    cur[Number(el.dataset.k)] = el.value === '' ? null : choices[Number(el.value)];
+    setAns(cur); ui.focus = '#m' + el.dataset.k; render();
+  });
+  $app.addEventListener('keydown', e => {
+    const hot = e.target.closest && e.target.closest('.hot');
+    if (hot && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); hot.dispatchEvent(new MouseEvent('click', { bubbles: true })); }
+  });
+  $app.addEventListener('toggle', e => { if (e.target.classList && e.target.classList.contains('jump')) ui.jumpOpen = e.target.open; }, true);
+
+  document.addEventListener('keydown', e => {
+    if (ui.view !== 'quiz' || !run || e.ctrlKey || e.metaKey || e.altKey) return;
+    const ae = document.activeElement;
+    const onOpt = !!(ae && ae.classList && ae.classList.contains('opt'));
+    if (ae && ae !== document.body && ae.tagName !== 'H2' && !onOpt) return;
+    if (onOpt && e.key === 'Enter' && !locked()) return;
+    if (onOpt && e.key === 'Enter') e.preventDefault();
+    const qi = run.ids[run.idx], q = set.qs[qi];
+    if (e.key >= '1' && e.key <= '5' && !locked() && (q.t === 'mcq' || q.t === 'tf')) {
+      const k = Number(e.key) - 1;
+      if (q.t === 'mcq') { const p = perm(q.opts.length, run.seed, qi); if (k < p.length) pick(String(p[k])); }
+      else if (k < 2) pick(k === 0 ? 'true' : 'false');
+    } else if (e.key === 'ArrowRight' && run.idx < run.ids.length - 1) go(run.idx + 1);
+    else if (e.key === 'ArrowLeft' && run.idx > 0) go(run.idx - 1);
+    else if (e.key === 'Enter') {
+      const fb = locked();
+      if (!fb && ui.mode === 'practice' && (q.t === 'order' || q.t === 'match' || q.t === 'spot')) check();
+      else if (run.idx < run.ids.length - 1) go(run.idx + 1);
+      else if (!run.done) tryFinish();
+    }
+  });
+
+  paintTheme();
+  render();
+})();
+
+</script>
+</body>
+</html>
