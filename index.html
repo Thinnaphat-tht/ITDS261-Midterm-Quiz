@@ -1160,6 +1160,498 @@ SETS.push({
 });
 </script>
 <script>
+/* ชุด 5 · Part 1 ชุด A — L1 (7) + L2 (8) + L3 (7) + L8 (8) = 30 ข้อ ข้อที่ผู้จัดทำตั้งสถานการณ์เองระบุไว้ในเฉลย */
+SETS.push({
+  id: 5,
+  tag: 'ทฤษฎี Part 1 · แบบ A',
+  level: 'กลาง',
+  desc: 'ทฤษฎี Part 1 ครบ 4 บท (L1 SE Foundation & Project Management, L2 Software Process, L3 Requirements Engineering, L8 Interface Design) 30 ข้อ ความยากเท่ากับชุด B และ C',
+  qs: [
+    /* ---------- L1 (7 ข้อ) ---------- */
+    mk.mcq('L1', 'ระบบจองห้องพักของโรงแรมแห่งหนึ่งไม่มีส่วนใดชำรุดเลย แต่ต้องถูกแทนที่ด้วยระบบใหม่เพราะเทคโนโลยีและความต้องการของลูกค้าเปลี่ยนไป ข้อนี้สะท้อนลักษณะใดของ software',
+      'Can be obsolete: ไม่สึกหรอทางกายภาพ แต่ล้าสมัยได้',
+      ['Intangible: จับต้องไม่ได้', 'Labour intensive: ใช้แรงงานคนมาก', 'Manufactured: ผลิตซ้ำแบบสายการผลิตในโรงงาน'],
+      'สไลด์ระบุลักษณะของ software ไว้ 6 ข้อ รวมถึง **Does not wear out** (ไม่เสื่อมสภาพทางกายภาพ) และ **Can be obsolete** (ล้าสมัยได้เมื่อความต้องการและเทคโนโลยีเปลี่ยน) ส่วน Manufactured ผิดตั้งแต่ต้น เพราะสไลด์ว่า software ต้อง “developed or engineered, not manufactured” (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.tf('L1', 'ตามนิยามของ Lethbridge Software Engineering ครอบคลุมเฉพาะการพัฒนาระบบ (development) ไม่รวมการต่อยอดดูแลระบบหลังส่งมอบ (evolution)', false,
+      'ผิด นิยามของ Lethbridge คือ “systematic development **and evolution** of large, high-quality software systems within cost, time and other constraints” จึงรวมทั้งการพัฒนาและการต่อยอด'),
+
+    mk.mcq('L1', 'ข้อใดเป็นหนึ่งใน 5 aspects ที่ต้องพิจารณาเพื่อพัฒนาและสนับสนุน software system ตามสไลด์',
+      'Product characterization and metrics for measurements',
+      ['Programming language licensing and royalties', 'Hardware procurement and installation planning', 'Advertising and brand positioning strategy'],
+      '5 aspects: **Technical and business processes · Specific methodologies and techniques · Product characterization and metrics for measurements · People skills and teamwork · Project coordination and management**'),
+
+    mk.mcq('L1', 'หลังเริ่มโปรเจกต์ได้ 2 เดือน ผู้จัดการนำชั่วโมงงานจริงที่เก็บได้มาเทียบกับแผน แล้วทำรายงานสถานะส่งให้ผู้ว่าจ้าง กิจกรรมนี้อยู่ในขั้นใดของ POMA',
+      'Monitoring',
+      ['Planning', 'Organizing', 'Adjusting'],
+      'Monitoring มี 3 องค์ประกอบ: **เก็บข้อมูลสถานะ · วิเคราะห์และประเมิน · นำเสนอและสื่อสารสถานะ** โจทย์นี้ทำครบทั้งสามอย่างแล้วโดยยังไม่ได้แก้อะไร ถ้าแก้ตามผลที่ได้จึงจะเป็น Adjusting (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.order('L1', 'เรียงรายการของระบบจองห้องประชุมต่อไปนี้ตามระดับของ WBS จากใหญ่ไปเล็ก',
+      ['Meeting Room Booking System', 'การจองห้อง', 'ตรวจสอบห้องว่าง', 'เขียนคิวรีค้นหาห้องที่ว่างตามวันเวลา'],
+      'WBS 4 ระดับ: **System name → Module → Function → Task** ในข้อนี้: ชื่อระบบ → โมดูลการจองห้อง → ฟังก์ชันตรวจสอบห้องว่าง → งานย่อยเขียนคิวรี (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.match('L1', 'จับคู่สถานการณ์กับ Knowledge area ของ PMBOK',
+      [
+        ['ประเมินและควบคุมงบประมาณของโปรเจกต์', 'Cost management'],
+        ['ตรวจว่างานที่ส่งมอบได้มาตรฐานตามเกณฑ์ที่กำหนด', 'Quality management'],
+        ['เลือกและทำสัญญากับผู้รับเหมาภายนอก', 'Procurement management'],
+        ['ระบุเหตุการณ์ที่อาจทำให้โปรเจกต์ล้มเหลวและวางแผนรับมือ', 'Risk management'],
+      ],
+      'Knowledge areas ของ PMBOK (2019) ในสไลด์มี 10 ด้าน: Scope · Schedule · Cost · Quality · Project integration · Resource · Communications · Risk · Procurement · Stakeholder (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)',
+      { extra: ['Stakeholder management'] }),
+
+    mk.mcq('L1', 'ก่อนเริ่มงาน ผู้จัดการจัดหาเครื่อง server ไลเซนส์ซอฟต์แวร์ และเครื่องมือทดสอบให้ทีมใช้งานได้ครบ ตรงกับเป้าหมายข้อใดของ Software Project Management',
+      'Tools & resources are made available and effectively utilized',
+      ['Satisfy customers’ needs: ตอบโจทย์ความต้องการของลูกค้า', 'Targets & milestones are met: ถึงเป้าหมายและ milestone ที่วางไว้', 'Team members work effectively: สมาชิกทีมทำงานอย่างมีประสิทธิภาพ'],
+      'เป้าหมาย 5 ข้อของ SPM: Satisfy customers’ needs · Project attributes are met · Targets & milestones are met · Team members work effectively · **Tools & resources are made available and effectively utilized** (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    /* ---------- L2 (8 ข้อ) ---------- */
+    mk.mcq('L2', 'ทีมนำ software ที่ผ่านการทดสอบแล้วไปติดตั้งใช้งานบนเครื่องของลูกค้าจริง กิจกรรมนี้ตรงกับกิจกรรมหลักข้อใด',
+      'Deployment and release',
+      ['Implementation (coding)', 'Maintenance and evolution', 'Testing and quality assurance'],
+      '**Deployment and release** = ส่งมอบ software ให้นำไปใช้ในสภาพแวดล้อมจริง ส่วน Maintenance and evolution เกิดหลังส่งมอบ (แก้ปัญหา เพิ่มฟีเจอร์ ปรับให้เข้ากับยุคสมัย) (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.tf('L2', 'Process model อธิบายลำดับของ activities, บทบาท (roles), artifacts และ workflows ที่เกี่ยวข้องกับการพัฒนาและบำรุงรักษา software', true,
+      'ถูก สไลด์ว่า process model อธิบาย **sequence of activities, roles, artifacts, and workflows** และสรุปว่าให้นึกถึง “coordination, tasks, people”'),
+
+    mk.mcq('L2', 'นักพัฒนาอิสระรับงานทำเว็บร้านค้า เริ่มเขียนโค้ดทันทีโดยยังไม่ได้ตกลงขอบเขตงาน และข้ามการทำ unit test ไปเลย จุดอ่อนนี้เป็นของโมเดลใดและตรงกับข้อใด',
+      'Code and Fix: เริ่มโดยไม่เข้าใจ problem statement และข้าม unit testing',
+      ['Waterfall: แต่ละ phase ซ้อนทับกันจนควบคุมงานไม่ได้เลย', 'Spiral: วิเคราะห์ risk ซ้ำไปมาจนไม่ได้เขียนโค้ดจริง', 'Scrum: ไม่มี incremental delivery ให้ลูกค้าได้เห็นงาน'],
+      'จุดอ่อนของ Code and Fix มี 2 ข้อตามสไลด์: บางคนข้าม **unit testing/debugging** และบางคนเริ่มโดยไม่เข้าใจ **problem statement (ซึ่งคือ requirement)** (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L2', 'ข้อใดแยก Incremental แบบ A กับแบบ B ได้ถูกต้อง',
+      'แบบ A รวมชิ้นงานเข้า integration bucket เพื่อทำ system test รวม ส่วนแบบ B ทยอย package และ release เป็นรอบ ๆ',
+      ['แบบ A ทยอย release เป็น Release 1 ถึง n ส่วนแบบ B รวมชิ้นงานเข้า integration bucket เพื่อทำ system test', 'แบบ A ทำทีละ phase เป็นเส้นตรง ส่วนแบบ B วนเป็นเกลียวพร้อม risk analysis ทุกรอบ', 'ทั้งสองแบบเหมือนกันทุกประการ ต่างกันแค่ชื่อที่ใช้เรียก'],
+      '**แบบ A** = completed pieces ถูกรวมเข้า common bucket เพื่อทำ integrated system test · **แบบ B** = แต่ละชุด requirement เล็ก ๆ ถูกพัฒนา package และ release แบบ multiple release'),
+
+    mk.order('L2', 'เรียง phase ของ Waterfall Model ตามแผนภาพในสไลด์',
+      ['Requirement', 'Design', 'Implementation', 'Testing', 'Deployment', 'Maintenance'],
+      'Waterfall เป็น traditional, linear and sequential: **Requirement → Design → Implementation → Testing → Deployment → Maintenance** โดยแต่ละ phase ไม่ซ้อนทับกัน'),
+
+    mk.mcq('L2', 'ทีมสร้าง prototype เล็ก ๆ เพื่อทดสอบว่าเทคโนโลยีทางเลือกใดมีความเสี่ยงต่ำกว่า กิจกรรมนี้อยู่ใน quadrant ใดของ Spiral model',
+      'Quadrant 3: Evaluate Alternatives, Identify, Resolve Risks',
+      ['Quadrant 2: Determine Objectives, Alternatives, Constraints', 'Quadrant 4: Develop, Verify Next-level Product', 'Quadrant 1: Plan Next Phase'],
+      'ใน Spiral **risk analysis และ prototype อยู่ที่ quadrant 3** (ขวาบน) ส่วน quadrant 2 กำหนดวัตถุประสงค์/ทางเลือก/ข้อจำกัด · quadrant 4 พัฒนาและตรวจสอบ product ระดับถัดไป · quadrant 1 วางแผน phase ถัดไป (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L2', 'ทีมนัดลูกค้ามาร่วมทบทวนงานทุกสัปดาห์ แทนที่จะรอให้งานเป็นไปตามเงื่อนไขในสัญญาเท่านั้น ตรงกับคู่ค่านิยมข้อใดของ Agile Manifesto',
+      'Customer collaboration over contract negotiation',
+      ['Individuals and interactions over processes and tools', 'Working software over comprehensive documentation', 'Responding to change over following a plan'],
+      'การร่วมมือกับลูกค้าอย่างต่อเนื่องคือ **Customer collaboration** ที่ให้ค่ามากกว่า contract negotiation (ฝั่งขวายังมีคุณค่า แต่ให้น้ำหนักฝั่งซ้ายมากกว่า) (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L2', 'ระบบบริหารโรงพยาบาลของรัฐ requirement ชัดเจนและแทบไม่เปลี่ยน ต้องการเอกสารครบทุก phase และตรวจรับงานเป็นขั้น ๆ เหมาะกับโมเดลใดที่สุด',
+      'Waterfall',
+      ['Scrum', 'Code and Fix', 'Spiral'],
+      'Waterfall เหมาะกับงานที่ requirement ชัดและนิ่ง เพราะเป็น linear and sequential, แต่ละ phase ส่งมอบ deliverable เป็น input ของ phase ถัดไป และเน้น **documentation กับ planning** (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    /* ---------- L3 (7 ข้อ) ---------- */
+    mk.mcq('L3', 'ข้อใดเป็น functional requirement',
+      'ผู้ดูแลระบบลบบัญชีผู้ใช้ที่ถูกระงับได้',
+      ['ระบบต้องรองรับผู้ใช้ที่ล็อกอินพร้อมกัน 500 คน', 'ระบบต้องทำงานได้บน Chrome และ Safari', 'ระบบต้องใช้หน่วยความจำไม่เกิน 2 GB'],
+      'Functional = บริการที่ระบบ “ทำ” ส่วน 3 ข้อที่เหลือเป็น non-functional (จำนวนผู้ใช้พร้อมกัน/performance, compatibility, การใช้ memory) ซึ่งเป็นข้อจำกัดของบริการ (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.match('L3', 'จัดประเภท requirement ต่อไปนี้ว่าเป็น Functional หรือ Non-functional',
+      [
+        ['ระบบส่งอีเมลแจ้งเตือนเมื่อสั่งซื้อสำเร็จ', 'Functional'],
+        ['หน้าค้นหาต้องแสดงผลภายใน 2 วินาที', 'Non-functional'],
+        ['ผู้ใช้เปลี่ยนรหัสผ่านของตนเองได้', 'Functional'],
+        ['ระบบต้องทำงานบน Android 10 ขึ้นไป', 'Non-functional'],
+      ],
+      'ถามตัวเองว่า “ระบบทำอะไร” (Functional) หรือ “ทำได้ดีแค่ไหน/ภายใต้ข้อจำกัดอะไร” (Non-functional เช่น response time, compatibility, memory use) (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.tf('L3', 'User requirements เขียนได้ตั้งแต่ข้อความกว้าง ๆ ไปจนถึงคำอธิบายเชิงลึกที่แม่นยำ ส่วน system requirements ระบุละเอียดและกำหนดชัดว่าต้อง implement อะไร', true,
+      'ถูก สไลด์ว่า user requirements “may vary from broad statements of the system features required to detailed precise descriptions of the system functionality” ส่วน system requirements “define exactly what is to be implemented”'),
+
+    mk.mcq('L3', 'ทีมนำร่าง requirements ไปให้ลูกค้าตรวจว่าตรงกับที่ต้องการ ครบถ้วน และไม่ขัดแย้งกันเอง กิจกรรมนี้ตรงกับกระบวนการ RE ข้อใด',
+      'Requirements validation',
+      ['Requirements elicitation', 'Requirements specification', 'Requirements change'],
+      'RE มี 4 กระบวนการ: elicitation (รวบรวม) · specification (เขียนระบุ) · **validation (ตรวจสอบ)** · change (จัดการการเปลี่ยนแปลง) (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L3', 'ทีมสอบถามว่าข้อมูลลูกค้าประกอบด้วยฟิลด์ใดบ้าง และไฟล์ที่นำเข้ามีรูปแบบ (format) แบบไหน เรื่องนี้เป็นมิติใดของ 6 มิติในการ elicit requirements',
+      'Data and Data formats',
+      ['Business Workflow', 'User Interfaces', 'Existing & Systems Interfaces'],
+      '6 มิติ: Individual Functionality · Business Workflow · **Data and Data formats** · User Interfaces · Existing & Systems Interfaces · Other Constraints (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L3', 'แคชเชียร์ทำงานจนเป็นนิสัยและอธิบายขั้นตอนเป็นคำพูดได้ยาก ทีมจึงนั่งดูการทำงานจริงที่หน้าร้านตลอดวัน ใช้เทคนิค elicitation ใด',
+      'Ethnography (observation)',
+      ['Questionnaires', 'Joint requirements planning (JRP)', 'Interview'],
+      'Ethnography คือการ **สังเกตการทำงานจริง** เหมาะเมื่อผู้ใช้อธิบายงานของตัวเองได้ยาก สไลด์ระบุว่าแต่ละเทคนิคมีจุดแข็งและความเหมาะสมต่างกันตามสถานการณ์ (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.order('L3', 'เรียง 4 กระบวนการของ Requirements Engineering ตามที่สไลด์ระบุ',
+      ['Requirements elicitation', 'Requirements specification', 'Requirements validation', 'Requirements change'],
+      'ลำดับตามสไลด์: **elicitation → specification → validation → change** และ RE เป็น iterative process คือวนซ้ำได้ ผลลัพธ์คือ System requirements document'),
+
+    /* ---------- L8 (8 ข้อ) ---------- */
+    mk.mcq('L8', 'ตู้ ATM รุ่นเก่าแสดงข้อความ “1. ถอนเงิน 2. ฝากเงิน 3. ตรวจยอด” ให้กดตัวเลขเพื่อเลือก ใช้ UI ชนิดใด',
+      'Text Menu Interface',
+      ['Command-Line Interface', 'Graphical User Interface', 'Touchscreen User Interface'],
+      'Text Menu Interface เป็น text-based เหมือน CLI แต่แสดง **เมนูเป็นข้อความ** ให้เลือกด้วยตัวเลข ตัวอักษร หรือปุ่มลูกศร ผู้ใช้ไม่ต้องพิมพ์คำสั่งเอง (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.match('L8', 'จับคู่สถานการณ์กับชนิดของ User Interface',
+      [
+        ['ลำโพงอัจฉริยะที่สั่งงานด้วยเสียง', 'Voice User Interface (VUI)'],
+        ['แอปแต่งห้องที่วางเฟอร์นิเจอร์เสมือนซ้อนบนภาพห้องจริง', 'Augmented Reality (AR)'],
+        ['ชุดหูฟังจำลองห้องเรียนที่ผู้ใช้อยู่ในโลกเสมือนทั้งหมด', 'Virtual Reality (VR)'],
+        ['ผู้ดูแลระบบพิมพ์คำสั่งเพื่อควบคุม server', 'Command-Line Interface (CLI)'],
+      ],
+      'AR ผสานองค์ประกอบเสมือนเข้ากับโลกจริง · VR สร้างสภาพแวดล้อมเสมือนแบบ immersive · VUI ใช้คำสั่งและเสียงตอบกลับ (เช่น Siri, Alexa) · CLI ใช้คำสั่งตัวอักษร (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.tf('L8', 'ในสไลด์ AR User Interface และ VR User Interface ถูกจัดไว้ใต้หัวข้อ Gesture-Based Interfaces', true,
+      'ถูก สไลด์ใช้หัวข้อ **Gesture-Based Interfaces** แล้วแยกย่อยเป็น Augmented Reality (AR) และ Virtual Reality (VR)'),
+
+    mk.mcq('L8', 'ทีมกำหนดว่าเมื่อผู้ใช้กรอกข้อมูลผิดรูปแบบ ระบบจะแจ้งข้อความอย่างไร และจะตอบสนองภายในกี่วินาที งานนี้อยู่ใน phase ใดของ UI Design Process',
+      'Phase 2: Interface design',
+      ['Phase 1: User, task, environmental analysis and modeling', 'Phase 3: Interface construction and implementation', 'Phase 4: Interface validation'],
+      'Phase 2 มี design issues 3 เรื่อง: **Response time · Command and action structure · Error handling** โจทย์นี้ครอบคลุม error handling และ response time (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L8', 'ข้อใด **ไม่ใช่** งานของ Phase 1 (User, task, environmental analysis and modeling)',
+      'กำหนด response time ของแต่ละคำสั่ง',
+      ['ทำความเข้าใจ skill และ knowledge ของผู้ใช้', 'ระบุ tasks ที่ผู้ใช้ต้องทำ', 'ศึกษาสภาพแวดล้อมทางกายภาพที่ใช้งาน'],
+      'Phase 1 ตั้งอยู่บน profile ของผู้ใช้ (skill, knowledge, type of user), tasks ที่ต้องทำ และ physical work environment ส่วน response time เป็น design issue ของ **Phase 2**'),
+
+    mk.mcq('L8', 'โปรแกรมแสดงรายการไฟล์ที่เปิดล่าสุดให้เลือกเปิดซ้ำได้ โดยผู้ใช้ไม่ต้องจำชื่อไฟล์ ตรงกับหลักย่อยใด',
+      'Provide visual clues ให้จำสิ่งที่เคยทำ (Reduce the user’s memory load)',
+      ['Provide for flexible interaction (Place the user in control)', 'Maintain consistency across the system (Make the interface consistent)', 'Allow advanced users to customize (Place the user in control)'],
+      'หลักย่อยของ Reduce the user’s memory load ข้อ “reduce demand on short-term memory” คือ **provide visual clues that enable user to recognize past actions** (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L8', 'โปรแกรมตัดต่อวิดีโอให้นักตัดต่อมืออาชีพจัดวางแผงเครื่องมือและกำหนดปุ่มลัดเองได้ ตรงกับหลักย่อยใด',
+      'Allow advanced users to customize their interface (Place the user in control)',
+      ['Establish meaningful defaults (Reduce the user’s memory load)', 'Disclose information in layers (Reduce the user’s memory load)', 'Maintain consistency across the system (Make the interface consistent)'],
+      'ตามสไลด์ใต้ข้อ **Place the user in control** มี “allow advanced users to customize their interface to facilitate interaction” (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.tf('L8', 'High fidelity prototype เน้นโครงสร้างพื้นฐานและเลี่ยงรายละเอียดการออกแบบ เหมาะกับการขอ feedback ช่วงต้น', false,
+      'ผิด ข้อความนี้อธิบาย **low fidelity** ส่วน high fidelity มี UI element, content และ interaction ที่สมจริงใกล้ของจริง อาจมี animation/transition เหมาะกับ accurate user testing และ validate design ก่อนพัฒนา'),
+  ],
+});
+</script>
+<script>
+/* ชุด 6 · Part 1 ชุด B — L1 (7) + L2 (8) + L3 (7) + L8 (8) = 30 ข้อ ข้อที่ผู้จัดทำตั้งสถานการณ์เองระบุไว้ในเฉลย */
+SETS.push({
+  id: 6,
+  tag: 'ทฤษฎี Part 1 · แบบ B',
+  level: 'กลาง',
+  desc: 'ทฤษฎี Part 1 ครบ 4 บท (L1, L2, L3, L8) 30 ข้อ โครงสร้างและความยากเท่ากับชุด A และ C แต่ใช้สถานการณ์และมุมถามต่างกัน',
+  qs: [
+    /* ---------- L1 (7 ข้อ) ---------- */
+    mk.mcq('L1', 'ทีมประเมินว่าโปรเจกต์ใหม่ต้องใช้โปรแกรมเมอร์และผู้ทดสอบจำนวนมาก เพราะ software ต้องอาศัยคนลงมือวิเคราะห์ เขียน และทดสอบทีละส่วน ข้อนี้ตรงกับลักษณะใดของ software',
+      'Labour intensive: ใช้แรงงานคนมาก',
+      ['Does not wear out: ไม่สึกหรอ', 'Can be obsolete: ล้าสมัยได้', 'Difficult to make changes: แก้ไขเปลี่ยนแปลงยาก'],
+      '6 ลักษณะของ software: developed/engineered not manufactured · Intangible · **Labour intensive** · Difficult to make changes · Does not wear out · Can be obsolete (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.tf('L1', 'ตามสไลด์ software project ต้องมี executive management support แต่ไม่จำเป็นต้องมี realistic planning ถ้าทีมทำงานเร็วพอ', false,
+      'ผิด สิ่งที่ software project ต้องมีตามสไลด์: clear objectives and goals · clear requirements · stakeholder involvement · executive management support · **realistic planning** · good management ต้องมีครบ'),
+
+    mk.mcq('L1', 'ข้อใดตีความนิยามของ Lethbridge เกี่ยวกับ Software Engineering ได้ถูกต้อง',
+      'ทำอย่างเป็นระบบ ครอบคลุมทั้งพัฒนาและต่อยอด และต้องเสร็จภายใต้ข้อจำกัด เช่น งบประมาณและเวลา',
+      ['เน้นเขียนโค้ดให้เร็วที่สุด เพราะเวลาสำคัญกว่าคุณภาพของ software ที่ส่งมอบ', 'ใช้ได้เฉพาะ software ขนาดเล็กที่นักพัฒนาคนเดียวทำจนจบงานได้', 'สิ้นสุดเมื่อส่งมอบโปรแกรมให้ลูกค้าแล้ว โดยไม่ต้องดูแลหรือต่อยอดอีก'],
+      'คำสำคัญในนิยาม: **systematic** · **development and evolution** · **large, high-quality** · **within cost, time and other constraints** ตัวเลือกผิดทั้งสามข้อขัดกับคำสำคัญเหล่านี้ตามลำดับ'),
+
+    mk.mcq('L1', 'ก่อนเริ่มพัฒนา ผู้จัดการออกแบบโครงสร้างองค์กรของทีม จ้างบุคลากรที่ขาด ส่งเข้าอบรมตามที่จำเป็น และเริ่มกลไกติดตามความเสี่ยง กิจกรรมเหล่านี้อยู่ในขั้นใดของ POMA',
+      'Organizing',
+      ['Planning', 'Monitoring', 'Adjusting'],
+      'Organizing = design organization structure · hire human resources · complete required education and training · initiate tracking mechanisms (risk tracking and mitigation, project goal monitoring) (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.order('L1', 'เรียง 5 ขั้นแรกของ Planning ใน POMA ให้ถูกลำดับ',
+      ['เข้าใจ requirements ของโปรเจกต์', 'กำหนดเป้าหมายที่วัดผลได้', 'ประเมินปริมาณงาน (work effort)', 'ประเมินตารางเวลา (schedule)', 'ประเมินทรัพยากรที่ต้องใช้'],
+      '7 ขั้นของ Planning: เข้าใจ requirements → เป้าหมายที่วัดผลได้ → work effort → schedule → ทรัพยากรที่ต้องใช้ → การจัดสรรทรัพยากร → ความเสี่ยง ข้อนี้ถาม 5 ขั้นแรก'),
+
+    mk.match('L1', 'จับคู่การแก้ไขโปรเจกต์กับด้านที่ถูกปรับใน Adjusting ของ POMA',
+      [
+        ['เพิ่มโปรแกรมเมอร์เข้าทีมเพื่อเร่งงานที่ล่าช้า', 'Resources'],
+        ['เลื่อนวันส่งมอบออกไป 2 สัปดาห์', 'Schedule'],
+        ['ตัดฟีเจอร์ที่ไม่จำเป็นออกจากรุ่นแรก', 'Project content'],
+        ['ขยายเวลาทดสอบออกไปอีก 1 สัปดาห์', 'Schedule'],
+      ],
+      'Adjusting ปรับได้ 3 ด้าน (หนึ่งด้านหรือหลายด้านร่วมกัน): **Resources · Schedule · Project content** (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)',
+      { extra: ['Risk'] }),
+
+    mk.mcq('L1', 'ทีมส่งมอบ prototype และรุ่นทดสอบตรงตามวันที่กำหนดไว้ในแผนทุกครั้ง ตรงกับเป้าหมายข้อใดของ Software Project Management',
+      'Targets & milestones are met',
+      ['Satisfy customers’ needs', 'Tools & resources are made available and effectively utilized', 'Team members work effectively'],
+      'เป้าหมายข้อ **Targets & milestones are met** คือส่งงานตามเป้าและ milestone ที่วางไว้ในแผน (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    /* ---------- L2 (8 ข้อ) ---------- */
+    mk.mcq('L2', 'ทีมวางโครงสร้างของระบบ และกำหนดว่าส่วนประกอบต่าง ๆ จะทำงานร่วมกันอย่างไร กิจกรรมนี้ตรงกับกิจกรรมหลักข้อใด',
+      'System and software design',
+      ['Requirements analysis', 'Implementation (coding)', 'Deployment and release'],
+      '**System and software design** = plan the structure of the system and how components will work together ส่วน Requirements analysis คือระบุว่าผู้ใช้ต้องการอะไรและ software ควรทำอะไร (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.tf('L2', 'Process model เป็น framework มาตรฐานที่ช่วยให้งานและ work product ของทีมมีความสม่ำเสมอและคุณภาพ', true,
+      'ถูก สไลด์ระบุว่า process models are standardised frameworks และมีเป้าหมายเพื่อ guide teams, ensure consistency and quality of work product และ facilitate communication and coordination'),
+
+    mk.mcq('L2', 'ทีมเริ่มทดสอบได้ก็ต่อเมื่อ phase Implementation ส่งมอบโค้ดครบแล้วเท่านั้น ทุก phase ต้องส่งเอกสารให้ phase ถัดไป และไม่มี phase ใดซ้อนทับกัน ตรงกับโมเดลใด',
+      'Waterfall',
+      ['Incremental แบบ B (Multiple Release)', 'Spiral', 'Scrum'],
+      'Waterfall: linear and sequential, **phases do not overlap**, deliverable ของ phase หนึ่งเป็น input ของ phase ถัดไป เน้น documentation และ planning (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L2', 'ข้อใดตรงกับ Incremental แบบ B (Multiple Release)',
+      'แต่ละชุด requirement เล็ก ๆ ถูกพัฒนา package และ release เป็นรอบ ๆ',
+      ['แต่ละ phase ไม่ซ้อนทับกัน และส่งต่อ deliverable เป็นเส้นตรง', 'รวมชิ้นงานที่เสร็จเข้า integration bucket แล้วทำ system test รวมครั้งเดียว', 'วนเป็นเกลียวและทำ risk analysis พร้อม prototype ในทุกรอบ'],
+      'แบบ B = “each small set of requirements is developed, packaged, and released in a multiple release fashion” ตัวเลือกอื่นคือ Waterfall, Incremental แบบ A และ Spiral ตามลำดับ'),
+
+    mk.order('L2', 'เรียงขั้นตอนของแต่ละรอบใน Incremental แบบ B (Multiple Release) ตามแผนภาพในสไลด์',
+      ['Requirements', 'Design', 'Code', 'Test', 'Package', 'Release'],
+      'แต่ละชุด requirement เล็ก ๆ ผ่าน **Requirements → Design → Code → Test → Package → Release (Rel. 1 ถึง n)**'),
+
+    mk.mcq('L2', 'ก่อนเข้าสู่รอบถัดไปของ Spiral model ทีมทบทวน (Review) และวางแผนเฟสต่อไป อยู่ใน quadrant ใด',
+      'Quadrant 1: Plan Next Phase',
+      ['Quadrant 2: Determine Objectives, Alternatives, Constraints', 'Quadrant 3: Evaluate Alternatives, Identify, Resolve Risks', 'Quadrant 4: Develop, Verify Next-level Product'],
+      'Quadrant 1 (ซ้ายล่าง) = **Plan Next Phase** ที่มีเส้น “Review” ก่อนเข้ารอบใหม่ · 2 = Determine Objectives, Alternatives, Constraints · 3 = Evaluate Alternatives, Identify, Resolve Risks · 4 = Develop, Verify Next-level Product (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L2', 'ข้อใดเป็น key characteristic ของ Scrum ตามสไลด์',
+      'Cross-functional teams',
+      ['Linear and sequential phases', 'Emphasis on documentation and planning', 'Risk analysis with prototype in every loop'],
+      'Key characteristics ของ Scrum: iterative development · incremental delivery · customer collaboration · responding to change · **cross-functional teams** · minimal documentation ตัวเลือกอื่นเป็นลักษณะของ Waterfall และ Spiral'),
+
+    mk.mcq('L2', 'ทีมเล็ก 6 คน มีทักษะครบในทีมเดียว ลูกค้าร่วมงานใกล้ชิดและเปลี่ยนความต้องการบ่อย ต้องการส่งมอบส่วนที่ใช้งานได้ทุก 2 สัปดาห์ และเขียนเอกสารเท่าที่จำเป็น เหมาะกับโมเดลใด',
+      'Scrum',
+      ['Waterfall', 'Code and Fix', 'Spiral'],
+      'คำใบ้: ส่งมอบเป็นรอบสั้น ๆ (iterative, incremental) · ลูกค้าร่วมงาน · รับมือการเปลี่ยนแปลง · cross-functional · minimal documentation = **Scrum** (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    /* ---------- L3 (7 ข้อ) ---------- */
+    mk.mcq('L3', 'ข้อใดเป็น non-functional requirement',
+      'ระบบต้องทำงานได้บนเบราว์เซอร์ Chrome, Firefox และ Safari',
+      ['ลูกค้าติดตามสถานะพัสดุด้วยเลขพัสดุของตนได้', 'ผู้ดูแลสร้างโปรโมชันใหม่ให้ร้านค้าได้', 'ระบบพิมพ์ใบเสร็จให้ลูกค้าหลังชำระเงินแล้ว'],
+      'Non-functional คือข้อจำกัดของบริการ เช่น response time, **compatibility**, การใช้ memory ส่วนอีก 3 ข้อเป็นบริการที่ระบบทำ จึงเป็น functional (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.match('L3', 'จับคู่กิจกรรมกับกระบวนการของ Requirements Engineering',
+      [
+        ['รวบรวมความต้องการจาก stakeholders', 'Requirements elicitation'],
+        ['เขียนระบุ requirements เป็นเอกสาร', 'Requirements specification'],
+        ['ตรวจว่า requirements ถูกต้อง ครบถ้วน และไม่ขัดแย้งกัน', 'Requirements validation'],
+        ['จัดการเมื่อลูกค้าขอเปลี่ยน requirement กลางโปรเจกต์', 'Requirements change'],
+      ],
+      'RE มี 4 กระบวนการ: elicitation · specification · validation · change และเป็น iterative process (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.tf('L3', 'Requirements Engineering ทำเพียงครั้งเดียวในช่วงต้นโปรเจกต์ หลังจากนั้นไม่ต้องกลับมาแก้ไข', false,
+      'ผิด สไลด์ว่า RE is an **iterative process** คือวนซ้ำได้ และมีกระบวนการ requirements change รองรับการเปลี่ยนแปลงตลอดโปรเจกต์'),
+
+    mk.mcq('L3', 'ทีมเขียนเอกสารที่ระบุอย่างละเอียดว่า software ต้อง implement ฟังก์ชัน บริการ และข้อจำกัดการทำงานอะไรบ้าง เอกสารนี้ตรงกับ requirements ประเภทใดมากที่สุด',
+      'System requirements',
+      ['User requirements', 'Business Workflow', 'Requirements validation'],
+      '**System requirements** = more detailed descriptions of the software system’s functions, services and operational constraints, defining exactly what is to be implemented ส่วน User requirements บอกบริการที่ผู้ใช้คาดหวัง ตั้งแต่กว้างจนละเอียด (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L3', 'ลูกค้าระบุว่าระบบต้องหยุดทำงาน (downtime) ไม่เกิน 1 ชั่วโมงต่อเดือน เรื่องนี้เป็นมิติใดของ 6 มิติในการ elicit requirements',
+      'Other Constraints (performance, reliability ฯลฯ)',
+      ['Individual Functionality', 'Data and Data formats', 'Business Workflow'],
+      'มิติ **Other Constraints** ครอบคลุมเรื่อง performance, reliability เป็นต้น ซึ่งใกล้กับ non-functional requirements (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L3', 'ต้องการเข้าใจเหตุผลเบื้องหลังความต้องการของผู้อำนวยการโรงพยาบาลซึ่งมีเพียงท่านเดียว และต้องถามต่อเนื่องเมื่อคำตอบยังไม่ชัด ควรใช้เทคนิค elicitation ใด',
+      'Interview',
+      ['Questionnaires', 'Sampling of existing documentation, forms, and databases', 'Research and site visits'],
+      'Interview สัมภาษณ์โดยตรง ถามต่อยอดได้ทันทีเมื่อคำตอบไม่ชัด ส่วน Questionnaires เหมาะกับคนจำนวนมาก (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.tf('L3', 'Functional requirements ระบุว่าระบบควรตอบสนองอย่างไรต่อ input บางแบบ และควรทำอย่างไรในสถานการณ์เฉพาะ', true,
+      'ถูก Functional requirements: state the services the system should provide · describe what the system should do · state how it should react to particular inputs · state how it should behave in particular situations'),
+
+    /* ---------- L8 (8 ข้อ) ---------- */
+    mk.mcq('L8', 'ผู้ดูแลระบบพิมพ์คำสั่งในหน้าต่างข้อความเพื่อรีสตาร์ท server ต้องพิมพ์ให้ตรงรูปแบบเป๊ะ ๆ ใช้ UI ชนิดใด',
+      'Command-Line Interface (CLI)',
+      ['Text Menu Interface', 'Graphical User Interface (GUI)', 'Voice User Interface (VUI)'],
+      'CLI relies on text-based commands ผู้ใช้ต้องพิมพ์คำสั่งเอง มักใช้โดย developers และ system administrators เพื่อควบคุมอย่างแม่นยำ (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.match('L8', 'จับคู่ชนิดของ User Interface กับลักษณะที่สไลด์อธิบาย',
+      [
+        ['Touchscreen User Interface', 'โต้ตอบด้วย touch gestures พบใน smartphones, tablets และ kiosks'],
+        ['Augmented Reality (AR)', 'ผสานองค์ประกอบเสมือนเข้ากับสภาพแวดล้อมจริง'],
+        ['Virtual Reality (VR)', 'สร้างสภาพแวดล้อมเสมือนแบบดื่มด่ำ (immersive)'],
+        ['Text Menu Interface', 'แสดงเมนูเป็นข้อความ เลือกด้วยตัวเลข ตัวอักษร หรือปุ่มลูกศร'],
+      ],
+      'ตัวอย่างในสไลด์: Touchscreen = smartphones, tablets, interactive kiosks · AR = แอปนำทาง เกม การศึกษา · VR = เกม simulation และการฝึกอบรม · Text menu เป็น text-based เหมือน CLI'),
+
+    mk.tf('L8', 'ตามสไลด์ software จะเป็นที่นิยมมากขึ้นเมื่อ user interface ตอบสนองในเวลาสั้น และสอดคล้องกันทุกหน้าจอ', true,
+      'ถูก กฎพื้นฐาน 5 ข้อ: Attractive · Simple to use · **Responsive in short time** · Clear to understand · **Consistent on all interface screens**'),
+
+    mk.mcq('L8', 'ทีมสำรวจว่าผู้ใช้เป็นพนักงานคลังสินค้า สวมถุงมือ ต้องใช้แอปขณะเดิน และมีเสียงเครื่องจักรดัง งานนี้อยู่ใน phase ใดของ UI Design Process',
+      'Phase 1: User, task, environmental analysis and modeling',
+      ['Phase 2: Interface design', 'Phase 3: Interface construction and implementation', 'Phase 4: Interface validation'],
+      'Phase 1 ศึกษา profile ผู้ใช้ งานที่ต้องทำ และ physical work environment (ท่าทางผู้ใช้ เสียง แสง ข้อจำกัดด้าน human factors) (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.order('L8', 'เรียงงานต่อไปนี้ของโปรเจกต์ออกแบบหน้าจอตู้สั่งอาหารตาม 4 phase ของ UI Design Process',
+      ['ศึกษา profile ผู้ใช้ งานที่ต้องทำ และสถานที่ติดตั้งจริง', 'กำหนด interface objects, interface actions และวิธีแจ้ง error', 'สร้าง prototype ของหน้าจอแล้วปรับปรุงเป็นรอบ ๆ', 'ให้ผู้ใช้ลองทำทุก task เพื่อประเมินว่าใช้ง่ายและเรียนรู้ง่าย'],
+      '**Phase 1** วิเคราะห์ผู้ใช้/งาน/สภาพแวดล้อม → **Phase 2** Interface design → **Phase 3** Construction and implementation (prototype, iterative) → **Phase 4** Validation (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L8', 'แอปให้ผู้ใช้สั่งงานผ่านคีย์บอร์ด เมาส์ หน้าจอสัมผัส หรือเสียงก็ได้ ตรงกับหลักย่อยใด',
+      'Provide for flexible interaction (Place the user in control)',
+      ['Establish meaningful defaults (Reduce the user’s memory load)', 'Maintain consistency across the system (Make the interface consistent)', 'Disclose information in layers (Reduce the user’s memory load)'],
+      'สไลด์ใต้ข้อ **Place the user in control**: provide for flexible interaction – allow a user to interact via keyboard commands, mouse movement, a touch screen or by voices (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L8', 'โปรแกรมตั้งค่าการพิมพ์เริ่มต้นเป็นกระดาษ A4 หน้าเดียว เพราะผู้ใช้ส่วนใหญ่พิมพ์แบบนี้ ตรงกับหลักย่อยใด',
+      'Establish meaningful defaults (Reduce the user’s memory load)',
+      ['Allow advanced users to customize (Place the user in control)', 'Maintain consistency across the system (Make the interface consistent)', 'Design for direct interaction with objects (Place the user in control)'],
+      '**Establish meaningful defaults**: initial set of defaults should make sense for the average user ส่วน customize เป็นของผู้ใช้ขั้นสูงภายใต้ Place the user in control (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L8', 'ในแอปหนึ่ง ปุ่มยืนยันเป็นสีเขียวในบางหน้าแต่เป็นสีแดงในหน้าอื่น และตำแหน่งปุ่มย้ายไปมา ทำให้ผู้ใช้สับสน ขัดกับหลักย่อยใดมากที่สุด',
+      'Maintain consistency across the system (Make the interface consistent)',
+      ['Provide visual clues ให้จำสิ่งที่เคยทำ (Reduce the user’s memory load)', 'Define interaction modes ที่ไม่บังคับให้ทำสิ่งที่ไม่ต้องการ (Place the user in control)', 'Hide technical interfaces from casual users (Place the user in control)'],
+      'หลัก **Make the interface consistent** รวมถึง maintain consistency across the system และ consistent color coding เพื่อให้ผู้ใช้รู้บริบทของงานและไม่สับสน (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+  ],
+});
+</script>
+<script>
+/* ชุด 7 · Part 1 ชุด C — L1 (7) + L2 (8) + L3 (7) + L8 (8) = 30 ข้อ ข้อที่ผู้จัดทำตั้งสถานการณ์เองระบุไว้ในเฉลย */
+SETS.push({
+  id: 7,
+  tag: 'ทฤษฎี Part 1 · แบบ C',
+  level: 'กลาง',
+  desc: 'ทฤษฎี Part 1 ครบ 4 บท (L1, L2, L3, L8) 30 ข้อ โครงสร้างและความยากเท่ากับชุด A และ B แต่ใช้สถานการณ์และมุมถามต่างกัน',
+  qs: [
+    /* ---------- L1 (7 ข้อ) ---------- */
+    mk.mcq('L1', 'ทีมส่งมอบ source code และฐานข้อมูลที่ออกแบบแล้ว แต่ไม่มีคู่มือหรือเอกสารอธิบายการทำงานและวิธีใช้ ตามนิยามของ Pressman ขาดส่วนใดของ software',
+      'Documents (descriptive information)',
+      ['Instructions (ชุดคำสั่ง)', 'Data structures (โครงสร้างข้อมูล)', 'Operating system (ระบบปฏิบัติการ)'],
+      'Software ตามนิยามของ Pressman = **Instructions + Data structures + Documents** (descriptive information ที่อธิบายการทำงานและวิธีใช้) Operating system ไม่ใช่ส่วนประกอบของ software ตัวนี้ แต่เป็นอีกชั้นของระบบ (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.tf('L1', 'ตามรูปในสไลด์ Application Software อยู่ระหว่าง Operating System กับ Hardware', false,
+      'ผิด ลำดับชั้นในสไลด์จากบนลงล่างคือ User → **Application Software** → Operating System → Hardware ดังนั้น Application Software อยู่ระหว่าง User กับ Operating System'),
+
+    mk.mcq('L1', 'บริษัทส่งพนักงานเข้าอบรมการสื่อสารและการทำงานเป็นทีม เพื่อให้พัฒนา software ได้ราบรื่น ตรงกับ aspect ใดของ Software Engineering ตามสไลด์',
+      'People skills and teamwork',
+      ['Technical and business processes', 'Product characterization and metrics for measurements', 'Specific methodologies and techniques'],
+      '5 aspects: Technical and business processes · Specific methodologies and techniques · Product characterization and metrics for measurements · **People skills and teamwork** · Project coordination and management (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L1', 'ผู้จัดการระบุและวิเคราะห์ความเสี่ยง ประเมินทรัพยากรที่ต้องใช้ แล้วสรุปเป็นเอกสารที่ใช้เป็นแนวทางตลอดโปรเจกต์ กิจกรรมนี้อยู่ในขั้นใดของ POMA',
+      'Planning ซึ่งได้ผลลัพธ์เป็น Project Plan',
+      ['Organizing ซึ่งได้โครงสร้างทีมและคนที่จ้างเพิ่ม', 'Monitoring ซึ่งได้สถานะปัจจุบันของโปรเจกต์', 'Adjusting ซึ่งได้การแก้ resources, schedule หรือ content'],
+      'Planning 7 ขั้นจบที่ “ระบุและวิเคราะห์ความเสี่ยง” และผลลัพธ์คือ **Project Plan** (ครอบคลุม people, process, tools และ facilities) (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.order('L1', 'เรียงเหตุการณ์ของโปรเจกต์หนึ่งตามขั้นของ POMA (Planning → Organizing → Monitoring → Adjusting)',
+      ['ระบุความเสี่ยงและประเมิน schedule แล้วจัดทำ Project Plan', 'ออกแบบโครงสร้างทีมและจ้างนักทดสอบเพิ่ม', 'เก็บข้อมูลความคืบหน้ารายสัปดาห์และสรุปสถานะ', 'ปรับตารางเวลาเมื่อพบว่างานล่าช้า'],
+      'POMA = Planning → Organizing → Monitoring → Adjusting ผลลัพธ์แต่ละขั้น: Project Plan · ทีมและกลไกติดตามผล · สถานะโปรเจกต์ · การแก้ resources/schedule/content (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.match('L1', 'ระบบ e-Learning ถูกแตกงานด้วย WBS จงจับคู่รายการกับระดับของ WBS',
+      [
+        ['e-Learning System', 'System name'],
+        ['การทำแบบทดสอบ', 'Module'],
+        ['ตรวจข้อสอบอัตโนมัติ', 'Function'],
+        ['ออกแบบตารางเก็บคะแนนในฐานข้อมูล', 'Task'],
+      ],
+      'WBS แตกงานเป็น 4 ระดับ จากใหญ่ไปเล็ก: **System name → Module → Function → Task** (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L1', 'แผนโปรเจกต์กำหนดว่าจะรายงานสถานะให้ผู้เกี่ยวข้องทุกสัปดาห์ผ่านช่องทางใด ตรงกับ Knowledge area ใดของ PMBOK',
+      'Communications management',
+      ['Cost management', 'Procurement management', 'Quality management'],
+      'PMBOK (2019) มี 10 Knowledge areas: Scope · Schedule · Cost · Quality · Project integration · Resource · **Communications** · Risk · Procurement · Stakeholder (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    /* ---------- L2 (8 ข้อ) ---------- */
+    mk.mcq('L2', 'หลังส่งมอบ 6 เดือน ลูกค้าขอเพิ่มรายงานใหม่และให้แก้บั๊กที่เพิ่งพบ กิจกรรมนี้ตรงกับกิจกรรมหลักข้อใด',
+      'Maintenance and evolution',
+      ['Deployment and release', 'Implementation (coding)', 'Testing and quality assurance'],
+      '**Maintenance and evolution** = fix issues, update features, and adapt the software over time หลังส่งมอบ (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.tf('L2', 'Waterfall Model เน้น documentation และ planning', true,
+      'ถูก Key characteristics ของ Waterfall: phases do not overlap · each phase produces deliverables that are inputs to the next · **emphasizes documentation and planning**'),
+
+    mk.mcq('L2', 'การประชุมสั้น ๆ ของทีมใน Scrum ที่จัดทุก 24 ชั่วโมงระหว่าง Sprint เรียกว่าอะไร',
+      'Daily Scrum Meeting',
+      ['Sprint Backlog', 'Product Backlog', 'Potentially Shippable Product Increment'],
+      'ใน Sprint (2-4 สัปดาห์) มี **Daily Scrum Meeting ทุก 24 ชม.** ส่วน Product Backlog/Sprint Backlog คือรายการงาน และ Potentially Shippable Product Increment คือผลลัพธ์ของ Sprint'),
+
+    mk.mcq('L2', 'ข้อใดเป็นจุดต่างระหว่าง Incremental กับ Waterfall',
+      'Incremental พัฒนาทีละ requirement หรือชุดเล็ก ๆ แล้วรวมหรือปล่อยทีละส่วน ส่วน Waterfall ทำทั้งระบบผ่านแต่ละ phase ตามลำดับ',
+      ['Incremental วนเป็นเกลียวตาม quadrant ทุกรอบ ส่วน Waterfall ทำเป็นรอบสั้น ๆ รอบละ 2-4 สัปดาห์', 'Incremental ห้ามรวมชิ้นงานจนกว่าระบบจะเสร็จทั้งหมด ส่วน Waterfall รวมงานของทุก phase ต่อเนื่องกัน', 'ทั้งสองโมเดลต้องรอให้ครบทุก requirement ก่อน จึงจะส่งมอบให้ลูกค้าได้ครั้งเดียวเท่านั้น'],
+      'Incremental: **each major requirement/item is developed separately** ผ่านลำดับเดียวกัน แล้วรวมเข้า bucket (แบบ A) หรือ release เป็นรอบ ๆ (แบบ B) ส่วน Waterfall เป็น linear and sequential'),
+
+    mk.order('L2', 'เรียงขั้นตอนของ Code and Fix Model ตามแผนภาพในสไลด์',
+      ['Problem Statement', 'Code', 'Compile', 'Unit Test', 'Release'],
+      'ลำดับหลัก: **Problem Statement → Code → Compile → Unit Test → Release** เมื่อพบ problem จะวนไป Debug แล้วกลับไปแก้โค้ด จุดอ่อนคือบางคนข้าม unit test/debug และเริ่มโดยไม่เข้าใจ problem statement'),
+
+    mk.mcq('L2', 'ทีมเริ่มรอบใหม่ของ Spiral model โดยกำหนดวัตถุประสงค์ ทางเลือก และข้อจำกัดของ product ก่อน อยู่ใน quadrant ใด',
+      'Quadrant 2: Determine Objectives, Alternatives, Constraints',
+      ['Quadrant 1: Plan Next Phase', 'Quadrant 3: Evaluate Alternatives, Identify, Resolve Risks', 'Quadrant 4: Develop, Verify Next-level Product'],
+      'ลำดับใน 1 รอบ: **2 Determine Objectives, Alternatives, Constraints → 3 Evaluate Alternatives, Identify, Resolve Risks → 4 Develop, Verify Next-level Product → 1 Plan Next Phase** (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L2', 'ลูกค้าเปลี่ยน requirement กลางโปรเจกต์ ทีมจึงปรับ backlog ทันที แทนที่จะยึดแผนเดิมทุกข้อ ตรงกับคู่ค่านิยมข้อใดของ Agile Manifesto',
+      'Responding to change over following a plan',
+      ['Individuals and interactions over processes and tools', 'Working software over comprehensive documentation', 'Customer collaboration over contract negotiation'],
+      'การปรับตัวตามการเปลี่ยนแปลงคือ **Responding to change** ที่ให้ค่ามากกว่า following a plan (ฝั่งขวายังมีคุณค่า แต่ให้น้ำหนักฝั่งซ้ายมากกว่า) (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L2', 'สตาร์ตอัปต้องการปล่อยแอปรุ่นแรกให้ผู้ใช้เร็วที่สุด แล้วทยอยปล่อยฟีเจอร์เพิ่มเป็นรุ่น 1, 2, 3 ... โดยแต่ละรุ่นผ่านการพัฒนา ทดสอบ และ package ครบ เหมาะกับโมเดลใด',
+      'Incremental แบบ B (Multiple Release)',
+      ['Waterfall (ทำทีละ phase เป็นเส้นตรง)', 'Spiral (วนเป็นเกลียวพร้อม risk analysis)', 'Code and Fix (เขียนโค้ดแล้วแก้ไปเรื่อย ๆ)'],
+      'Incremental แบบ B: each small set of requirements is developed, packaged, and released in a **multiple release** fashion (Release 1 ถึง n) (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    /* ---------- L3 (7 ข้อ) ---------- */
+    mk.mcq('L3', 'ข้อใดจัดเป็น non-functional requirement ตามนิยามในสไลด์',
+      'แอปต้องเปิดหน้าแรกได้ภายใน 3 วินาทีบนเครือข่าย 4G',
+      ['ผู้ใช้เปลี่ยนที่อยู่จัดส่งได้ก่อนร้านแพ็กสินค้า', 'ระบบส่งใบเสร็จทางอีเมลหลังชำระเงิน', 'ผู้ดูแลดูรายงานยอดขายรายวันได้'],
+      'Non-functional = constraints on the services or functions เช่น **response time** ส่วนอีก 3 ข้อคือบริการที่ระบบทำ จึงเป็น functional (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.match('L3', 'จับคู่คำถามที่ใช้ elicit requirements กับมิติจาก 6 มิติ',
+      [
+        ['ใบลาต้องส่งให้ใครอนุมัติต่อ และมีขั้นตอนใดบ้าง', 'Business Workflow'],
+        ['ระบบต้องดึงข้อมูลนักศึกษาจากระบบทะเบียนเดิม', 'Existing & Systems Interfaces'],
+        ['หน้าลงทะเบียนควรมีหน้าตาและลำดับการกรอกอย่างไร', 'User Interfaces'],
+        ['ระบบต้องมีความน่าเชื่อถือสูงและตอบสนองเร็ว', 'Other Constraints'],
+      ],
+      '6 มิติ: Individual Functionality · Business Workflow · Data and Data formats · User Interfaces · Existing & Systems Interfaces · Other Constraints (performance, reliability ฯลฯ) (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)',
+      { extra: ['Data and Data formats'] }),
+
+    mk.tf('L3', 'ผลลัพธ์ (output) ของกระบวนการ Requirements Engineering คือ Project Plan', false,
+      'ผิด ผลลัพธ์ของ RE คือ **System requirements document** ส่วน Project Plan เป็นผลลัพธ์ของขั้น Planning ใน POMA'),
+
+    mk.mcq('L3', 'ระหว่างพัฒนา ลูกค้าขอเพิ่มรายงานใหม่ ทีมจึงประเมินผลกระทบและปรับเอกสาร requirements ให้ตรงกัน กิจกรรมนี้ตรงกับกระบวนการ RE ข้อใด',
+      'Requirements change',
+      ['Requirements elicitation', 'Requirements specification', 'Requirements validation'],
+      'กระบวนการ **Requirements change** จัดการการเปลี่ยนแปลงของ requirements ที่เกิดขึ้นระหว่างโปรเจกต์ (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L3', 'ทีมถามว่าระบบต้องมีความสามารถย่อยอะไรบ้าง เช่น ค้นหาสินค้า สั่งซื้อ และยกเลิกคำสั่งซื้อ เรื่องนี้เป็นมิติใดของ 6 มิติในการ elicit requirements',
+      'Individual Functionality',
+      ['Business Workflow', 'Other Constraints', 'User Interfaces'],
+      '**Individual Functionality** = ความสามารถรายฟังก์ชันของระบบ ส่วน Business Workflow คือลำดับขั้นการทำงานทางธุรกิจที่ฟังก์ชันเหล่านี้เชื่อมกัน (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L3', 'ทีมพัฒนาระบบห้องสมุดของมหาวิทยาลัยใหม่ ต้องการรู้ว่าระบบของมหาวิทยาลัยอื่นทำงานอย่างไร จึงนัดเข้าไปดูระบบจริง ใช้เทคนิค elicitation ใด',
+      'Research and site visits',
+      ['Questionnaires', 'Interview', 'Sampling of existing documentation, forms, and databases'],
+      '**Research and site visits** = หาข้อมูลและไปดูงานที่องค์กรหรือระบบที่คล้ายกัน (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.tf('L3', 'ข้อกำหนดเรื่องความเข้ากันได้กับอุปกรณ์หรือเบราว์เซอร์ (compatibility) จัดเป็น non-functional requirement', true,
+      'ถูก สไลด์ยกตัวอย่าง non-functional ไว้ 3 อย่าง: **response time, compatibility, memory use** ซึ่งเป็นข้อจำกัดของบริการที่ระบบให้'),
+
+    /* ---------- L8 (8 ข้อ) ---------- */
+    mk.mcq('L8', 'ผู้ใช้ปัด ย่อ-ขยาย และแตะหน้าจอสมาร์ตโฟนเพื่อใช้แอปแผนที่ ใช้ UI ชนิดใดเป็นหลัก',
+      'Touchscreen User Interface',
+      ['Command-Line Interface', 'Text Menu Interface', 'Voice User Interface'],
+      'Touchscreen UI ให้ผู้ใช้โต้ตอบด้วย **touch gestures** พบมากใน smartphones, tablets และ interactive kiosks (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.match('L8', 'จับคู่ตัวอย่างกับ golden rule ของ Mandel',
+      [
+        ['ให้โต้ตอบได้ทั้งคีย์บอร์ด เมาส์ หน้าจอสัมผัส และเสียง', 'Place the user in control'],
+        ['กำหนด shortcut ที่เดาง่าย เช่น Ctrl+P พิมพ์ Ctrl+S บันทึก', 'Reduce the user’s memory load'],
+        ['ทุกหน้าต่างมีชื่อและสีที่สม่ำเสมอเพื่อบอกบริบทของงาน', 'Make the interface consistent'],
+        ['แสดงข้อมูลทั่วไปก่อน แล้วค่อยแสดงรายละเอียดเพิ่ม', 'Reduce the user’s memory load'],
+      ],
+      'Mandel 3 ข้อ: **Control** (flexible, interruptible/undoable, customize, direct interaction) · **Memory** (visual clues, defaults, shortcuts, metaphor, layers) · **Consistent** (context indicators, consistency, ไม่เปลี่ยน interactive model เดิม)'),
+
+    mk.tf('L8', 'ใน Phase 4 (Interface validation) ต้องประเมินว่า interface ใช้ง่ายและเรียนรู้ง่าย และผู้ใช้ยอมรับว่าเป็นเครื่องมือที่มีประโยชน์ในงานของตน', true,
+      'ถูก Phase 4: ทดสอบว่า implement ทุก user task ถูกต้อง รองรับ task variations ครบ ตอบ general user requirements และประเมิน **easy to use / easy to learn** รวมถึงผู้ใช้ยอมรับ interface เป็นเครื่องมือที่มีประโยชน์'),
+
+    mk.mcq('L8', 'ข้อใดคือ design issues ทั้ง 3 เรื่องของ Phase 2 (Interface design) ตามสไลด์',
+      'Response time, Command and action structure และ Error handling',
+      ['Response time, Hardware cost และ Error handling', 'Command structure, User skill และ Prototype', 'Error handling, Task variations และ Physical environment'],
+      'Phase 2 ประกอบด้วย set of interface objects, set of interface actions และ design issues 3 เรื่อง **R-C-E: Response time · Command and action structure · Error handling** ส่วน task variations เป็นของ Phase 4 และ physical environment เป็นของ Phase 1'),
+
+    mk.order('L8', 'เรียงงานต่อไปนี้ของโปรเจกต์ออกแบบแอปจองคิวคลินิกตาม 4 phase ของ UI Design Process',
+      ['สัมภาษณ์เจ้าหน้าที่คลินิกและดูห้องรับผู้ป่วยที่จะติดตั้งจริง', 'ออกแบบ interface objects, actions, response time และ error handling', 'สร้าง prototype ของแอปแล้วปรับปรุงซ้ำหลายรอบ', 'ให้ผู้ใช้ทดลองทำทุก task และประเมินความง่ายในการเรียนรู้'],
+      'ลำดับ: **Phase 1** วิเคราะห์ผู้ใช้/งาน/สภาพแวดล้อม → **Phase 2** Interface design → **Phase 3** Construction and implementation (prototype แบบ iterative) → **Phase 4** Validation (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L8', 'ระหว่างอัปโหลดไฟล์ใหญ่ แอปมีปุ่มยกเลิกให้กดได้ทุกเมื่อ และมีปุ่มเลิกทำ (undo) หลังลบไฟล์ ตรงกับหลักย่อยใด',
+      'Allow user interaction to be interruptible and undoable (Place the user in control)',
+      ['Establish meaningful defaults (Reduce the user’s memory load)', 'Define shortcuts that are intuitive (Reduce the user’s memory load)', 'Allow the user to put the task into context (Make the interface consistent)'],
+      'ใต้ข้อ **Place the user in control** มี “allow user interaction to be interruptible and undoable” (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L8', 'แอปซื้อของใช้ไอคอนรูปตะกร้าแทนปุ่ม “ดูสินค้าที่เลือกไว้” เพราะคล้ายตะกร้าในร้านค้าจริง ตรงกับหลักย่อยใด',
+      'Visual layout ควรอิงกับ real-world metaphor (Reduce the user’s memory load)',
+      ['Design for direct interaction with objects (Place the user in control)', 'Maintain consistency across the system (Make the interface consistent)', 'Hide technical interfaces from casual users (Place the user in control)'],
+      'หลักย่อยของ Reduce the user’s memory load: visual layout of the interface should be based on a **real-world metaphor** (สไลด์ยกตัวอย่างไอคอนบ้าน = Back to home screen) (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+
+    mk.mcq('L8', 'ทีมต้องการ feedback จากผู้ใช้อย่างรวดเร็วด้วยต้นทุนต่ำ และยังไม่ต้องการลงรายละเอียดการออกแบบ ควรเริ่มด้วย prototype แบบใด',
+      'Low fidelity เช่น paper prototype หรือ click-through prototype',
+      ['High fidelity แบบ coded prototype ที่เหมือนของจริงทุกจุด', 'High fidelity แบบ digital code-free ที่มี animation และ transition', 'ไม่ต้องทำ prototype ให้เขียนระบบจริงก่อนแล้วค่อยถามผู้ใช้'],
+      '**Low fidelity** = simple and rough, focus on basic structure and functionality, useful for early-stage feedback and brainstorming ส่วน high fidelity เหมาะกับ accurate user testing และ validate design ก่อนพัฒนา (โจทย์ฝึกที่ผู้จัดทำตั้งเอง)'),
+  ],
+});
+</script>
+<script>
 (function () {
   'use strict';
   const KEY = 'itds261q:v1';
@@ -1301,7 +1793,7 @@ SETS.push({
       : 'ทำจนจบทั้งชุดโดยไม่เห็นเฉลย กลับไปแก้คำตอบได้ แล้วค่อยส่งเพื่อดูคะแนนและเฉลยทุกข้อ เหมาะซ้อมสอบจริง';
     return '<div class="home wrap">' +
       '<h1>ข้อสอบฝึก ITDS261 Software Engineering</h1>' +
-      '<p class="lead">เตรียมสอบกลางภาค ชุด 1–3 รวม 90 ข้อ (ชุดละ 30 ข้อ จากง่ายไปยาก) และชุด 4 เฉพาะ Interface Design</p>' +
+      '<p class="lead">เตรียมสอบกลางภาค ชุด 1–3 รวม 90 ข้อ (ชุดละ 30 ข้อ จากง่ายไปยาก) ชุด 4 เฉพาะ Interface Design และชุด 5–7 เฉพาะเนื้อหา Part 1 (L1, L2, L3, L8) อีก 90 ข้อ ชุดละ 30 ข้อ ความยากเท่ากันทุกชุด</p>' +
       '<ul class="facts"><li><strong>สอบ ศ. 9 ต.ค. 2569</strong> เวลา 12:30-14:30 · กลางภาคคิด 40%</li>' +
       '<li><strong>Part 1</strong> ทฤษฎี 15 คะแนน · <strong>Part 2</strong> วาด/เขียนโมเดล 25 คะแนน</li></ul>' +
       '<section class="modebox" aria-labelledby="modeh"><h2 id="modeh">เลือกโหมดทำ</h2>' +
@@ -1311,7 +1803,7 @@ SETS.push({
       '<p class="modedesc">' + modeDesc + '</p></section>' +
       '<section class="sets" aria-labelledby="seth"><h2 id="seth">เลือกชุดข้อสอบ</h2><ul class="setlist">' + rows + '</ul></section>' +
       '<div class="note"><strong>ที่มาของเนื้อหา:</strong> ตั้งขึ้นจากหน้าสรุป “ITDS261 Software Engineering Midterm Guideline” ใน Notion (Lecture 1, 2, 3, 4, 7) และสไลด์ Lecture 8 (ชุด 4) ข้อที่ผู้จัดทำตั้งสถานการณ์ใหม่จะระบุไว้ในเฉลยว่าเป็นโจทย์ฝึก ไม่ใช่ข้อสอบจริง ' +
-      'เนื้อหา <strong>Interface Design</strong> (ออกสอบ Part 1) อยู่ในชุด 4 ที่ตั้งจากสไลด์ L8 โดยตรง ถ้าอาจารย์สอนต่างจากหน้าสรุป ให้ยึดตามอาจารย์</div>' +
+      'เนื้อหา <strong>Interface Design</strong> (ออกสอบ Part 1) อยู่ในชุด 4 ที่ตั้งจากสไลด์ L8 โดยตรง ชุด 5–7 ตั้งจากสไลด์ L1, L2, L3, L8 ในไฟล์ guideline และสไลด์ L8 แต่ละชุดมีสัดส่วนเท่ากัน (L1 7 ข้อ, L2 8 ข้อ, L3 7 ข้อ, L8 8 ข้อ) ถ้าอาจารย์สอนต่างจากหน้าสรุป ให้ยึดตามอาจารย์</div>' +
       '</div>';
   }
 
